@@ -9,42 +9,49 @@ from skbio.tree import nj
 from Bio import Phylo
 from io import StringIO
 
+# arguments
+from argparse import ArgumentParser
+
+parser = ArgumentParser()
+parser.add_argument("-e", "--example number",
+                   dest="n_example", default=0,
+                   help="use this example from the list ")
+args = parser.parse_args()
+
+n_example = 0
+n_example = int(args.n_example)
+
 all_labels=["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
 
-
-# input_matrix = np.array([[5, 2, 2, 1, 1],
-#                          [2, 5, 3, 2, 1],
-#                          [2, 3, 5, 4, 1],
-#                          [1, 2, 4, 5, 5],
-#                          [1, 1, 1, 5, 5]])
-
-input_matrix = np.array([[10, 4, 3, 2, 2],
+all_input_matrix = [[[5, 2, 2, 1, 1],
+                         [2, 5, 3, 2, 1],
+                         [2, 3, 5, 4, 1],
+                         [1, 2, 4, 5, 5],
+                         [1, 1, 1, 5, 5]],
+                        [[10, 4, 3, 2, 2],
                          [4, 10, 6, 4, 2],
                          [3, 6, 10, 8, 2],
                          [2, 4, 8, 10, 10],
-                         [2, 2, 2, 10, 10]])
+                         [2, 2, 2, 10, 10]],
+                        [[2, 2, 1, 0, 0],
+                         [2, 2, 2, 1, 1],
+                         [1, 2, 2, 2, 1],
+                         [0, 1, 2, 2, 2],
+                         [0, 1, 1, 2, 2]],
+                        [[10,7, 6, 0, 0, 0, 0],
+                         [7,10, 7, 3, 2, 1, 1],
+                         [6, 7,10, 7, 2, 2, 1],
+                         [0, 3, 7, 10,3, 3, 3],
+                         [0, 2, 2, 3, 10,7, 5],
+                         [0, 1, 2, 3, 7, 10,6],
+                         [0, 1, 1, 3, 5, 6,10]],
+                        [[9,4,5,4,1], 
+                         [4,9,5,4,1], 
+                         [5,5,9,8,7], 
+                         [3,3,8,9,7],
+                         [1,1,7,7,9]]]
 
-# input_matrix = np.array([[2, 2, 1, 0, 0],
-#                         [2, 2, 2, 1, 1],
-#                         [1, 2, 2, 2, 1],
-#                         [0, 1, 2, 2, 2],
-#                         [0, 1, 1, 2, 2]])
-
-# input_matrix = np.array([
-#     [10,7, 6, 0, 0, 0, 0],
-#     [7,10, 7, 3, 2, 1, 1],
-#     [6, 7,10, 7, 2, 2, 1],
-#     [0, 3, 7, 10,3, 3, 3],
-#     [0, 2, 2, 3, 10,7, 5],
-#     [0, 1, 2, 3, 7, 10,6],
-#     [0, 1, 1, 3, 5, 6,10]])
-
-# input_matrix = ([[9,4,5,4,1], 
-# [4,9,5,4,1], 
-# [5,5,9,8,7], 
-# [3,3,8,9,7],
-# [1,1,7,7,9]])
-
+input_matrix = np.array(all_input_matrix[n_example])
 
 n = len(input_matrix)
 ROWS = COLS = range(n)
