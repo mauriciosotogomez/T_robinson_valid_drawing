@@ -81,15 +81,15 @@ two_points = [
     for i in range(j)
 ]
 
-# Create the problem
-problem = LpProblem("Has a tree diagram Problem")
+# CREATE THE PROBLEM  ##################################
+problem = LpProblem("Has a tree diagram Problem", LpMinimize)
 
 # Define decision variables
 distance = LpVariable.dicts("distance", (ROWS, COLS), cat='Continuous', lowBound=0)
-max = LpVariable.dicts("max", (four_points, range(3)), cat='Continuous', lowBound=0)
+max = LpVariable.dicts("max", (four_points,range(3)), cat='Continuous', lowBound=0)
 
 # We do not define an objective function since none is needed
-problem += lpSum([max[q][r] for q in four_points for r in range(3)])
+problem += lpSum([max[q][r] for q in four_points] for r in range(3))
 
 # Constraints ensuring the 4-point condition
 #   i  j   k   l
@@ -97,21 +97,23 @@ problem += lpSum([max[q][r] for q in four_points for r in range(3)])
 # j    *  Djk Djl
 # k        *  Dkl
 # l            *
+# d(i,j)+d(k,l) <= max{d(i,k)+d(j,l) , d(i,l)+d(j,k) }
 
-for (i,j,k,l) in four_points:
-#    problem += distance[i][k] + distance[j][l] - distance[i][l] - distance[j][k] == 0
-    for r in range(3):
+for (i,j,k,l) in four_points :
+    for r in range(3) :
         problem += distance[i][j] + distance[k][l] <= max[(i,j,k,l)][r]
-        problem += distance[i][k] - distance[j][l] <= max[(i,j,k,l)][r]
-        problem += distance[i][l] - distance[j][k] <= max[(i,j,k,l)][r]    
-    
-# Constraints ensuring the 3-point condition (consistent with the matrix)
+        problem += distance[i][k] + distance[j][l] <= max[(i,j,k,l)][r]
+        problem += distance[i][l] + distance[j][k] <= max[(i,j,k,l)][r] 
+
+# Constraints ensuring the
+#   - 3-point condition (consistent with the matrix)
+#   - triangular inequality (metric)
 for (i,j,k) in three_points:
     if input_matrix[i][j] > input_matrix[i][k] :
         problem += distance[i][j] - distance[i][k] <= -1
-        problem += distance[i][j] + distance[j][k] - distance[i][k] >= 0        
+    problem += distance[i][j] + distance[j][k] - distance[i][k] >= 0        
 
-# Symmetry 2-points condition
+# Symmetry 2-points condition (metric)
 for (i,j) in two_points:
     problem += distance[i][j] - distance[j][i] == 0
 
@@ -121,10 +123,11 @@ problem.writeLP("tree_metric.lp")
 # Solve the problem
 problem.solve()
 
-# The status of the solution is printed to the screen
-print("Status:", LpStatus[problem.status])
+# The status and value of the solution is printed to the screen
+print(f'Status: {LpStatus[problem.status]}')
+print(f'Value : {value(problem.objective)}')
 
-#PRINT INPUT/OUTPUT INFO
+#PRINT INPUT/OUTPUT INFO ##################################
 
 # Print input matrix
 print(f"\n Input similarity matrix \n{input_matrix}")
@@ -140,7 +143,7 @@ print(f"\n Output distance matrix \n{outmatrix}")
 # A file called matrixout.txt is created/overwritten for writing to
 matrixout = open("tree_metric_out.txt", "w")
 
-# The solution is written to the sudokuout.txt file
+# The solution is written to the matrixout.txt file
 for c in COLS:
     matrixout.write(f"{nodelabel[c]}, " )
 matrixout.write("\n")
@@ -161,6 +164,11 @@ print(tree.ascii_art())
 
 print("\n Newick notation of the tree")
 print(newick_str)
+
+for (i,j,k,l) in four_points :    
+     # if  value(distance[i][j]) + value(distance[k][l]) != value(max[(i,j,k,l)]) and value(distance[i][k]) + value(distance[j][l]) != value(max[(i,j,k,l)]) and value(distance[i][l]) + value(distance[j][k]) != value(max[(i,j,k,l)]) :
+    print(f"[{(i,j,k,l)}] max={value(max[(i,j,k,l)][0]), value(max[(i,j,k,l)][1]), value(max[(i,j,k,l)][2])}: d({i},{j})+d({k},{l})={value(distance[i][j])+value(distance[k][l])}, d({i},{k})+d({j},{l})={value(distance[i][k]) + value(distance[j][l])}, d({i},{l})+d({j},{k})={value(distance[i][l]) + value(distance[j][k])}") 
+
 
 # Plot the tree
 handle = io.StringIO(newick_str)
