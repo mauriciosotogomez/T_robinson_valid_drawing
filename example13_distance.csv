@@ -1,0 +1,3497 @@
+14 (A) Hetnode2vec_2
+17 (A) add comments to paper RNA-KG
+19 (A) assicurazione Insieme Salute Polimi
+16 (B) Add courses to the UNIMI registry
+18 (B) registro lezioni POLIMI
+01 BOLETTE BABD
+02 (X) pagar asilo Ines Feb
+03 add publication in air.unimi.it
+04 read Paper Paola - Condor
+05 literature review SNF with missing data - search interesting methods 20.03
+06 Consolato
+07 Paper Murray minimum Persimony Zulip
+08 figures Persistent Paola
+09 revisit papaer Gianluca
+10 read paper Jorge graph comparison
+11 read paper Mesiti Neurosymbolic
+12 Curso HCAI
+13 mail El-Kebir
+15 Marco Mesiti GNN module for link prediction
+--
+TODO: 19 of 19 tasks shown
+Welcome to fish, the friendly interactive shell
+Type help for instructions on how to use fish
+mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ source /media/data/mausoto/Documents/Papers/202309_T_robinsionian/env/bin/activate.fish          
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py -e 1   21:52:46
+/home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/pulp.py:1352: UserWarning: Spaces are not permitted in the name. Converted to '_'
+  warnings.warn("Spaces are not permitted in the name. Converted to '_'")
+Welcome to the CBC MILP Solver 
+Version: 2.10.3 
+Build Date: Dec 15 2019 
+
+command line - /home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/solverdir/cbc/linux/64/cbc /tmp/a6eaf55c0b684ef0b0c7d127637f0881-pulp.mps timeMode elapsed branch printingOptions all solution /tmp/a6eaf55c0b684ef0b0c7d127637f0881-pulp.sol (default strategy 1)
+At line 2 NAME          MODEL
+At line 3 ROWS
+At line 417780 COLUMNS
+At line 1833932 RHS
+At line 2251708 BOUNDS
+At line 2251710 ENDATA
+Problem MODEL has 417775 rows, 2501 columns and 1411250 elements
+Coin0008I MODEL read with 0 errors
+Option for timeMode changed from cpu to elapsed
+would have 0 free columns in primal, 231525 in dual
+Presolve 347900 (-69875) rows, 1225 (-1276) columns and 1215200 (-196050) elements
+0  Obj 0 Primal inf 1832501.3 (169369) Dual inf 122677 (553)
+
+
+
+^CStopped - objective value -1587256.9
+Traceback (most recent call last):
+  File "/media/data/mausoto/Documents/Papers/202309_T_robinsionian/T_robinson_valid_drawing/tree_metric.py", line 131, in <module>
+    problem.solve()
+  File "/home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/pulp.py", line 1913, in solve
+    status = solver.actualSolve(self, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/apis/coin_api.py", line 137, in actualSolve
+    return self.solve_CBC(lp, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/apis/coin_api.py", line 203, in solve_CBC
+    if cbc.wait() != 0:
+       ^^^^^^^^^^
+  File "/usr/lib/python3.11/subprocess.py", line 1264, in wait
+    return self._wait(timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/subprocess.py", line 2046, in _wait
+    (pid, sts) = self._try_wait(0)
+                 ^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/subprocess.py", line 2004, in _try_wait
+    (pid, sts) = os.waitpid(self.pid, wait_flags)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+Perturbing problem by 0.001% of 1.9546236 - largest nonzero change 2.9989619e-05 ( 0.0029315842%) - largest zero change 1.8550028e-05
+0  Obj 0 Primal inf 370413.72 (231063) Dual inf 1521965.2 (184)
+⏎                                                                                         
+  File "/media/data/mausoto/Documents/Papers/202309_T_robinsionian/T_robinson_valid_drawing/tree_metric.py", line 180
+    if plot_tree
+                ^
+SyntaxError: expected ':'
+⏎                                                                                         
+/home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/pulp.py:1352: UserWarning: Spaces are not permitted in the name. Converted to '_'
+  warnings.warn("Spaces are not permitted in the name. Converted to '_'")
+271  Obj 0 Primal inf 44841.991 (225503) Dual inf 445479.69 (86)
+^CTraceback (most recent call last):
+  File "/media/data/mausoto/Documents/Papers/202309_T_robinsionian/T_robinson_valid_drawing/tree_metric.py", line 118, in <module>
+    problem += distance[i][j] + distance[j][k] - distance[i][k] >= 0
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~
+  File "/home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/pulp.py", line 943, in __sub__
+    return self.copy().subInPlace(other)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/pulp.py", line 902, in subInPlace
+    def subInPlace(self, other):
+
+KeyboardInterrupt
+⏎                                                                                         
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ 593  Obj 0 Primal inf 300.49929 (301) Dual inf 567.99996 (39)                             
+1053  Obj 0 Primal inf 17.391754 (24) Dual inf 62.211302 (38)
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ 1237  Obj 0                 21:57:22
+Optimal - objective value 0
+After Postsolve, objective 0, infeasibilities - dual 0 (0), primal 0 (0)
+Optimal objective 0 - 1237 iterations time 248.052, Presolve 1.38
+Option for printingOptions changed from normal to all
+Total time (CPU seconds):       249.63   (Wallclock seconds):       250.68
+
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py -e0   21:58:08
+/home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/pulp.py:1352: UserWarning: Spaces are not permitted in the name. Converted to '_'
+  warnings.warn("Spaces are not permitted in the name. Converted to '_'")
+Welcome to the CBC MILP Solver 
+Version: 2.10.3 
+Build Date: Dec 15 2019 
+
+command line - /home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/solverdir/cbc/linux/64/cbc /tmp/1cb91878fd72477fba17911ff792ab90-pulp.mps timeMode elapsed branch printingOptions all solution /tmp/1cb91878fd72477fba17911ff792ab90-pulp.sol (default strategy 1)
+At line 2 NAME          MODEL
+At line 3 ROWS
+At line 187 COLUMNS
+At line 638 RHS
+At line 821 BOUNDS
+At line 823 ENDATA
+Problem MODEL has 182 rows, 26 columns and 409 elements
+Coin0008I MODEL read with 0 errors
+Option for timeMode changed from cpu to elapsed
+Presolve 59 (-123) rows, 10 (-16) columns and 158 (-251) elements
+0  Obj 0 Primal inf 10.799993 (7) Dual inf 9.999995 (5)
+14  Obj 0
+Optimal - objective value 0
+After Postsolve, objective 0, infeasibilities - dual 0 (0), primal 0 (0)
+Optimal objective 0 - 14 iterations time 0.002, Presolve 0.00
+Option for printingOptions changed from normal to all
+Total time (CPU seconds):       0.00   (Wallclock seconds):       0.00
+
+Status: Optimal
+
+ Input similarity matrix 
+[[5 2 2 1 1]
+ [2 5 3 2 1]
+ [2 3 5 4 1]
+ [1 2 4 5 5]
+ [1 1 1 5 5]]
+
+ Output distance matrix 
+[[0.        5.9999999 5.9999999 6.9999999 9.9999999]
+ [5.9999999 0.        4.9999999 5.9999999 8.9999999]
+ [5.9999999 4.9999999 0.        3.9999999 6.9999999]
+ [6.9999999 5.9999999 3.9999999 0.        2.9999999]
+ [9.9999999 8.9999999 6.9999999 2.9999999 0.       ]]
+
+ Structure of the tree
+                    /-S4
+          /--------|
+         |          \-S3
+         |
+---------|          /-S1
+         |---------|
+         |          \-S0
+         |
+          \-S2
+
+ Newick notation of the tree
+((S4:3.000000, S3:0.000000):2.500000, (S1:2.500000, S0:3.500000):1.000000, S2:1.500000);
+Traceback (most recent call last):
+  File "/media/data/mausoto/Documents/Papers/202309_T_robinsionian/T_robinson_valid_drawing/tree_metric.py", line 180, in <module>
+    if plot_tree:
+       ^^^^^^^^^
+NameError: name 'plot_tree' is not defined
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py -e0   21:58:34
+/home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/pulp.py:1352: UserWarning: Spaces are not permitted in the name. Converted to '_'
+  warnings.warn("Spaces are not permitted in the name. Converted to '_'")
+Welcome to the CBC MILP Solver 
+Version: 2.10.3 
+Build Date: Dec 15 2019 
+
+command line - /home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/solverdir/cbc/linux/64/cbc /tmp/ac1af09275ea4c2a859fb7258bfb94e9-pulp.mps timeMode elapsed branch printingOptions all solution /tmp/ac1af09275ea4c2a859fb7258bfb94e9-pulp.sol (default strategy 1)
+At line 2 NAME          MODEL
+At line 3 ROWS
+At line 187 COLUMNS
+At line 638 RHS
+At line 821 BOUNDS
+At line 823 ENDATA
+Problem MODEL has 182 rows, 26 columns and 409 elements
+Coin0008I MODEL read with 0 errors
+Option for timeMode changed from cpu to elapsed
+Presolve 59 (-123) rows, 10 (-16) columns and 158 (-251) elements
+0  Obj 0 Primal inf 10.799993 (7) Dual inf 9.999995 (5)
+14  Obj 0
+Optimal - objective value 0
+After Postsolve, objective 0, infeasibilities - dual 0 (0), primal 0 (0)
+Optimal objective 0 - 14 iterations time 0.002, Presolve 0.00
+Option for printingOptions changed from normal to all
+Total time (CPU seconds):       0.00   (Wallclock seconds):       0.00
+
+Status: Optimal
+
+ Input similarity matrix 
+[[5 2 2 1 1]
+ [2 5 3 2 1]
+ [2 3 5 4 1]
+ [1 2 4 5 5]
+ [1 1 1 5 5]]
+
+ Output distance matrix 
+[[0.        5.9999999 5.9999999 6.9999999 9.9999999]
+ [5.9999999 0.        4.9999999 5.9999999 8.9999999]
+ [5.9999999 4.9999999 0.        3.9999999 6.9999999]
+ [6.9999999 5.9999999 3.9999999 0.        2.9999999]
+ [9.9999999 8.9999999 6.9999999 2.9999999 0.       ]]
+
+ Structure of the tree
+                    /-S4
+          /--------|
+         |          \-S3
+         |
+---------|          /-S1
+         |---------|
+         |          \-S0
+         |
+          \-S2
+
+ Newick notation of the tree
+((S4:3.000000, S3:0.000000):2.500000, (S1:2.500000, S0:3.500000):1.000000, S2:1.500000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py -e3   22:01:04
+/home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/pulp.py:1352: UserWarning: Spaces are not permitted in the name. Converted to '_'
+  warnings.warn("Spaces are not permitted in the name. Converted to '_'")
+Welcome to the CBC MILP Solver 
+Version: 2.10.3 
+Build Date: Dec 15 2019 
+
+command line - /home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/solverdir/cbc/linux/64/cbc /tmp/2aec76005f7841d7a07dd6988f1e673a-pulp.mps timeMode elapsed branch printingOptions all solution /tmp/2aec76005f7841d7a07dd6988f1e673a-pulp.sol (default strategy 1)
+At line 2 NAME          MODEL
+At line 3 ROWS
+At line 533 COLUMNS
+At line 1906 RHS
+At line 2435 BOUNDS
+At line 2437 ENDATA
+Problem MODEL has 528 rows, 50 columns and 1287 elements
+Coin0008I MODEL read with 0 errors
+Option for timeMode changed from cpu to elapsed
+Presolve 227 (-301) rows, 21 (-29) columns and 629 (-658) elements
+0  Obj 0 Primal inf 49.899954 (44) Dual inf 54.999988 (12)
+39  Obj 0
+Optimal - objective value 0
+After Postsolve, objective 0, infeasibilities - dual 0 (0), primal 0 (0)
+Optimal objective 0 - 39 iterations time 0.002, Presolve 0.00
+Option for printingOptions changed from normal to all
+Total time (CPU seconds):       0.00   (Wallclock seconds):       0.00
+
+Status: Optimal
+
+ Input similarity matrix 
+[[10  7  6  0  0  0  0]
+ [ 7 10  7  3  2  1  1]
+ [ 6  7 10  7  2  2  1]
+ [ 0  3  7 10  3  3  3]
+ [ 0  2  2  3 10  7  5]
+ [ 0  1  2  3  7 10  6]
+ [ 0  1  1  3  5  6 10]]
+
+ Output distance matrix 
+[[ 0.          3.4999999   4.9999999   7.9999998  11.         12.
+  14.        ]
+ [ 3.4999999   0.          1.5         4.4999999   7.4999999   8.4999999
+  10.5       ]
+ [ 4.9999999   1.5         0.          2.9999999   5.9999999   6.9999999
+   8.9999999 ]
+ [ 7.9999998   4.4999999   2.9999999   0.          3.9999999   4.9999998
+   6.9999998 ]
+ [11.          7.4999999   5.9999999   3.9999999   0.          0.99999995
+   2.9999999 ]
+ [12.          8.4999999   6.9999999   4.9999998   0.99999995  0.
+   1.9999999 ]
+ [14.         10.5         8.9999999   6.9999998   2.9999999   1.9999999
+   0.        ]]
+
+ Structure of the tree
+                    /-S3
+          /--------|
+         |         |          /-S2
+         |          \--------|
+         |                   |          /-S1
+         |                    \--------|
+---------|                              \-S0
+         |
+         |          /-S6
+         |---------|
+         |          \-S5
+         |
+          \-S4
+
+ Newick notation of the tree
+((S3:0.500000, (S2:0.000000, (S1:0.000000, S0:3.500000):1.500000):2.500000):3.500000, (S6:2.000000, S5:0.000000):1.000000, S4:0.000000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py -f robinson5.csv 
+/home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/pulp.py:1352: UserWarning: Spaces are not permitted in the name. Converted to '_'
+  warnings.warn("Spaces are not permitted in the name. Converted to '_'")
+Welcome to the CBC MILP Solver 
+Version: 2.10.3 
+Build Date: Dec 15 2019 
+
+command line - /home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/solverdir/cbc/linux/64/cbc /tmp/13639dac1ebf460c8c6a6ef02111f1dc-pulp.mps timeMode elapsed branch printingOptions all solution /tmp/13639dac1ebf460c8c6a6ef02111f1dc-pulp.sol (default strategy 1)
+At line 2 NAME          MODEL
+At line 3 ROWS
+At line 839 COLUMNS
+At line 3033 RHS
+At line 3868 BOUNDS
+At line 3870 ENDATA
+Problem MODEL has 834 rows, 65 columns and 2080 elements
+Coin0008I MODEL read with 0 errors
+Option for timeMode changed from cpu to elapsed
+Presolve 518 (-316) rows, 36 (-29) columns and 1344 (-736) elements
+0  Obj 0 Primal inf 127.49365 (85) Dual inf 72.999983 (17)
+56  Obj 0
+Optimal - objective value 0
+After Postsolve, objective 0, infeasibilities - dual 0 (0), primal 9.9961917e-08 (1)
+Presolved model was optimal, full model needs cleaning up
+Optimal - objective value 0
+Optimal objective 0 - 56 iterations time 0.002, Presolve 0.00
+Option for printingOptions changed from normal to all
+Total time (CPU seconds):       0.01   (Wallclock seconds):       0.01
+
+Status: Optimal
+
+ Input similarity matrix 
+[[0.         0.22020052 0.34737401 0.36762355 0.39582681 0.41907607
+  0.55750174 0.74627159]
+ [0.22020052 0.         0.12717349 0.14742303 0.17562629 0.19887555
+  0.33730122 0.52607107]
+ [0.34737401 0.12717349 0.         0.02024955 0.0484528  0.07170207
+  0.21012774 0.39889758]
+ [0.36762355 0.14742303 0.02024955 0.         0.02820325 0.05145252
+  0.18987819 0.37864804]
+ [0.39582681 0.17562629 0.0484528  0.02820325 0.         0.02324927
+  0.16167494 0.35044478]
+ [0.41907607 0.19887555 0.07170207 0.05145252 0.02324927 0.
+  0.13842567 0.32719552]
+ [0.55750174 0.33730122 0.21012774 0.18987819 0.16167494 0.13842567
+  0.         0.18876985]
+ [0.74627159 0.52607107 0.39889758 0.37864804 0.35044478 0.32719552
+  0.18876985 0.        ]]
+
+ Output distance matrix 
+[[34. 33. 32. 31. 29. 28. 22. 18.]
+ [33. 39. 38. 37. 35. 34. 28. 24.]
+ [32. 38. 43. 42. 40. 39. 33. 29.]
+ [31. 37. 42. 43. 41. 40. 34. 30.]
+ [29. 35. 40. 41. 43. 42. 36. 32.]
+ [28. 34. 39. 40. 42. 43. 37. 33.]
+ [22. 28. 33. 34. 36. 37. 38. 35.]
+ [18. 24. 29. 30. 32. 33. 35. 36.]]
+Traceback (most recent call last):
+  File "/media/data/mausoto/Documents/Papers/202309_T_robinsionian/T_robinson_valid_drawing/tree_metric.py", line 165, in <module>
+    dm = DistanceMatrix(outmatrix, nodelabel)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/skbio/stats/distance/_base.py", line 155, in __init__
+    self._validate(data, ids)
+  File "/home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/skbio/stats/distance/_base.py", line 1174, in _validate
+    raise DistanceMatrixError("Data must be hollow (i.e., the diagonal"
+skbio.stats.distance._base.DistanceMatrixError: Data must be hollow (i.e., the diagonal can only contain zeros).
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py -f robinson.csv                    22:02:04
+/home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/pulp.py:1352: UserWarning: Spaces are not permitted in the name. Converted to '_'
+  warnings.warn("Spaces are not permitted in the name. Converted to '_'")
+Welcome to the CBC MILP Solver 
+Version: 2.10.3 
+Build Date: Dec 15 2019 
+
+command line - /home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/solverdir/cbc/linux/64/cbc /tmp/5de7b941275f4738a3693ad6d599f3ff-pulp.mps timeMode elapsed branch printingOptions all solution /tmp/5de7b941275f4738a3693ad6d599f3ff-pulp.sol (default strategy 1)
+At line 2 NAME          MODEL
+At line 3 ROWS
+At line 417780 COLUMNS
+At line 1833932 RHS
+At line 2251708 BOUNDS
+At line 2251710 ENDATA
+Problem MODEL has 417775 rows, 2501 columns and 1411250 elements
+Coin0008I MODEL read with 0 errors
+Option for timeMode changed from cpu to elapsed
+would have 0 free columns in primal, 231525 in dual
+Presolve 347900 (-69875) rows, 1225 (-1276) columns and 1215200 (-196050) elements
+0  Obj 0 Primal inf 1832501.3 (169369) Dual inf 122677 (553)
+1000  Obj 0 Primal inf 281644.49 (71180) Dual inf 131096.76 (157)
+2000  Obj 0 Primal inf 40.749956 (44) Dual inf 148.49997 (35)
+2307  Obj 0
+Optimal - objective value 0
+After Postsolve, objective 0, infeasibilities - dual 0 (0), primal 2.7066085e-05 (83)
+Presolved model was optimal, full model needs cleaning up
+Optimal - objective value 0
+Optimal objective 0 - 2307 iterations time 242.902, Presolve 1.40
+Option for printingOptions changed from normal to all
+Total time (CPU seconds):       244.47   (Wallclock seconds):       245.00
+
+Status: Optimal
+
+ Input similarity matrix 
+[[0.95652403 0.93603852 0.92919578 ... 0.04049973 0.00291784 0.        ]
+ [0.93603852 0.95652403 0.9496813  ... 0.06098524 0.02340336 0.02048552]
+ [0.92919578 0.9496813  0.95652403 ... 0.06782798 0.0302461  0.02732825]
+ ...
+ [0.04049973 0.06098524 0.06782798 ... 0.95652403 0.91894215 0.91602431]
+ [0.00291784 0.02340336 0.0302461  ... 0.91894215 0.95652403 0.95360619]
+ [0.         0.02048552 0.02732825 ... 0.91602431 0.95360619 0.95652403]]
+
+ Output distance matrix 
+[[  0.         25.         26.        ... 920.66667   955.
+  960.       ]
+ [ 25.          0.          6.3333333 ... 901.        935.33333
+  940.33333  ]
+ [ 26.          6.3333333   0.        ... 894.66667   929.
+  934.       ]
+ ...
+ [920.66667   901.        894.66667   ...   0.         34.333333
+   39.333333 ]
+ [955.        935.33333   929.        ...  34.333333    0.
+    5.       ]
+ [960.        940.33333   934.        ...  39.333333    5.
+    0.       ]]
+
+ Structure of the tree
+                    /-S24
+          /--------|
+         |         |          /-S25
+         |          \--------|
+         |                   |          /-S26
+         |                    \--------|
+         |                             |          /-S27
+         |                              \--------|
+         |                                       |          /-S28
+         |                                        \--------|
+         |                                                 |          /-S29
+         |                                                  \--------|
+         |                                                           |          /-S30
+         |                                                            \--------|
+         |                                                                     |          /-S31
+         |                                                                      \--------|
+         |                                                                               |          /-S32
+         |                                                                                \--------|
+         |                                                                                         |          /-S33
+         |                                                                                          \--------|
+         |                                                                                                   |          /-S34
+         |                                                                                                    \--------|
+         |                                                                                                             |          /-S35
+         |                                                                                                              \--------|
+         |                                                                                                                       |          /-S36
+         |                                                                                                                        \--------|
+         |                                                                                                                                 |          /-S37
+         |                                                                                                                                  \--------|
+         |                                                                                                                                           |          /-S38
+         |                                                                                                                                            \--------|
+         |                                                                                                                                                     |          /-S39
+         |                                                                                                                                                      \--------|
+         |                                                                                                                                                               |          /-S40
+         |                                                                                                                                                                \--------|
+         |                                                                                                                                                                         |          /-S41
+         |                                                                                                                                                                          \--------|
+         |                                                                                                                                                                                   |          /-S42
+         |                                                                                                                                                                                    \--------|
+         |                                                                                                                                                                                             |          /-S43
+         |                                                                                                                                                                                              \--------|
+         |                                                                                                                                                                                                       |          /-S44
+         |                                                                                                                                                                                                        \--------|
+         |                                                                                                                                                                                                                 |          /-S45
+         |                                                                                                                                                                                                                  \--------|
+         |                                                                                                                                                                                                                           |          /-S46
+         |                                                                                                                                                                                                                            \--------|
+         |                                                                                                                                                                                                                                     |          /-S47
+         |                                                                                                                                                                                                                                      \--------|
+         |                                                                                                                                                                                                                                               |          /-S49
+---------|                                                                                                                                                                                                                                                \--------|
+         |                                                                                                                                                                                                                                                          \-S48
+         |
+         |          /-S22
+         |---------|
+         |         |          /-S21
+         |          \--------|
+         |                   |          /-S20
+         |                    \--------|
+         |                             |          /-S19
+         |                              \--------|
+         |                                       |          /-S18
+         |                                        \--------|
+         |                                                 |          /-S17
+         |                                                  \--------|
+         |                                                           |          /-S16
+         |                                                            \--------|
+         |                                                                     |          /-S15
+         |                                                                      \--------|
+         |                                                                               |          /-S14
+         |                                                                                \--------|
+         |                                                                                         |          /-S13
+         |                                                                                          \--------|
+         |                                                                                                   |          /-S12
+         |                                                                                                    \--------|
+         |                                                                                                             |          /-S11
+         |                                                                                                              \--------|
+         |                                                                                                                       |          /-S10
+         |                                                                                                                        \--------|
+         |                                                                                                                                 |          /-S9
+         |                                                                                                                                  \--------|
+         |                                                                                                                                           |          /-S8
+         |                                                                                                                                            \--------|
+         |                                                                                                                                                     |          /-S7
+         |                                                                                                                                                      \--------|
+         |                                                                                                                                                               |          /-S6
+         |                                                                                                                                                                \--------|
+         |                                                                                                                                                                         |          /-S5
+         |                                                                                                                                                                          \--------|
+         |                                                                                                                                                                                   |          /-S4
+         |                                                                                                                                                                                    \--------|
+         |                                                                                                                                                                                             |          /-S3
+         |                                                                                                                                                                                              \--------|
+         |                                                                                                                                                                                                       |          /-S2
+         |                                                                                                                                                                                                        \--------|
+         |                                                                                                                                                                                                                 |          /-S1
+         |                                                                                                                                                                                                                  \--------|
+         |                                                                                                                                                                                                                            \-S0
+         |
+          \-S23
+
+ Newick notation of the tree
+((S24:3.499999, (S25:2.999998, (S26:2.333334, (S27:1.833334, (S28:1.333335, (S29:2.499999, (S30:2.666668, (S31:2.833333, (S32:2.333333, (S33:1.833333, (S34:0.333333, (S35:5.000001, (S36:1.166666, (S37:0.000000, (S38:0.500000, (S39:1.500000, (S40:3.833334, (S41:4.333334, (S42:0.166666, (S43:0.000000, (S44:0.000000, (S45:0.000000, (S46:0.000000, (S47:0.000001, (S49:5.000000, S48:0.000000):34.333332):1.000000):2.000000):19.000000):1.000000):66.833334):23.500000):1.500000):19.666666):6.000000):1.500000):12.500001):41.499999):63.666668):3.500000):16.500000):2.500000):3.499998):48.166667):2.499999):19.499999):3.500000):85.000001):1.500001):79.500000, (S22:3.333334, (S21:2.833334, (S20:1.166667, (S19:1.166666, (S18:0.000000, (S17:0.000000, (S16:3.333333, (S15:2.000000, (S14:0.833333, (S13:4.666666, (S12:2.666667, (S11:2.666667, (S10:3.666667, (S9:5.333334, (S8:3.666667, (S7:1.166667, (S6:0.000000, (S5:0.333333, (S4:4.166667, (S3:2.833333, (S2:0.000000, (S1:2.666667, S0:22.333333):3.666667):14.833333):21.333333):18.166667):23.333333):83.833334):14.500000):9.333333):18.333333):2.000000):1.000000):19.000000):56.500000):7.833333):3.333333):9.833333):6.833333):33.166667):1.000000):19.666667):4.500000):1.000000, S23:3.333334);
+^[OA⏎                                                                                          (env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py -f example14.csv 
+/home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/pulp.py:1352: UserWarning: Spaces are not permitted in the name. Converted to '_'
+  warnings.warn("Spaces are not permitted in the name. Converted to '_'")
+Welcome to the CBC MILP Solver 
+Version: 2.10.3 
+Build Date: Dec 15 2019 
+
+command line - /home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/solverdir/cbc/linux/64/cbc /tmp/81b094da4a9340d39a4836ab3af482f0-pulp.mps timeMode elapsed branch printingOptions all solution /tmp/81b094da4a9340d39a4836ab3af482f0-pulp.sol (default strategy 1)
+At line 2 NAME          MODEL
+At line 3 ROWS
+At line 325 COLUMNS
+At line 1141 RHS
+At line 1462 BOUNDS
+At line 1464 ENDATA
+Problem MODEL has 320 rows, 37 columns and 754 elements
+Coin0008I MODEL read with 0 errors
+Option for timeMode changed from cpu to elapsed
+Presolve 123 (-197) rows, 15 (-22) columns and 336 (-418) elements
+0  Obj 0 Primal inf 46.199981 (18) Dual inf 23.999993 (7)
+19  Obj 0
+Optimal - objective value 0
+After Postsolve, objective 0, infeasibilities - dual 0 (0), primal 0 (0)
+Optimal objective 0 - 19 iterations time 0.002, Presolve 0.00
+Option for printingOptions changed from normal to all
+Total time (CPU seconds):       0.00   (Wallclock seconds):       0.00
+
+Status: Optimal
+
+ Input similarity matrix 
+[[10.  4.  3.  2.  2.  1.]
+ [ 4. 10.  6.  4.  2.  1.]
+ [ 3.  6. 10.  8.  2.  1.]
+ [ 2.  4.  8. 10. 10.  1.]
+ [ 2.  2.  2. 10. 10. 10.]
+ [ 1.  1.  1.  1. 10. 10.]]
+
+ Output distance matrix 
+[[ 0.         6.9999999  7.9999999  8.9999999 13.        19.       ]
+ [ 6.9999999  0.         5.9999999  6.9999999 11.        17.       ]
+ [ 7.9999999  5.9999999  0.         4.9999999  8.9999999 15.       ]
+ [ 8.9999999  6.9999999  4.9999999  0.         3.9999999  9.9999999]
+ [13.        11.         8.9999999  3.9999999  0.         5.9999999]
+ [19.        17.        15.         9.9999999  5.9999999  0.       ]]
+
+ Structure of the tree
+          /-S0
+         |
+         |          /-S2
+         |---------|
+         |         |          /-S3
+---------|          \--------|
+         |                   |          /-S5
+         |                    \--------|
+         |                              \-S4
+         |
+          \-S1
+
+ Newick notation of the tree
+(S0:4.500000, (S2:2.000000, (S3:0.000000, (S5:6.000000, S4:0.000000):4.000000):3.000000):1.500000, S1:2.500000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py -f -plot False example14.csv                                                                                  
+usage: tree_metric.py [-h] [-e N_EXAMPLE] [-f INPUT_FILE] [-plot PLOT_TREE]
+tree_metric.py: error: argument -f/--input file: expected one argument
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py -plot False -f  example14.csv                                                                                  
+Traceback (most recent call last):
+  File "/media/data/mausoto/Documents/Papers/202309_T_robinsionian/T_robinson_valid_drawing/tree_metric.py", line 64, in <module>
+    plot_tree=int(args.plot_tree)
+              ^^^^^^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: 'False'
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py --no-plot plot False -f  example14.csv                                                                
+  File "/media/data/mausoto/Documents/Papers/202309_T_robinsionian/T_robinson_valid_drawing/tree_metric.py", line 187
+    if not args.no-plot
+                       ^
+SyntaxError: expected ':'
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py --no-plot plot
+ False -f  example14.csv
+usage: tree_metric.py [-h] [-e N_EXAMPLE] [-f INPUT_FILE] [--no-plot NO_PLOT]
+tree_metric.py: error: unrecognized arguments: False
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py --no-plot plot
+ -f  example14.csv
+/home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/pulp.py:1352: UserWarning: Spaces are not permitted in the name. Converted to '_'
+  warnings.warn("Spaces are not permitted in the name. Converted to '_'")
+Welcome to the CBC MILP Solver 
+Version: 2.10.3 
+Build Date: Dec 15 2019 
+
+command line - /home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/solverdir/cbc/linux/64/cbc /tmp/6121da5387a2424097227f7d90c07f19-pulp.mps timeMode elapsed branch printingOptions all solution /tmp/6121da5387a2424097227f7d90c07f19-pulp.sol (default strategy 1)
+At line 2 NAME          MODEL
+At line 3 ROWS
+At line 325 COLUMNS
+At line 1141 RHS
+At line 1462 BOUNDS
+At line 1464 ENDATA
+Problem MODEL has 320 rows, 37 columns and 754 elements
+Coin0008I MODEL read with 0 errors
+Option for timeMode changed from cpu to elapsed
+Presolve 123 (-197) rows, 15 (-22) columns and 336 (-418) elements
+0  Obj 0 Primal inf 46.199981 (18) Dual inf 23.999993 (7)
+19  Obj 0
+Optimal - objective value 0
+After Postsolve, objective 0, infeasibilities - dual 0 (0), primal 0 (0)
+Optimal objective 0 - 19 iterations time 0.002, Presolve 0.00
+Option for printingOptions changed from normal to all
+Total time (CPU seconds):       0.00   (Wallclock seconds):       0.00
+
+Status: Optimal
+Traceback (most recent call last):
+  File "/media/data/mausoto/Documents/Papers/202309_T_robinsionian/T_robinson_valid_drawing/tree_metric.py", line 134, in <module>
+    is_correct
+NameError: name 'is_correct' is not defined
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py --no-plot plot
+ -f  example14.csv
+/home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/pulp.py:1352: UserWarning: Spaces are not permitted in the name. Converted to '_'
+  warnings.warn("Spaces are not permitted in the name. Converted to '_'")
+Welcome to the CBC MILP Solver 
+Version: 2.10.3 
+Build Date: Dec 15 2019 
+
+command line - /home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/solverdir/cbc/linux/64/cbc /tmp/89c04b96f5ca44758b1a31ad04db8d86-pulp.mps timeMode elapsed branch printingOptions all solution /tmp/89c04b96f5ca44758b1a31ad04db8d86-pulp.sol (default strategy 1)
+At line 2 NAME          MODEL
+At line 3 ROWS
+At line 325 COLUMNS
+At line 1141 RHS
+At line 1462 BOUNDS
+At line 1464 ENDATA
+Problem MODEL has 320 rows, 37 columns and 754 elements
+Coin0008I MODEL read with 0 errors
+Option for timeMode changed from cpu to elapsed
+Presolve 123 (-197) rows, 15 (-22) columns and 336 (-418) elements
+0  Obj 0 Primal inf 46.199981 (18) Dual inf 23.999993 (7)
+19  Obj 0
+Optimal - objective value 0
+After Postsolve, objective 0, infeasibilities - dual 0 (0), primal 0 (0)
+Optimal objective 0 - 19 iterations time 0.002, Presolve 0.00
+Option for printingOptions changed from normal to all
+Total time (CPU seconds):       0.00   (Wallclock seconds):       0.00
+
+Status: Optimal
+Traceback (most recent call last):
+  File "/media/data/mausoto/Documents/Papers/202309_T_robinsionian/T_robinson_valid_drawing/tree_metric.py", line 137, in <module>
+    if (input_matrix[i][j] > input_matrix[i][k]) and (distance[i][j] > distance[i][k]):
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: '>' not supported between instances of 'LpVariable' and 'LpVariable'
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py --no-plot plot
+ -f  example14.csv
+  File "/media/data/mausoto/Documents/Papers/202309_T_robinsionian/T_robinson_valid_drawing/tree_metric.py", line 137
+    if (input_matrix[i][j] > input_matrix[i][k]) and
+                                                    ^
+SyntaxError: invalid syntax
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py --no-plot plot
+ -f  example14.csv
+/home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/pulp.py:1352: UserWarning: Spaces are not permitted in the name. Converted to '_'
+  warnings.warn("Spaces are not permitted in the name. Converted to '_'")
+Welcome to the CBC MILP Solver 
+Version: 2.10.3 
+Build Date: Dec 15 2019 
+
+command line - /home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/solverdir/cbc/linux/64/cbc /tmp/9861e1ae8eb14723b5a3873ea0978c64-pulp.mps timeMode elapsed branch printingOptions all solution /tmp/9861e1ae8eb14723b5a3873ea0978c64-pulp.sol (default strategy 1)
+At line 2 NAME          MODEL
+At line 3 ROWS
+At line 325 COLUMNS
+At line 1141 RHS
+At line 1462 BOUNDS
+At line 1464 ENDATA
+Problem MODEL has 320 rows, 37 columns and 754 elements
+Coin0008I MODEL read with 0 errors
+Option for timeMode changed from cpu to elapsed
+Presolve 123 (-197) rows, 15 (-22) columns and 336 (-418) elements
+0  Obj 0 Primal inf 46.199981 (18) Dual inf 23.999993 (7)
+19  Obj 0
+Optimal - objective value 0
+After Postsolve, objective 0, infeasibilities - dual 0 (0), primal 0 (0)
+Optimal objective 0 - 19 iterations time 0.002, Presolve 0.00
+Option for printingOptions changed from normal to all
+Total time (CPU seconds):       0.00   (Wallclock seconds):       0.00
+
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[10.  4.  3.  2.  2.  1.]
+ [ 4. 10.  6.  4.  2.  1.]
+ [ 3.  6. 10.  8.  2.  1.]
+ [ 2.  4.  8. 10. 10.  1.]
+ [ 2.  2.  2. 10. 10. 10.]
+ [ 1.  1.  1.  1. 10. 10.]]
+
+ Output distance matrix 
+[[ 0.         6.9999999  7.9999999  8.9999999 13.        19.       ]
+ [ 6.9999999  0.         5.9999999  6.9999999 11.        17.       ]
+ [ 7.9999999  5.9999999  0.         4.9999999  8.9999999 15.       ]
+ [ 8.9999999  6.9999999  4.9999999  0.         3.9999999  9.9999999]
+ [13.        11.         8.9999999  3.9999999  0.         5.9999999]
+ [19.        17.        15.         9.9999999  5.9999999  0.       ]]
+
+ Structure of the tree
+          /-S0
+         |
+         |          /-S2
+         |---------|
+         |         |          /-S3
+---------|          \--------|
+         |                   |          /-S5
+         |                    \--------|
+         |                              \-S4
+         |
+          \-S1
+
+ Newick notation of the tree
+(S0:4.500000, (S2:2.000000, (S3:0.000000, (S5:6.000000, S4:0.000000):4.000000):3.000000):1.500000, S1:2.500000);
+Traceback (most recent call last):
+  File "/media/data/mausoto/Documents/Papers/202309_T_robinsionian/T_robinson_valid_drawing/tree_metric.py", line 186, in <module>
+    if not args.no-plot:
+           ^^^^^^^
+AttributeError: 'Namespace' object has no attribute 'no'
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py --no-plot plot
+ -f  example14.csv
+usage: tree_metric.py [-h] [-e N_EXAMPLE] [-f INPUT_FILE] [-noplot NOPLOT]
+tree_metric.py: error: unrecognized arguments: --no-plot plot
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py -noplot plot -f  example14.csv
+/home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/pulp.py:1352: UserWarning: Spaces are not permitted in the name. Converted to '_'
+  warnings.warn("Spaces are not permitted in the name. Converted to '_'")
+Welcome to the CBC MILP Solver 
+Version: 2.10.3 
+Build Date: Dec 15 2019 
+
+command line - /home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/solverdir/cbc/linux/64/cbc /tmp/04f8938188674653b4d056175cd9840c-pulp.mps timeMode elapsed branch printingOptions all solution /tmp/04f8938188674653b4d056175cd9840c-pulp.sol (default strategy 1)
+At line 2 NAME          MODEL
+At line 3 ROWS
+At line 325 COLUMNS
+At line 1141 RHS
+At line 1462 BOUNDS
+At line 1464 ENDATA
+Problem MODEL has 320 rows, 37 columns and 754 elements
+Coin0008I MODEL read with 0 errors
+Option for timeMode changed from cpu to elapsed
+Presolve 123 (-197) rows, 15 (-22) columns and 336 (-418) elements
+0  Obj 0 Primal inf 46.199981 (18) Dual inf 23.999993 (7)
+19  Obj 0
+Optimal - objective value 0
+After Postsolve, objective 0, infeasibilities - dual 0 (0), primal 0 (0)
+Optimal objective 0 - 19 iterations time 0.002, Presolve 0.00
+Option for printingOptions changed from normal to all
+Total time (CPU seconds):       0.00   (Wallclock seconds):       0.00
+
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[10.  4.  3.  2.  2.  1.]
+ [ 4. 10.  6.  4.  2.  1.]
+ [ 3.  6. 10.  8.  2.  1.]
+ [ 2.  4.  8. 10. 10.  1.]
+ [ 2.  2.  2. 10. 10. 10.]
+ [ 1.  1.  1.  1. 10. 10.]]
+
+ Output distance matrix 
+[[ 0.         6.9999999  7.9999999  8.9999999 13.        19.       ]
+ [ 6.9999999  0.         5.9999999  6.9999999 11.        17.       ]
+ [ 7.9999999  5.9999999  0.         4.9999999  8.9999999 15.       ]
+ [ 8.9999999  6.9999999  4.9999999  0.         3.9999999  9.9999999]
+ [13.        11.         8.9999999  3.9999999  0.         5.9999999]
+ [19.        17.        15.         9.9999999  5.9999999  0.       ]]
+
+ Structure of the tree
+          /-S0
+         |
+         |          /-S2
+         |---------|
+         |         |          /-S3
+---------|          \--------|
+         |                   |          /-S5
+         |                    \--------|
+         |                              \-S4
+         |
+          \-S1
+
+ Newick notation of the tree
+(S0:4.500000, (S2:2.000000, (S3:0.000000, (S5:6.000000, S4:0.000000):4.000000):3.000000):1.500000, S1:2.500000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -f  example14.csv
+/home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/pulp.py:1352: UserWarning: Spaces are not permitted in the name. Converted to '_'
+  warnings.warn("Spaces are not permitted in the name. Converted to '_'")
+Welcome to the CBC MILP Solver 
+Version: 2.10.3 
+Build Date: Dec 15 2019 
+
+command line - /home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/solverdir/cbc/linux/64/cbc /tmp/00853c55652142f5b487fde71c74a55e-pulp.mps timeMode elapsed branch printingOptions all solution /tmp/00853c55652142f5b487fde71c74a55e-pulp.sol (default strategy 1)
+At line 2 NAME          MODEL
+At line 3 ROWS
+At line 325 COLUMNS
+At line 1141 RHS
+At line 1462 BOUNDS
+At line 1464 ENDATA
+Problem MODEL has 320 rows, 37 columns and 754 elements
+Coin0008I MODEL read with 0 errors
+Option for timeMode changed from cpu to elapsed
+Presolve 123 (-197) rows, 15 (-22) columns and 336 (-418) elements
+0  Obj 0 Primal inf 46.199981 (18) Dual inf 23.999993 (7)
+19  Obj 0
+Optimal - objective value 0
+After Postsolve, objective 0, infeasibilities - dual 0 (0), primal 0 (0)
+Optimal objective 0 - 19 iterations time 0.002, Presolve 0.00
+Option for printingOptions changed from normal to all
+Total time (CPU seconds):       0.00   (Wallclock seconds):       0.00
+
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[10.  4.  3.  2.  2.  1.]
+ [ 4. 10.  6.  4.  2.  1.]
+ [ 3.  6. 10.  8.  2.  1.]
+ [ 2.  4.  8. 10. 10.  1.]
+ [ 2.  2.  2. 10. 10. 10.]
+ [ 1.  1.  1.  1. 10. 10.]]
+
+ Output distance matrix 
+[[ 0.         6.9999999  7.9999999  8.9999999 13.        19.       ]
+ [ 6.9999999  0.         5.9999999  6.9999999 11.        17.       ]
+ [ 7.9999999  5.9999999  0.         4.9999999  8.9999999 15.       ]
+ [ 8.9999999  6.9999999  4.9999999  0.         3.9999999  9.9999999]
+ [13.        11.         8.9999999  3.9999999  0.         5.9999999]
+ [19.        17.        15.         9.9999999  5.9999999  0.       ]]
+
+ Structure of the tree
+          /-S0
+         |
+         |          /-S2
+         |---------|
+         |         |          /-S3
+---------|          \--------|
+         |                   |          /-S5
+         |                    \--------|
+         |                              \-S4
+         |
+          \-S1
+
+ Newick notation of the tree
+(S0:4.500000, (S2:2.000000, (S3:0.000000, (S5:6.000000, S4:0.000000):4.000000):3.000000):1.500000, S1:2.500000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -f  -nopot example14.csv                                                                            
+usage: tree_metric.py [-h] [-e N_EXAMPLE] [-f INPUT_FILE] [-noplot NOPLOT]
+tree_metric.py: error: argument -f/--input file: expected one argument
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -f  --nopot example14.csv                                                                            
+Traceback (most recent call last):
+  File "/media/data/mausoto/Documents/Papers/202309_T_robinsionian/T_robinson_valid_drawing/tree_metric.py", line 59, in <module>
+    parser.add_argument(-"-noplot",
+                        ^^^^^^^^^^
+TypeError: bad operand type for unary -: 'str'
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -f  --noplot example14.csv                                                                           
+Traceback (most recent call last):
+  File "/media/data/mausoto/Documents/Papers/202309_T_robinsionian/T_robinson_valid_drawing/tree_metric.py", line 59, in <module>
+    parser.add_argument(-"-noplot",
+                        ^^^^^^^^^^
+TypeError: bad operand type for unary -: 'str'
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  --noplot -f  example14.csv                                                                           
+Traceback (most recent call last):
+  File "/media/data/mausoto/Documents/Papers/202309_T_robinsionian/T_robinson_valid_drawing/tree_metric.py", line 59, in <module>
+    parser.add_argument(-"-noplot",
+                        ^^^^^^^^^^
+TypeError: bad operand type for unary -: 'str'
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  --np -f  example14.csv                                                                            
+usage: tree_metric.py [-h] [-e N_EXAMPLE] [-f INPUT_FILE] [-np]
+tree_metric.py: error: unrecognized arguments: --np
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -np -f  example14.csv                                                                            
+/home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/pulp.py:1352: UserWarning: Spaces are not permitted in the name. Converted to '_'
+  warnings.warn("Spaces are not permitted in the name. Converted to '_'")
+Welcome to the CBC MILP Solver 
+Version: 2.10.3 
+Build Date: Dec 15 2019 
+
+command line - /home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/solverdir/cbc/linux/64/cbc /tmp/17adb259216f42289b81c6ed0ef13f44-pulp.mps timeMode elapsed branch printingOptions all solution /tmp/17adb259216f42289b81c6ed0ef13f44-pulp.sol (default strategy 1)
+At line 2 NAME          MODEL
+At line 3 ROWS
+At line 325 COLUMNS
+At line 1141 RHS
+At line 1462 BOUNDS
+At line 1464 ENDATA
+Problem MODEL has 320 rows, 37 columns and 754 elements
+Coin0008I MODEL read with 0 errors
+Option for timeMode changed from cpu to elapsed
+Presolve 123 (-197) rows, 15 (-22) columns and 336 (-418) elements
+0  Obj 0 Primal inf 46.199981 (18) Dual inf 23.999993 (7)
+19  Obj 0
+Optimal - objective value 0
+After Postsolve, objective 0, infeasibilities - dual 0 (0), primal 0 (0)
+Optimal objective 0 - 19 iterations time 0.002, Presolve 0.00
+Option for printingOptions changed from normal to all
+Total time (CPU seconds):       0.00   (Wallclock seconds):       0.00
+
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[10.  4.  3.  2.  2.  1.]
+ [ 4. 10.  6.  4.  2.  1.]
+ [ 3.  6. 10.  8.  2.  1.]
+ [ 2.  4.  8. 10. 10.  1.]
+ [ 2.  2.  2. 10. 10. 10.]
+ [ 1.  1.  1.  1. 10. 10.]]
+
+ Output distance matrix 
+[[ 0.         6.9999999  7.9999999  8.9999999 13.        19.       ]
+ [ 6.9999999  0.         5.9999999  6.9999999 11.        17.       ]
+ [ 7.9999999  5.9999999  0.         4.9999999  8.9999999 15.       ]
+ [ 8.9999999  6.9999999  4.9999999  0.         3.9999999  9.9999999]
+ [13.        11.         8.9999999  3.9999999  0.         5.9999999]
+ [19.        17.        15.         9.9999999  5.9999999  0.       ]]
+
+ Structure of the tree
+          /-S0
+         |
+         |          /-S2
+         |---------|
+         |         |          /-S3
+---------|          \--------|
+         |                   |          /-S5
+         |                    \--------|
+         |                              \-S4
+         |
+          \-S1
+
+ Newick notation of the tree
+(S0:4.500000, (S2:2.000000, (S3:0.000000, (S5:6.000000, S4:0.000000):4.000000):3.000000):1.500000, S1:2.500000);                              python tree_metric.py  -np -f  examp
+/home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulcommand line - /home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/solverdir/cbc/linux/64/cbc /tmp/0996f0a8e99b4940bee4df02d2d9f668-pulp.mps timeMode elapsed branch printingOptions all solution /tmp/0996f0a8e99b4940bee4df02d2d9f668-pulp.sol (default strategy 1)
+At line 2 NAME          MODEL
+At line 3 ROWS
+At line 325 COLUMNS
+At line 1141 RHS
+At line 1462 BOUNDS
+At line 1464 ENDATA
+Problem MODEL has 320 rows, 37 columns and 754 elements
+Coin0008I MODEL read with 0 errors
+Option for timeMode changed from cpu to elapsed
+Presolve 123 (-197) rows, 15 (-22) columns and 336 (-418) elements
+0  Obj 0 Primal inf 46.199981 (18) Dual inf 23.999993 (7)
+19  Obj 0
+Optimal - objective value 0
+After Postsolve, objective 0, infeasibilities - dual 0 (0), primal 0 (0)
+Optimal objective 0 - 19 iterations time 0.002, Presolve 0.00
+Option for printingOptions changed from normal to all
+Total time (CPU seconds):       0.00   (Wallclock seconds):       0.00
+
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[10.  4.  3.  2.  2.  1.]
+ [ 4. 10.  6.  4.  2.  1.]
+ [ 3.  6. 10.  8.  2.  1.]
+ [ 2.  4.  8. 10. 10.  1.]
+ [ 2.  2.  2. 10. 10. 10.]
+ [ 1.  1.  1.  1. 10. 10.]]
+
+ Output distance matrix 
+[[ 0.         6.9999999  7.9999999  8.9999999 13.        19.       ]
+ [ 6.9999999  0.         5.9999999  6.9999999 11.        17.       ]
+ [ 7.9999999  5.9999999  0.         4.9999999  8.9999999 15.       ]
+ [ 8.9999999  6.9999999  4.9999999  0.         3.9999999  9.9999999]
+ [13.        11.         8.9999999  3.9999999  0.         5.9999999]
+ [19.        17.        15.         9.9999999  5.9999999  0.       ]]
+
+ Structure of the tree
+          /-S0
+         |
+         |          /-S2
+         |---------|
+         |         |          /-S3
+---------|          \--------|
+         |                   |          /-S5
+         |                    \--------|
+         |                              \-S4
+         |
+          \-S1
+
+ Newick notation of the tree
+(S0:4.500000, (S2:2.000000, (S3:0.000000, (S5:6.000000, S4:0.000000):4.000000):3.000000):1.500000, S1:2.500000);
+⏎                                                                                        
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 4 -f  example14.csv                                                                           
+/home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/pulp.py:1352: UserWarning: Spaces are not permitted in the name. Converted to '_'
+  warnings.warn("Spaces are not permitted in the name. Converted to '_'")
+Welcome to the CBC MILP Solver 
+Version: 2.10.3 
+Build Date: Dec 15 2019 
+
+command line - /home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/solverdir/cbc/linux/64/cbc /tmp/037c486a0f094fe78d03b210e19a2ee6-pulp.mps timeMode elapsed branch printingOptions all solution /tmp/037c486a0f094fe78d03b210e19a2ee6-pulp.sol (default strategy 1)
+At line 2 NAME          MODEL
+At line 3 ROWS
+At line 325 COLUMNS
+At line 1141 RHS
+At line 1462 BOUNDS
+At line 1464 ENDATA
+Problem MODEL has 320 rows, 37 columns and 754 elements
+Coin0008I MODEL read with 0 errors
+Option for timeMode changed from cpu to elapsed
+Presolve 123 (-197) rows, 15 (-22) columns and 336 (-418) elements
+0  Obj 0 Primal inf 46.199981 (18) Dual inf 23.999993 (7)
+19  Obj 0
+Optimal - objective value 0
+After Postsolve, objective 0, infeasibilities - dual 0 (0), primal 0 (0)
+Optimal objective 0 - 19 iterations time 0.002, Presolve 0.00
+Option for printingOptions changed from normal to all
+Total time (CPU seconds):       0.00   (Wallclock seconds):       0.00
+
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[10.  4.  3.  2.  2.  1.]
+ [ 4. 10.  6.  4.  2.  1.]
+ [ 3.  6. 10.  8.  2.  1.]
+ [ 2.  4.  8. 10. 10.  1.]
+ [ 2.  2.  2. 10. 10. 10.]
+ [ 1.  1.  1.  1. 10. 10.]]
+
+ Output distance matrix 
+[[ 0.         6.9999999  7.9999999  8.9999999 13.        19.       ]
+ [ 6.9999999  0.         5.9999999  6.9999999 11.        17.       ]
+ [ 7.9999999  5.9999999  0.         4.9999999  8.9999999 15.       ]
+ [ 8.9999999  6.9999999  4.9999999  0.         3.9999999  9.9999999]
+ [13.        11.         8.9999999  3.9999999  0.         5.9999999]
+ [19.        17.        15.         9.9999999  5.9999999  0.       ]]
+
+ Structure of the tree
+          /-S0
+         |
+         |          /-S2
+         |---------|
+         |         |          /-S3
+---------|          \--------|
+         |                   |          /-S5
+         |                    \--------|
+         |                              \-S4
+         |
+          \-S1
+
+ Newick notation of the tree
+(S0:4.500000, (S2:2.000000, (S3:0.000000, (S5:6.000000, S4:0.000000):4.000000):3.000000):1.500000, S1:2.500000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 4 -np
+/home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/pulp.py:1352: UserWarning: Spaces are not permitted in the name. Converted to '_'
+  warnings.warn("Spaces are not permitted in the name. Converted to '_'")
+Welcome to the CBC MILP Solver 
+Version: 2.10.3 
+Build Date: Dec 15 2019 
+
+command line - /home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/solverdir/cbc/linux/64/cbc /tmp/7b78ef1f29e14261b066ca16e6d12c22-pulp.mps timeMode elapsed branch printingOptions all solution /tmp/7b78ef1f29e14261b066ca16e6d12c22-pulp.sol (default strategy 1)
+At line 2 NAME          MODEL
+At line 3 ROWS
+At line 189 COLUMNS
+At line 644 RHS
+At line 829 BOUNDS
+At line 831 ENDATA
+Problem MODEL has 184 rows, 26 columns and 413 elements
+Coin0008I MODEL read with 0 errors
+Option for timeMode changed from cpu to elapsed
+Presolve 59 (-125) rows, 10 (-16) columns and 158 (-255) elements
+0  Obj 0 Primal inf 0.59999384 (6) Dual inf 9.999994 (6)
+9  Obj 0
+Optimal - objective value 0
+After Postsolve, objective 0, infeasibilities - dual 0 (0), primal 0 (0)
+Optimal objective 0 - 9 iterations time 0.002, Presolve 0.00
+Option for printingOptions changed from normal to all
+Total time (CPU seconds):       0.00   (Wallclock seconds):       0.00
+
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[9 4 5 4 1]
+ [4 9 5 4 1]
+ [5 5 9 8 7]
+ [3 3 8 9 7]
+ [1 1 7 7 9]]
+
+ Output distance matrix 
+[[0.        4.        3.        4.        4.9999999]
+ [4.        0.        3.        4.        4.9999999]
+ [3.        3.        0.        1.        2.       ]
+ [4.        4.        1.        0.        2.       ]
+ [4.9999999 4.9999999 2.        2.        0.       ]]
+
+ Structure of the tree
+          /-S3
+         |
+         |          /-S2
+         |---------|
+---------|         |          /-S1
+         |          \--------|
+         |                    \-S0
+         |
+          \-S4
+
+ Newick notation of the tree
+(S3:0.500000, (S2:0.000000, (S1:2.000000, S0:2.000000):1.000000):0.500000, S4:1.500000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -f robinson.csv                                                                            
+/home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/pulp.py:1352: UserWarning: Spaces are not permitted in the name. Converted to '_'
+  warnings.warn("Spaces are not permitted in the name. Converted to '_'")
+^CTraceback (most recent call last):
+  File "/media/data/mausoto/Documents/Papers/202309_T_robinsionian/T_robinson_valid_drawing/tree_metric.py", line 126, in <module>
+    problem.writeLP("tree_metric.lp")
+  File "/home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/pulp.py", line 1796, in writeLP
+    return mpslp.writeLP(
+           ^^^^^^^^^^^^^^
+  File "/home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/mps_lp.py", line 346, in writeLP
+    f.write(constraint.asCplexLpConstraint(k))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/pulp.py", line 1090, in asCplexLpConstraint
+    if self._count_characters(line) + len(term) > const.LpCplexLPLineSize:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/pulp.py", line 821, in _count_characters
+    @staticmethod
+
+KeyboardInterrupt
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -np -f robinson.csv                                                                            
+/home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/pulp.py:1352: UserWarning: Spaces are not permitted in the name. Converted to '_'
+  warnings.warn("Spaces are not permitted in the name. Converted to '_'")
+Welcome to the CBC MILP Solver 
+Version: 2.10.3 
+Build Date: Dec 15 2019 
+
+command line - /home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/solverdir/cbc/linux/64/cbc /tmp/eaee9b21a5df45f4a1bc1aa2e2bc1d8b-pulp.mps timeMode elapsed branch printingOptions all solution /tmp/eaee9b21a5df45f4a1bc1aa2e2bc1d8b-pulp.sol (default strategy 1)
+At line 2 NAME          MODEL
+At line 3 ROWS
+At line 417780 COLUMNS
+At line 1833932 RHS
+At line 2251708 BOUNDS
+At line 2251710 ENDATA
+Problem MODEL has 417775 rows, 2501 columns and 1411250 elements
+Coin0008I MODEL read with 0 errors
+Option for timeMode changed from cpu to elapsed
+would have 0 free columns in primal, 231525 in dual
+Presolve 347900 (-69875) rows, 1225 (-1276) columns and 1215200 (-196050) elements
+0  Obj 0 Primal inf 1832501.3 (169369) Dual inf 122677 (553)
+1000  Obj 0 Primal inf 281644.49 (71180) Dual inf 131096.76 (157)
+2000  Obj 0 Primal inf 40.749956 (44) Dual inf 148.49997 (35)
+2307  Obj 0
+Optimal - objective value 0
+After Postsolve, objective 0, infeasibilities - dual 0 (0), primal 2.7066085e-05 (83)
+Presolved model was optimal, full model needs cleaning up
+Optimal - objective value 0
+Optimal objective 0 - 2307 iterations time 246.702, Presolve 1.29
+Option for printingOptions changed from normal to all
+Total time (CPU seconds):       248.18   (Wallclock seconds):       248.78
+
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[0.95652403 0.93603852 0.92919578 ... 0.04049973 0.00291784 0.        ]
+ [0.93603852 0.95652403 0.9496813  ... 0.06098524 0.02340336 0.02048552]
+ [0.92919578 0.9496813  0.95652403 ... 0.06782798 0.0302461  0.02732825]
+ ...
+ [0.04049973 0.06098524 0.06782798 ... 0.95652403 0.91894215 0.91602431]
+ [0.00291784 0.02340336 0.0302461  ... 0.91894215 0.95652403 0.95360619]
+ [0.         0.02048552 0.02732825 ... 0.91602431 0.95360619 0.95652403]]
+
+ Output distance matrix 
+[[  0.         25.         26.        ... 920.66667   955.
+  960.       ]
+ [ 25.          0.          6.3333333 ... 901.        935.33333
+  940.33333  ]
+ [ 26.          6.3333333   0.        ... 894.66667   929.
+  934.       ]
+ ...
+ [920.66667   901.        894.66667   ...   0.         34.333333
+   39.333333 ]
+ [955.        935.33333   929.        ...  34.333333    0.
+    5.       ]
+ [960.        940.33333   934.        ...  39.333333    5.
+    0.       ]]
+
+ Structure of the tree
+                    /-S24
+          /--------|
+         |         |          /-S25
+         |          \--------|
+         |                   |          /-S26
+         |                    \--------|
+         |                             |          /-S27
+         |                              \--------|
+         |                                       |          /-S28
+         |                                        \--------|
+         |                                                 |          /-S29
+         |                                                  \--------|
+         |                                                           |          /-S30
+         |                                                            \--------|
+         |                                                                     |          /-S31
+         |                                                                      \--------|
+         |                                                                               |          /-S32
+         |                                                                                \--------|
+         |                                                                                         |          /-S33
+         |                                                                                          \--------|
+         |                                                                                                   |          /-S34
+         |                                                                                                    \--------|
+         |                                                                                                             |          /-S35
+         |                                                                                                              \--------|
+         |                                                                                                                       |          /-S36
+         |                                                                                                                        \--------|
+         |                                                                                                                                 |          /-S37
+         |                                                                                                                                  \--------|
+         |                                                                                                                                           |          /-S38
+         |                                                                                                                                            \--------|
+         |                                                                                                                                                     |          /-S39
+         |                                                                                                                                                      \--------|
+         |                                                                                                                                                               |          /-S40
+         |                                                                                                                                                                \--------|
+         |                                                                                                                                                                         |          /-S41
+         |                                                                                                                                                                          \--------|
+         |                                                                                                                                                                                   |          /-S42          
+         |                                                                                                                                                                                    \--------|
+         |                                                                                                                                                                                             |          /-S43
+         |                                                                                                                                                                                              \--------|
+         |                                                                                                                                                                                                       |          /-S44
+         |                                                                                                                                                                                                        \--------|
+         |                                                                                                                                                                                                                 |          /-S45
+         |                                                                                                                                                                                                                  \--------|
+         |                                                                                                                                                                                                                           |          /-S46
+         |                                                                                                                                                                                                                            \--------|
+         |                                                                                                                                                                                                                                     |          /-S47
+         |                                                                                                                                                                                                                                      \--------|
+         |                                                                                                                                                                                                                                               |          /-S49
+---------|                                                                                                                                                                                                                                                \--------|
+         |                                                                                                                                                                                                                                                          \-S48
+         |
+         |          /-S22
+         |---------|
+         |         |          /-S21
+         |          \--------|
+         |                   |          /-S20
+         |                    \--------|
+         |                             |          /-S19
+         |                              \--------|
+         |                                       |          /-S18
+         |                                        \--------|
+         |                                                 |          /-S17
+         |                                                  \--------|
+         |                                                           |          /-S16
+         |                                                            \--------|
+         |                                                                     |          /-S15
+         |                                                                      \--------|
+         |                                                                               |          /-S14
+         |                                                                                \--------|
+         |                                                                                         |          /-S13
+         |                                                                                          \--------|
+         |                                                                                                   |          /-S12
+         |                                                                                                    \--------|
+         |                                                                                                             |          /-S11
+         |                                                                                                              \--------|
+         |                                                                                                                       |          /-S10
+         |                                                                                                                        \--------|
+         |                                                                                                                                 |          /-S9
+         |                                                                                                                                  \--------|
+         |                                                                                                                                           |          /-S8
+         |                                                                                                                                            \--------|
+         |                                                                                                                                                     |          /-S7
+         |                                                                                                                                                      \--------|
+         |                                                                                                                                                               |          /-S6
+         |                                                                                                                                                                \--------|
+         |                                                                                                                                                                         |          /-S5
+         |                                                                                                                                                                          \--------|
+         |                                                                                                                                                                                   |          /-S4
+         |                                                                                                                                                                                    \--------|
+         |                                                                                                                                                                                             |          /-S3
+         |                                                                                                                                                                                              \--------|
+         |                                                                                                                                                                                                       |          /-S2
+         |                                                                                                                                                                                                        \--------|
+         |                                                                                                                                                                                                                 |          /-S1
+         |                                                                                                                                                                                                                  \--------|
+         |                                                                                                                                                                                                                            \-S0
+         |
+          \-S23
+
+ Newick notation of the tree
+((S24:3.499999, (S25:2.999998, (S26:2.333334, (S27:1.833334, (S28:1.333335, (S29:2.499999, (S30:2.666668, (S31:2.833333, (S32:2.333333, (S33:1.833333, (S34:0.333333, (S35:5.000001, (S36:1.166666, (S37:0.000000, (S38:0.500000, (S39:1.500000, (S40:3.833334, (S41:4.333334, (S42:0.166666, (S43:0.000000, (S44:0.000000, (S45:0.000000, (S46:0.000000, (S47:0.000001, (S49:5.000000, S48:0.000000):34.333332):1.000000):2.000000):19.000000):1.000000):66.833334):23.500000):1.500000):19.666666):6.000000):1.500000):12.500001):41.499999):63.666668):3.500000):16.500000):2.500000):3.499998):48.166667):2.499999):19.499999):3.500000):85.000001):1.500001):79.500000, (S22:3.333334, (S21:2.833334, (S20:1.166667, (S19:1.166666, (S18:0.000000, (S17:0.000000, (S16:3.333333, (S15:2.000000, (S14:0.833333, (S13:4.666666, (S12:2.666667, (S11:2.666667, (S10:3.666667, (S9:5.333334, (S8:3.666667, (S7:1.166667, (S6:0.000000, (S5:0.333333, (S4:4.166667, (S3:2.833333, (S2:0.000000, (S1:2.666667, S0:22.333333):3.666667):14.833333):21.333333):18.166667):23.333333):83.833334):14.500000):9.333333):18.333333):2.000000):1.000000):19.000000):56.500000):7.833333):3.333333):9.833333):6.833333):33.166667):1.000000):19.666667):4.500000):1.000000, S23:3.333334);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 4 -np
+/home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/pulp.py:1352: UserWarning: Spaces are not permitted in the name. Converted to '_'
+  warnings.warn("Spaces are not permitted in the name. Converted to '_'")
+Welcome to the CBC MILP Solver 
+Version: 2.10.3 
+Build Date: Dec 15 2019 
+
+command line - /home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/solverdir/cbc/linux/64/cbc /tmp/38e00d8d99844c69aeebfec6711fc70c-pulp.mps timeMode elapsed branch printingOptions all solution /tmp/38e00d8d99844c69aeebfec6711fc70c-pulp.sol (default strategy 1)
+At line 2 NAME          MODEL
+At line 3 ROWS
+At line 189 COLUMNS
+At line 644 RHS
+At line 829 BOUNDS
+At line 831 ENDATA
+Problem MODEL has 184 rows, 26 columns and 413 elements
+Coin0008I MODEL read with 0 errors
+Option for timeMode changed from cpu to elapsed
+Presolve 59 (-125) rows, 10 (-16) columns and 158 (-255) elements
+0  Obj 0 Primal inf 0.59999384 (6) Dual inf 9.999994 (6)
+9  Obj 0
+Optimal - objective value 0
+After Postsolve, objective 0, infeasibilities - dual 0 (0), primal 0 (0)
+Optimal objective 0 - 9 iterations time 0.002, Presolve 0.00
+Option for printingOptions changed from normal to all
+Total time (CPU seconds):       0.00   (Wallclock seconds):       0.00
+
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[9 4 5 4 1]
+ [4 9 5 4 1]
+ [5 5 9 8 7]
+ [3 3 8 9 7]
+ [1 1 7 7 9]]
+
+ Output distance matrix 
+[[0.        4.        3.        4.        4.9999999]
+ [4.        0.        3.        4.        4.9999999]
+ [3.        3.        0.        1.        2.       ]
+ [4.        4.        1.        0.        2.       ]
+ [4.9999999 4.9999999 2.        2.        0.       ]]
+
+ Structure of the tree
+          /-S3
+         |
+         |          /-S2
+         |---------|
+---------|         |          /-S1
+         |          \--------|
+         |                    \-S0
+         |
+          \-S4
+
+ Newick notation of the tree
+(S3:0.500000, (S2:0.000000, (S1:2.000000, S0:2.000000):1.000000):0.500000, S4:1.500000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 3 -np
+/home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/pulp.py:1352: UserWarning: Spaces are not permitted in the name. Converted to '_'
+  warnings.warn("Spaces are not permitted in the name. Converted to '_'")
+Welcome to the CBC MILP Solver 
+Version: 2.10.3 
+Build Date: Dec 15 2019 
+
+command line - /home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/solverdir/cbc/linux/64/cbc /tmp/3aca4ba71c1a430c987f40285b0d9af8-pulp.mps timeMode elapsed branch printingOptions all solution /tmp/3aca4ba71c1a430c987f40285b0d9af8-pulp.sol (default strategy 1)
+At line 2 NAME          MODEL
+At line 3 ROWS
+At line 533 COLUMNS
+At line 1906 RHS
+At line 2435 BOUNDS
+At line 2437 ENDATA
+Problem MODEL has 528 rows, 50 columns and 1287 elements
+Coin0008I MODEL read with 0 errors
+Option for timeMode changed from cpu to elapsed
+Presolve 227 (-301) rows, 21 (-29) columns and 629 (-658) elements
+0  Obj 0 Primal inf 49.899954 (44) Dual inf 54.999988 (12)
+39  Obj 0
+Optimal - objective value 0
+After Postsolve, objective 0, infeasibilities - dual 0 (0), primal 0 (0)
+Optimal objective 0 - 39 iterations time 0.002, Presolve 0.00
+Option for printingOptions changed from normal to all
+Total time (CPU seconds):       0.00   (Wallclock seconds):       0.00
+
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[10  7  6  0  0  0  0]
+ [ 7 10  7  3  2  1  1]
+ [ 6  7 10  7  2  2  1]
+ [ 0  3  7 10  3  3  3]
+ [ 0  2  2  3 10  7  5]
+ [ 0  1  2  3  7 10  6]
+ [ 0  1  1  3  5  6 10]]
+
+ Output distance matrix 
+[[ 0.          3.4999999   4.9999999   7.9999998  11.         12.
+  14.        ]
+ [ 3.4999999   0.          1.5         4.4999999   7.4999999   8.4999999
+  10.5       ]
+ [ 4.9999999   1.5         0.          2.9999999   5.9999999   6.9999999
+   8.9999999 ]
+ [ 7.9999998   4.4999999   2.9999999   0.          3.9999999   4.9999998
+   6.9999998 ]
+ [11.          7.4999999   5.9999999   3.9999999   0.          0.99999995
+   2.9999999 ]
+ [12.          8.4999999   6.9999999   4.9999998   0.99999995  0.
+   1.9999999 ]
+ [14.         10.5         8.9999999   6.9999998   2.9999999   1.9999999
+   0.        ]]
+
+ Structure of the tree
+                    /-S3
+          /--------|
+         |         |          /-S2
+         |          \--------|
+         |                   |          /-S1
+         |                    \--------|
+---------|                              \-S0
+         |
+         |          /-S6
+         |---------|
+         |          \-S5
+         |
+          \-S4
+
+ Newick notation of the tree
+((S3:0.500000, (S2:0.000000, (S1:0.000000, S0:3.500000):1.500000):2.500000):3.500000, (S6:2.000000, S5:0.000000):1.000000, S4:0.000000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ less example13.csv         22:40:14
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 2 -np
+/home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/pulp.py:1352: UserWarning: Spaces are not permitted in the name. Converted to '_'
+  warnings.warn("Spaces are not permitted in the name. Converted to '_'")
+Welcome to the CBC MILP Solver 
+Version: 2.10.3 
+Build Date: Dec 15 2019 
+
+command line - /home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/solverdir/cbc/linux/64/cbc /tmp/4385694d80aa49308af3a9060f8339dc-pulp.mps timeMode elapsed branch printingOptions all solution /tmp/4385694d80aa49308af3a9060f8339dc-pulp.sol (default strategy 1)
+At line 2 NAME          MODEL
+At line 3 ROWS
+At line 180 COLUMNS
+At line 617 RHS
+At line 793 BOUNDS
+At line 795 ENDATA
+Problem MODEL has 175 rows, 26 columns and 395 elements
+Coin0008I MODEL read with 0 errors
+Option for timeMode changed from cpu to elapsed
+Presolve 58 (-117) rows, 10 (-16) columns and 156 (-239) elements
+0  Obj 0 Primal inf 8.399985 (15) Dual inf 16.999995 (5)
+17  Obj 0
+Optimal - objective value 0
+After Postsolve, objective 0, infeasibilities - dual 0 (0), primal 0 (0)
+Optimal objective 0 - 17 iterations time 0.002, Presolve 0.00
+Option for printingOptions changed from normal to all
+Total time (CPU seconds):       0.00   (Wallclock seconds):       0.00
+
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[2 2 1 0 0]
+ [2 2 2 1 1]
+ [1 2 2 2 1]
+ [0 1 2 2 2]
+ [0 1 1 2 2]]
+
+ Output distance matrix 
+[[0. 1. 2. 3. 4.]
+ [1. 0. 1. 2. 3.]
+ [2. 1. 0. 1. 2.]
+ [3. 2. 1. 0. 1.]
+ [4. 3. 2. 1. 0.]]
+
+ Structure of the tree
+          /-S3
+         |
+         |          /-S2
+         |---------|
+---------|         |          /-S1
+         |          \--------|
+         |                    \-S0
+         |
+          \-S4
+
+ Newick notation of the tree
+(S3:0.000000, (S2:0.000000, (S1:0.000000, S0:1.000000):1.000000):1.000000, S4:1.000000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 2 -np
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 1 -np
+/home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-packages/pulp/pulp.py:1352: UserWarning: Spaces are not permitted in the name. Converted to '_'
+  warnings.warn("Spaces are not permitted in the name. Converted to '_'")
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[10  4  3  2  2]
+ [ 4 10  6  4  2]
+ [ 3  6 10  8  2]
+ [ 2  4  8 10 10]
+ [ 2  2  2 10 10]]
+
+ Output distance matrix 
+[[ 0.         6.9999999  7.9999999  8.9999999 13.       ]
+ [ 6.9999999  0.         5.9999999  6.9999999 11.       ]
+ [ 7.9999999  5.9999999  0.         4.9999999  8.9999999]
+ [ 8.9999999  6.9999999  4.9999999  0.         3.9999999]
+ [13.        11.         8.9999999  3.9999999  0.       ]]
+
+ Structure of the tree
+          /-S0
+         |
+         |          /-S2
+         |---------|
+---------|         |          /-S4
+         |          \--------|
+         |                    \-S3
+         |
+          \-S1
+
+ Newick notation of the tree
+(S0:4.500000, (S2:2.000000, (S4:4.000000, S3:0.000000):3.000000):1.500000, S1:2.500000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 1 -np
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[10  4  3  2  2]
+ [ 4 10  6  4  2]
+ [ 3  6 10  8  2]
+ [ 2  4  8 10 10]
+ [ 2  2  2 10 10]]
+
+ Output distance matrix 
+[[ 0.         6.9999999  7.9999999  8.9999999 13.       ]
+ [ 6.9999999  0.         5.9999999  6.9999999 11.       ]
+ [ 7.9999999  5.9999999  0.         4.9999999  8.9999999]
+ [ 8.9999999  6.9999999  4.9999999  0.         3.9999999]
+ [13.        11.         8.9999999  3.9999999  0.       ]]
+
+ Structure of the tree
+          /-S0
+         |
+         |          /-S2
+         |---------|
+---------|         |          /-S4
+         |          \--------|
+         |                    \-S3
+         |
+          \-S1
+
+ Newick notation of the tree
+(S0:4.500000, (S2:2.000000, (S4:4.000000, S3:0.000000):3.000000):1.500000, S1:2.500000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 1 
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[10  4  3  2  2]
+ [ 4 10  6  4  2]
+ [ 3  6 10  8  2]
+ [ 2  4  8 10 10]
+ [ 2  2  2 10 10]]
+
+ Output distance matrix 
+[[ 0.         6.9999999  7.9999999  8.9999999 13.       ]
+ [ 6.9999999  0.         5.9999999  6.9999999 11.       ]
+ [ 7.9999999  5.9999999  0.         4.9999999  8.9999999]
+ [ 8.9999999  6.9999999  4.9999999  0.         3.9999999]
+ [13.        11.         8.9999999  3.9999999  0.       ]]
+
+ Structure of the tree
+          /-S0
+         |
+         |          /-S2
+         |---------|
+---------|         |          /-S4
+         |          \--------|
+         |                    \-S3
+         |
+          \-S1
+
+ Newick notation of the tree
+(S0:4.500000, (S2:2.000000, (S4:4.000000, S3:0.000000):3.000000):1.500000, S1:2.500000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 223:02:29
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[2 2 1 0 0]
+ [2 2 2 1 1]
+ [1 2 2 2 1]
+ [0 1 2 2 2]
+ [0 1 1 2 2]]
+
+ Output distance matrix 
+[[0. 1. 2. 3. 4.]
+ [1. 0. 1. 2. 3.]
+ [2. 1. 0. 1. 2.]
+ [3. 2. 1. 0. 1.]
+ [4. 3. 2. 1. 0.]]
+
+ Structure of the tree
+          /-S3
+         |
+         |          /-S2
+         |---------|
+---------|         |          /-S1
+         |          \--------|
+         |                    \-S0
+         |
+          \-S4
+
+ Newick notation of the tree
+(S3:0.000000, (S2:0.000000, (S1:0.000000, S0:1.000000):1.000000):1.000000, S4:1.000000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 223:59:53
+Status: Optimal
+Correct solution: True
+Traceback (most recent call last):
+  File "/media/data/mausoto/Documents/Papers/202309_T_robinsionian/T_robinson_valid_drawing/tree_metric.py", line 144, in <module>
+    '{0:10}  {1}'.format(input_matrix,outmatrix )
+                                      ^^^^^^^^^
+NameError: name 'outmatrix' is not defined. Did you mean: 'input_matrix'?
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 210:07:17
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[2 2 1 0 0]
+ [2 2 2 1 1]
+ [1 2 2 2 1]
+ [0 1 2 2 2]
+ [0 1 1 2 2]]
+
+ Output distance matrix 
+[[0. 1. 2. 3. 4.]
+ [1. 0. 1. 2. 3.]
+ [2. 1. 0. 1. 2.]
+ [3. 2. 1. 0. 1.]
+ [4. 3. 2. 1. 0.]]
+Traceback (most recent call last):
+  File "/media/data/mausoto/Documents/Papers/202309_T_robinsionian/T_robinson_valid_drawing/tree_metric.py", line 157, in <module>
+    '{0:10}  {1}'.format(input_matrix,outmatrix )
+TypeError: unsupported format string passed to numpy.ndarray.__format__
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 110:09:11
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[10  4  3  2  2]
+ [ 4 10  6  4  2]
+ [ 3  6 10  8  2]
+ [ 2  4  8 10 10]
+ [ 2  2  2 10 10]]
+
+ Output distance matrix 
+[[ 0.         6.9999999  7.9999999  8.9999999 13.       ]
+ [ 6.9999999  0.         5.9999999  6.9999999 11.       ]
+ [ 7.9999999  5.9999999  0.         4.9999999  8.9999999]
+ [ 8.9999999  6.9999999  4.9999999  0.         3.9999999]
+ [13.        11.         8.9999999  3.9999999  0.       ]]
+
+ Structure of the tree
+          /-S0
+         |
+         |          /-S2
+         |---------|
+---------|         |          /-S4
+         |          \--------|
+         |                    \-S3
+         |
+          \-S1
+
+ Newick notation of the tree
+(S0:4.500000, (S2:2.000000, (S4:4.000000, S3:0.000000):3.000000):1.500000, S1:2.500000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 1 -np
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[10  4  3  2  2]
+ [ 4 10  6  4  2]
+ [ 3  6 10  8  2]
+ [ 2  4  8 10 10]
+ [ 2  2  2 10 10]]
+
+ Output distance matrix 
+[[ 0.         6.9999999  7.9999999  8.9999999 13.       ]
+ [ 6.9999999  0.         5.9999999  6.9999999 11.       ]
+ [ 7.9999999  5.9999999  0.         4.9999999  8.9999999]
+ [ 8.9999999  6.9999999  4.9999999  0.         3.9999999]
+ [13.        11.         8.9999999  3.9999999  0.       ]]
+
+ Structure of the tree
+          /-S0
+         |
+         |          /-S2
+         |---------|
+---------|         |          /-S4
+         |          \--------|
+         |                    \-S3
+         |
+          \-S1
+
+ Newick notation of the tree
+(S0:4.500000, (S2:2.000000, (S4:4.000000, S3:0.000000):3.000000):1.500000, S1:2.500000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 2 -np
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[2 2 1 0 0]
+ [2 2 2 1 1]
+ [1 2 2 2 1]
+ [0 1 2 2 2]
+ [0 1 1 2 2]]
+
+ Output distance matrix 
+[[0. 1. 2. 3. 4.]
+ [1. 0. 1. 2. 3.]
+ [2. 1. 0. 1. 2.]
+ [3. 2. 1. 0. 1.]
+ [4. 3. 2. 1. 0.]]
+
+ Structure of the tree
+          /-S3
+         |
+         |          /-S2
+         |---------|
+---------|         |          /-S1
+         |          \--------|
+         |                    \-S0
+         |
+          \-S4
+
+ Newick notation of the tree
+(S3:0.000000, (S2:0.000000, (S1:0.000000, S0:1.000000):1.000000):1.000000, S4:1.000000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 4 -np
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[9 4 5 4 1]
+ [4 9 5 4 1]
+ [5 5 9 8 7]
+ [3 3 8 9 7]
+ [1 1 7 7 9]]
+
+ Output distance matrix 
+[[0.        4.        3.        4.        4.9999999]
+ [4.        0.        3.        4.        4.9999999]
+ [3.        3.        0.        1.        2.       ]
+ [4.        4.        1.        0.        2.       ]
+ [4.9999999 4.9999999 2.        2.        0.       ]]
+
+ Structure of the tree
+          /-S3
+         |
+         |          /-S2
+         |---------|
+---------|         |          /-S1
+         |          \--------|
+         |                    \-S0
+         |
+          \-S4
+
+ Newick notation of the tree
+(S3:0.500000, (S2:0.000000, (S1:2.000000, S0:2.000000):1.000000):0.500000, S4:1.500000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 5 -np
+Traceback (most recent call last):
+  File "/media/data/mausoto/Documents/Papers/202309_T_robinsionian/T_robinson_valid_drawing/tree_metric.py", line 66, in <module>
+    input_matrix = np.array(all_input_matrix[n_example])
+                            ~~~~~~~~~~~~~~~~^^^^^^^^^^^
+IndexError: list index out of range
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 3 -np
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[10  7  6  0  0  0  0]
+ [ 7 10  7  3  2  1  1]
+ [ 6  7 10  7  2  2  1]
+ [ 0  3  7 10  3  3  3]
+ [ 0  2  2  3 10  7  5]
+ [ 0  1  2  3  7 10  6]
+ [ 0  1  1  3  5  6 10]]
+
+ Output distance matrix 
+[[ 0.          3.4999999   4.9999999   7.9999998  11.         12.
+  14.        ]
+ [ 3.4999999   0.          1.5         4.4999999   7.4999999   8.4999999
+  10.5       ]
+ [ 4.9999999   1.5         0.          2.9999999   5.9999999   6.9999999
+   8.9999999 ]
+ [ 7.9999998   4.4999999   2.9999999   0.          3.9999999   4.9999998
+   6.9999998 ]
+ [11.          7.4999999   5.9999999   3.9999999   0.          0.99999995
+   2.9999999 ]
+ [12.          8.4999999   6.9999999   4.9999998   0.99999995  0.
+   1.9999999 ]
+ [14.         10.5         8.9999999   6.9999998   2.9999999   1.9999999
+   0.        ]]
+
+ Structure of the tree
+                    /-S3
+          /--------|
+         |         |          /-S2
+         |          \--------|
+         |                   |          /-S1
+         |                    \--------|
+---------|                              \-S0
+         |
+         |          /-S6
+         |---------|
+         |          \-S5
+         |
+          \-S4
+
+ Newick notation of the tree
+((S3:0.500000, (S2:0.000000, (S1:0.000000, S0:3.500000):1.500000):2.500000):3.500000, (S6:2.000000, S5:0.000000):1.000000, S4:0.000000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 3 -np
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[10  7  6  0  0  0  0]
+ [ 7 10  7  3  2  1  1]
+ [ 6  7 10  7  2  2  1]
+ [ 0  3  7 10  3  3  3]
+ [ 0  2  2  3 10  7  5]
+ [ 0  1  2  3  7 10  6]
+ [ 0  1  1  3  5  6 10]]
+
+ Output distance matrix 
+[[ 0.   3.5  5.   8.  11.  12.  14. ]
+ [ 3.5  0.   1.5  4.5  7.5  8.5 10.5]
+ [ 5.   1.5  0.   3.   6.   7.   9. ]
+ [ 8.   4.5  3.   0.   4.   5.   7. ]
+ [11.   7.5  6.   4.   0.   1.   3. ]
+ [12.   8.5  7.   5.   1.   0.   2. ]
+ [14.  10.5  9.   7.   3.   2.   0. ]]
+
+ Structure of the tree
+                    /-S3
+          /--------|
+         |         |          /-S2
+         |          \--------|
+         |                   |          /-S1
+         |                    \--------|
+---------|                              \-S0
+         |
+         |          /-S6
+         |---------|
+         |          \-S5
+         |
+          \-S4
+
+ Newick notation of the tree
+((S3:0.500000, (S2:0.000000, (S1:0.000000, S0:3.500000):1.500000):2.500000):3.500000, (S6:2.000000, S5:0.000000):1.000000, S4:0.000000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 5 -np
+Traceback (most recent call last):
+  File "/media/data/mausoto/Documents/Papers/202309_T_robinsionian/T_robinson_valid_drawing/tree_metric.py", line 66, in <module>
+    input_matrix = np.array(all_input_matrix[n_example])
+                            ~~~~~~~~~~~~~~~~^^^^^^^^^^^
+IndexError: list index out of range
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 2 -np
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[2 2 1 0 0]
+ [2 2 2 1 1]
+ [1 2 2 2 1]
+ [0 1 2 2 2]
+ [0 1 1 2 2]]
+
+ Output distance matrix 
+[[0. 1. 2. 3. 4.]
+ [1. 0. 1. 2. 3.]
+ [2. 1. 0. 1. 2.]
+ [3. 2. 1. 0. 1.]
+ [4. 3. 2. 1. 0.]]
+
+ Structure of the tree
+          /-S3
+         |
+         |          /-S2
+         |---------|
+---------|         |          /-S1
+         |          \--------|
+         |                    \-S0
+         |
+          \-S4
+
+ Newick notation of the tree
+(S3:0.000000, (S2:0.000000, (S1:0.000000, S0:1.000000):1.000000):1.000000, S4:1.000000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 3 -np
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[10  7  6  0  0  0  0]
+ [ 7 10  7  3  2  1  1]
+ [ 6  7 10  7  2  2  1]
+ [ 0  3  7 10  3  3  3]
+ [ 0  2  2  3 10  7  5]
+ [ 0  1  2  3  7 10  6]
+ [ 0  1  1  3  5  6 10]]
+
+ Output distance matrix 
+[[ 0.   3.5  5.   8.  11.  12.  14. ]
+ [ 3.5  0.   1.5  4.5  7.5  8.5 10.5]
+ [ 5.   1.5  0.   3.   6.   7.   9. ]
+ [ 8.   4.5  3.   0.   4.   5.   7. ]
+ [11.   7.5  6.   4.   0.   1.   3. ]
+ [12.   8.5  7.   5.   1.   0.   2. ]
+ [14.  10.5  9.   7.   3.   2.   0. ]]
+
+ Structure of the tree
+                    /-S3
+          /--------|
+         |         |          /-S2
+         |          \--------|
+         |                   |          /-S1
+         |                    \--------|
+---------|                              \-S0
+         |
+         |          /-S6
+         |---------|
+         |          \-S5
+         |
+          \-S4
+
+ Newick notation of the tree
+((S3:0.500000, (S2:0.000000, (S1:0.000000, S0:3.500000):1.500000):2.500000):3.500000, (S6:2.000000, S5:0.000000):1.000000, S4:0.000000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 4 -np
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[9 4 5 4 1]
+ [4 9 5 4 1]
+ [5 5 9 8 7]
+ [3 3 8 9 7]
+ [1 1 7 7 9]]
+
+ Output distance matrix 
+[[0. 4. 3. 4. 5.]
+ [4. 0. 3. 4. 5.]
+ [3. 3. 0. 1. 2.]
+ [4. 4. 1. 0. 2.]
+ [5. 5. 2. 2. 0.]]
+
+ Structure of the tree
+          /-S3
+         |
+         |          /-S2
+         |---------|
+---------|         |          /-S1
+         |          \--------|
+         |                    \-S0
+         |
+          \-S4
+
+ Newick notation of the tree
+(S3:0.500000, (S2:0.000000, (S1:2.000000, S0:2.000000):1.000000):0.500000, S4:1.500000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 4 -np
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[9 4 5 4 1]
+ [4 9 5 4 1]
+ [5 5 9 8 7]
+ [3 3 8 9 7]
+ [1 1 7 7 9]]
+
+ Output distance matrix 
+[[0. 4. 3. 4. 5.]
+ [4. 0. 3. 4. 5.]
+ [3. 3. 0. 1. 2.]
+ [4. 4. 1. 0. 2.]
+ [5. 5. 2. 2. 0.]]
+
+ Structure of the tree
+          /-S3
+         |
+         |          /-S2
+         |---------|
+---------|         |          /-S1
+         |          \--------|
+         |                    \-S0
+         |
+          \-S4
+
+ Newick notation of the tree
+(S3:0.500000, (S2:0.000000, (S1:2.000000, S0:2.000000):1.000000):0.500000, S4:1.500000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 3 -np
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[10  7  6  0  0  0  0]
+ [ 7 10  7  3  2  1  1]
+ [ 6  7 10  7  2  2  1]
+ [ 0  3  7 10  3  3  3]
+ [ 0  2  2  3 10  7  5]
+ [ 0  1  2  3  7 10  6]
+ [ 0  1  1  3  5  6 10]]
+
+ Output distance matrix 
+[[ 0.   3.5  5.   8.  11.  12.  14. ]
+ [ 3.5  0.   1.5  4.5  7.5  8.5 10.5]
+ [ 5.   1.5  0.   3.   6.   7.   9. ]
+ [ 8.   4.5  3.   0.   4.   5.   7. ]
+ [11.   7.5  6.   4.   0.   1.   3. ]
+ [12.   8.5  7.   5.   1.   0.   2. ]
+ [14.  10.5  9.   7.   3.   2.   0. ]]
+
+ Structure of the tree
+                    /-S3
+          /--------|
+         |         |          /-S2
+         |          \--------|
+         |                   |          /-S1
+         |                    \--------|
+---------|                              \-S0
+         |
+         |          /-S6
+         |---------|
+         |          \-S5
+         |
+          \-S4
+
+ Newick notation of the tree
+((S3:0.500000, (S2:0.000000, (S1:0.000000, S0:3.500000):1.500000):2.500000):3.500000, (S6:2.000000, S5:0.000000):1.000000, S4:0.000000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ 4                                                                                                                                                                                                                
+fish: Unknown command: 4
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 3 
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[10  7  6  0  0  0  0]
+ [ 7 10  7  3  2  1  1]
+ [ 6  7 10  7  2  2  1]
+ [ 0  3  7 10  3  3  3]
+ [ 0  2  2  3 10  7  5]
+ [ 0  1  2  3  7 10  6]
+ [ 0  1  1  3  5  6 10]]
+
+ Output distance matrix 
+[[ 0.   3.5  5.   8.  11.  12.  14. ]
+ [ 3.5  0.   1.5  4.5  7.5  8.5 10.5]
+ [ 5.   1.5  0.   3.   6.   7.   9. ]
+ [ 8.   4.5  3.   0.   4.   5.   7. ]
+ [11.   7.5  6.   4.   0.   1.   3. ]
+ [12.   8.5  7.   5.   1.   0.   2. ]
+ [14.  10.5  9.   7.   3.   2.   0. ]]
+
+ Structure of the tree
+                    /-S3
+          /--------|
+         |         |          /-S2
+         |          \--------|
+         |                   |          /-S1
+         |                    \--------|
+---------|                              \-S0
+         |
+         |          /-S6
+         |---------|
+         |          \-S5
+         |
+          \-S4
+
+ Newick notation of the tree
+((S3:0.500000, (S2:0.000000, (S1:0.000000, S0:3.500000):1.500000):2.500000):3.500000, (S6:2.000000, S5:0.000000):1.000000, S4:0.000000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 3 --no-plot                                                                                    
+  File "/media/data/mausoto/Documents/Papers/202309_T_robinsionian/T_robinson_valid_drawing/tree_metric.py", line 59
+    parser.add_argument("-np", "--no-plot"
+                               ^^^^^^^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 3 --no-plot                                                                               
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[10  7  6  0  0  0  0]
+ [ 7 10  7  3  2  1  1]
+ [ 6  7 10  7  2  2  1]
+ [ 0  3  7 10  3  3  3]
+ [ 0  2  2  3 10  7  5]
+ [ 0  1  2  3  7 10  6]
+ [ 0  1  1  3  5  6 10]]
+
+ Output distance matrix 
+[[ 0.   3.5  5.   8.  11.  12.  14. ]
+ [ 3.5  0.   1.5  4.5  7.5  8.5 10.5]
+ [ 5.   1.5  0.   3.   6.   7.   9. ]
+ [ 8.   4.5  3.   0.   4.   5.   7. ]
+ [11.   7.5  6.   4.   0.   1.   3. ]
+ [12.   8.5  7.   5.   1.   0.   2. ]
+ [14.  10.5  9.   7.   3.   2.   0. ]]
+
+ Structure of the tree
+                    /-S3
+          /--------|
+         |         |          /-S2
+         |          \--------|
+         |                   |          /-S1
+         |                    \--------|
+---------|                              \-S0
+         |
+         |          /-S6
+         |---------|
+         |          \-S5
+         |
+          \-S4
+
+ Newick notation of the tree
+((S3:0.500000, (S2:0.000000, (S1:0.000000, S0:3.500000):1.500000):2.500000):3.500000, (S6:2.000000, S5:0.000000):1.000000, S4:0.000000);
+Traceback (most recent call last):
+  File "/media/data/mausoto/Documents/Papers/202309_T_robinsionian/T_robinson_valid_drawing/tree_metric.py", line 184, in <module>
+    if not args.np:
+           ^^^^^^^
+AttributeError: 'Namespace' object has no attribute 'np'
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 3 --no-plot                                                                               
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[10  7  6  0  0  0  0]
+ [ 7 10  7  3  2  1  1]
+ [ 6  7 10  7  2  2  1]
+ [ 0  3  7 10  3  3  3]
+ [ 0  2  2  3 10  7  5]
+ [ 0  1  2  3  7 10  6]
+ [ 0  1  1  3  5  6 10]]
+
+ Output distance matrix 
+[[ 0.   3.5  5.   8.  11.  12.  14. ]
+ [ 3.5  0.   1.5  4.5  7.5  8.5 10.5]
+ [ 5.   1.5  0.   3.   6.   7.   9. ]
+ [ 8.   4.5  3.   0.   4.   5.   7. ]
+ [11.   7.5  6.   4.   0.   1.   3. ]
+ [12.   8.5  7.   5.   1.   0.   2. ]
+ [14.  10.5  9.   7.   3.   2.   0. ]]
+
+ Structure of the tree
+                    /-S3
+          /--------|
+         |         |          /-S2
+         |          \--------|
+         |                   |          /-S1
+         |                    \--------|
+---------|                              \-S0
+         |
+         |          /-S6
+         |---------|
+         |          \-S5
+         |
+          \-S4
+
+ Newick notation of the tree
+((S3:0.500000, (S2:0.000000, (S1:0.000000, S0:3.500000):1.500000):2.500000):3.500000, (S6:2.000000, S5:0.000000):1.000000, S4:0.000000);
+Traceback (most recent call last):
+  File "/media/data/mausoto/Documents/Papers/202309_T_robinsionian/T_robinson_valid_drawing/tree_metric.py", line 184, in <module>
+    if not args.no-plot:
+           ^^^^^^^
+AttributeError: 'Namespace' object has no attribute 'no'
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 3 -np
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[10  7  6  0  0  0  0]
+ [ 7 10  7  3  2  1  1]
+ [ 6  7 10  7  2  2  1]
+ [ 0  3  7 10  3  3  3]
+ [ 0  2  2  3 10  7  5]
+ [ 0  1  2  3  7 10  6]
+ [ 0  1  1  3  5  6 10]]
+
+ Output distance matrix 
+[[ 0.   3.5  5.   8.  11.  12.  14. ]
+ [ 3.5  0.   1.5  4.5  7.5  8.5 10.5]
+ [ 5.   1.5  0.   3.   6.   7.   9. ]
+ [ 8.   4.5  3.   0.   4.   5.   7. ]
+ [11.   7.5  6.   4.   0.   1.   3. ]
+ [12.   8.5  7.   5.   1.   0.   2. ]
+ [14.  10.5  9.   7.   3.   2.   0. ]]
+
+ Structure of the tree
+                    /-S3
+          /--------|
+         |         |          /-S2
+         |          \--------|
+         |                   |          /-S1
+         |                    \--------|
+---------|                              \-S0
+         |
+         |          /-S6
+         |---------|
+         |          \-S5
+         |
+          \-S4
+
+ Newick notation of the tree
+((S3:0.500000, (S2:0.000000, (S1:0.000000, S0:3.500000):1.500000):2.500000):3.500000, (S6:2.000000, S5:0.000000):1.000000, S4:0.000000);
+Traceback (most recent call last):
+  File "/media/data/mausoto/Documents/Papers/202309_T_robinsionian/T_robinson_valid_drawing/tree_metric.py", line 184, in <module>
+    if not args.np:
+           ^^^^^^^
+AttributeError: 'Namespace' object has no attribute 'np'
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 3 -np 
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[10  7  6  0  0  0  0]
+ [ 7 10  7  3  2  1  1]
+ [ 6  7 10  7  2  2  1]
+ [ 0  3  7 10  3  3  3]
+ [ 0  2  2  3 10  7  5]
+ [ 0  1  2  3  7 10  6]
+ [ 0  1  1  3  5  6 10]]
+
+ Output distance matrix 
+[[ 0.   3.5  5.   8.  11.  12.  14. ]
+ [ 3.5  0.   1.5  4.5  7.5  8.5 10.5]
+ [ 5.   1.5  0.   3.   6.   7.   9. ]
+ [ 8.   4.5  3.   0.   4.   5.   7. ]
+ [11.   7.5  6.   4.   0.   1.   3. ]
+ [12.   8.5  7.   5.   1.   0.   2. ]
+ [14.  10.5  9.   7.   3.   2.   0. ]]
+
+ Structure of the tree
+                    /-S3
+          /--------|
+         |         |          /-S2
+         |          \--------|
+         |                   |          /-S1
+         |                    \--------|
+---------|                              \-S0
+         |
+         |          /-S6
+         |---------|
+         |          \-S5
+         |
+          \-S4
+
+ Newick notation of the tree
+((S3:0.500000, (S2:0.000000, (S1:0.000000, S0:3.500000):1.500000):2.500000):3.500000, (S6:2.000000, S5:0.000000):1.000000, S4:0.000000);
+Traceback (most recent call last):
+  File "/media/data/mausoto/Documents/Papers/202309_T_robinsionian/T_robinson_valid_drawing/tree_metric.py", line 184, in <module>
+    if not args.np:
+           ^^^^^^^
+AttributeError: 'Namespace' object has no attribute 'np'
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 3 -np
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[10  7  6  0  0  0  0]
+ [ 7 10  7  3  2  1  1]
+ [ 6  7 10  7  2  2  1]
+ [ 0  3  7 10  3  3  3]
+ [ 0  2  2  3 10  7  5]
+ [ 0  1  2  3  7 10  6]
+ [ 0  1  1  3  5  6 10]]
+
+ Output distance matrix 
+[[ 0.   3.5  5.   8.  11.  12.  14. ]
+ [ 3.5  0.   1.5  4.5  7.5  8.5 10.5]
+ [ 5.   1.5  0.   3.   6.   7.   9. ]
+ [ 8.   4.5  3.   0.   4.   5.   7. ]
+ [11.   7.5  6.   4.   0.   1.   3. ]
+ [12.   8.5  7.   5.   1.   0.   2. ]
+ [14.  10.5  9.   7.   3.   2.   0. ]]
+
+ Structure of the tree
+                    /-S3
+          /--------|
+         |         |          /-S2
+         |          \--------|
+         |                   |          /-S1
+         |                    \--------|
+---------|                              \-S0
+         |
+         |          /-S6
+         |---------|
+         |          \-S5
+         |
+          \-S4
+
+ Newick notation of the tree
+((S3:0.500000, (S2:0.000000, (S1:0.000000, S0:3.500000):1.500000):2.500000):3.500000, (S6:2.000000, S5:0.000000):1.000000, S4:0.000000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 2 -np
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[2 2 1 0 0]
+ [2 2 2 1 1]
+ [1 2 2 2 1]
+ [0 1 2 2 2]
+ [0 1 1 2 2]]
+
+ Output distance matrix 
+[[0. 1. 2. 3. 4.]
+ [1. 0. 1. 2. 3.]
+ [2. 1. 0. 1. 2.]
+ [3. 2. 1. 0. 1.]
+ [4. 3. 2. 1. 0.]]
+
+ Structure of the tree
+          /-S3
+         |
+         |          /-S2
+         |---------|
+---------|         |          /-S1
+         |          \--------|
+         |                    \-S0
+         |
+          \-S4
+
+ Newick notation of the tree
+(S3:0.000000, (S2:0.000000, (S1:0.000000, S0:1.000000):1.000000):1.000000, S4:1.000000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 4 -np
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[9 4 5 4 1]
+ [4 9 5 4 1]
+ [5 5 9 8 7]
+ [3 3 8 9 7]
+ [1 1 7 7 9]]
+
+ Output distance matrix 
+[[0. 4. 3. 4. 5.]
+ [4. 0. 3. 4. 5.]
+ [3. 3. 0. 1. 2.]
+ [4. 4. 1. 0. 2.]
+ [5. 5. 2. 2. 0.]]
+
+ Structure of the tree
+          /-S3
+         |
+         |          /-S2
+         |---------|
+---------|         |          /-S1
+         |          \--------|
+         |                    \-S0
+         |
+          \-S4
+
+ Newick notation of the tree
+(S3:0.500000, (S2:0.000000, (S1:2.000000, S0:2.000000):1.000000):0.500000, S4:1.500000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 3 -np
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[10  7  6  0  0  0  0]
+ [ 7 10  7  3  2  1  1]
+ [ 6  7 10  7  2  2  1]
+ [ 0  3  7 10  3  3  3]
+ [ 0  2  2  3 10  7  5]
+ [ 0  1  2  3  7 10  6]
+ [ 0  1  1  3  5  6 10]]
+
+ Output distance matrix 
+[[ 0.   3.5  5.   8.  11.  12.  14. ]
+ [ 3.5  0.   1.5  4.5  7.5  8.5 10.5]
+ [ 5.   1.5  0.   3.   6.   7.   9. ]
+ [ 8.   4.5  3.   0.   4.   5.   7. ]
+ [11.   7.5  6.   4.   0.   1.   3. ]
+ [12.   8.5  7.   5.   1.   0.   2. ]
+ [14.  10.5  9.   7.   3.   2.   0. ]]
+
+ Structure of the tree
+                    /-S3
+          /--------|
+         |         |          /-S2
+         |          \--------|
+         |                   |          /-S1
+         |                    \--------|
+---------|                              \-S0
+         |
+         |          /-S6
+         |---------|
+         |          \-S5
+         |
+          \-S4
+
+ Newick notation of the tree
+((S3:0.500000, (S2:0.000000, (S1:0.000000, S0:3.500000):1.500000):2.500000):3.500000, (S6:2.000000, S5:0.000000):1.000000, S4:0.000000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 4 -np
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[9 4 5 4 1]
+ [4 9 5 4 1]
+ [5 5 9 8 7]
+ [3 3 8 9 7]
+ [1 1 7 7 9]]
+9
+
+ Output distance matrix 
+[[0. 4. 3. 4. 5.]
+ [4. 0. 3. 4. 5.]
+ [3. 3. 0. 1. 2.]
+ [4. 4. 1. 0. 2.]
+ [5. 5. 2. 2. 0.]]
+
+ Structure of the tree
+          /-S3
+         |
+         |          /-S2
+         |---------|
+---------|         |          /-S1
+         |          \--------|
+         |                    \-S0
+         |
+          \-S4
+
+ Newick notation of the tree
+(S3:0.500000, (S2:0.000000, (S1:2.000000, S0:2.000000):1.000000):0.500000, S4:1.500000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 4 -np
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[9 4 5 4 1]
+ [4 9 5 4 1]
+ [5 5 9 8 7]
+ [3 3 8 9 7]
+ [1 1 7 7 9]]
+[[ 0 -5 -4 -5 -8]
+ [-5  0 -4 -5 -8]
+ [-4 -4  0 -1 -2]
+ [-6 -6 -1  0 -2]
+ [-8 -8 -2 -2  0]]
+
+ Output distance matrix 
+[[0. 4. 3. 4. 5.]
+ [4. 0. 3. 4. 5.]
+ [3. 3. 0. 1. 2.]
+ [4. 4. 1. 0. 2.]
+ [5. 5. 2. 2. 0.]]
+
+ Structure of the tree
+          /-S3
+         |
+         |          /-S2
+         |---------|
+---------|         |          /-S1
+         |          \--------|
+         |                    \-S0
+         |
+          \-S4
+
+ Newick notation of the tree
+(S3:0.500000, (S2:0.000000, (S1:2.000000, S0:2.000000):1.000000):0.500000, S4:1.500000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 4 -np
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[9 4 5 4 1]
+ [4 9 5 4 1]
+ [5 5 9 8 7]
+ [3 3 8 9 7]
+ [1 1 7 7 9]]
+[[0 5 4 5 8]
+ [5 0 4 5 8]
+ [4 4 0 1 2]
+ [6 6 1 0 2]
+ [8 8 2 2 0]]
+
+ Output distance matrix 
+[[0. 4. 3. 4. 5.]
+ [4. 0. 3. 4. 5.]
+ [3. 3. 0. 1. 2.]
+ [4. 4. 1. 0. 2.]
+ [5. 5. 2. 2. 0.]]
+
+ Structure of the tree
+          /-S3
+         |
+         |          /-S2
+         |---------|
+---------|         |          /-S1
+         |          \--------|
+         |                    \-S0
+         |
+          \-S4
+
+ Newick notation of the tree
+(S3:0.500000, (S2:0.000000, (S1:2.000000, S0:2.000000):1.000000):0.500000, S4:1.500000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 4 -np
+  File "/media/data/mausoto/Documents/Papers/202309_T_robinsionian/T_robinson_valid_drawing/tree_metric.py", line 153
+    print(f"\n Input similarity matrix \n{input_matrix.max()-input_matrix)}")
+                                                                            ^
+SyntaxError: f-string: unmatched ')'
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 4 -np
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[9 4 5 4 1]
+ [4 9 5 4 1]
+ [5 5 9 8 7]
+ [3 3 8 9 7]
+ [1 1 7 7 9]]
+
+ Input similarity matrix 
+[[0 5 4 5 8]
+ [5 0 4 5 8]
+ [4 4 0 1 2]
+ [6 6 1 0 2]
+ [8 8 2 2 0]]
+
+ Output distance matrix 
+[[0. 4. 3. 4. 5.]
+ [4. 0. 3. 4. 5.]
+ [3. 3. 0. 1. 2.]
+ [4. 4. 1. 0. 2.]
+ [5. 5. 2. 2. 0.]]
+
+ Structure of the tree
+          /-S3
+         |
+         |          /-S2
+         |---------|
+---------|         |          /-S1
+         |          \--------|
+         |                    \-S0
+         |
+          \-S4
+
+ Newick notation of the tree
+(S3:0.500000, (S2:0.000000, (S1:2.000000, S0:2.000000):1.000000):0.500000, S4:1.500000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 4 -np
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[9 4 5 4 1]
+ [4 9 5 4 1]
+ [5 5 9 8 7]
+ [3 3 8 9 7]
+ [1 1 7 7 9]]
+
+ Input distance matrix 
+[[0 5 4 5 8]
+ [5 0 4 5 8]
+ [4 4 0 1 2]
+ [6 6 1 0 2]
+ [8 8 2 2 0]]
+
+ Output distance matrix 
+[[0. 4. 3. 4. 5.]
+ [4. 0. 3. 4. 5.]
+ [3. 3. 0. 1. 2.]
+ [4. 4. 1. 0. 2.]
+ [5. 5. 2. 2. 0.]]
+
+ Structure of the tree
+          /-S3
+         |
+         |          /-S2
+         |---------|
+---------|         |          /-S1
+         |          \--------|
+         |                    \-S0
+         |
+          \-S4
+
+ Newick notation of the tree
+(S3:0.500000, (S2:0.000000, (S1:2.000000, S0:2.000000):1.000000):0.500000, S4:1.500000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 4 -np
+  File "/media/data/mausoto/Documents/Papers/202309_T_robinsionian/T_robinson_valid_draw
+ing/tree_metric.py", line 123
+    if not args.dm # we are using a similarity matrix
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SyntaxError: expected ':'
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 4 -np
+  File "/media/data/mausoto/Documents/Papers/202309_T_robinsionian/T_robinson_valid_draw
+ing/tree_metric.py", line 124
+    problem += distance[i][j] - distance[i][k] <= -1
+IndentationError: unexpected indent
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 4 -np
+Status: Optimal
+Correct solution: False
+
+ Input similarity matrix 
+[[9 4 5 4 1]
+ [4 9 5 4 1]
+ [5 5 9 8 7]
+ [3 3 8 9 7]
+ [1 1 7 7 9]]
+
+ Input distance matrix 
+[[0 5 4 5 8]
+ [5 0 4 5 8]
+ [4 4 0 1 2]
+ [6 6 1 0 2]
+ [8 8 2 2 0]]
+
+ Output distance matrix 
+[[7. 5. 6. 5. 4.]
+ [5. 7. 6. 5. 4.]
+ [6. 6. 9. 8. 7.]
+ [5. 5. 8. 9. 6.]
+ [4. 4. 7. 6. 8.]]
+Traceback (most recent call last):
+  File "/media/data/mausoto/Documents/Papers/202309_T_robinsionian/T_robinson_valid_draw
+ing/tree_metric.py", line 181, in <module>
+    dm = DistanceMatrix(outmatrix, nodelabel)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-pac
+kages/skbio/stats/distance/_base.py", line 155, in __init__
+    self._validate(data, ids)
+  File "/home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-pac
+kages/skbio/stats/distance/_base.py", line 1174, in _validate
+    raise DistanceMatrixError("Data must be hollow (i.e., the diagonal"
+skbio.stats.distance._base.DistanceMatrixError: Data must be hollow (i.e., the diagonal 
+can only contain zeros).
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 4 -np
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[9 4 5 4 1]
+ [4 9 5 4 1]
+ [5 5 9 8 7]
+ [3 3 8 9 7]
+ [1 1 7 7 9]]
+
+ Input distance matrix 
+[[0 5 4 5 8]
+ [5 0 4 5 8]
+ [4 4 0 1 2]
+ [6 6 1 0 2]
+ [8 8 2 2 0]]
+
+ Output distance matrix 
+[[0. 4. 3. 4. 5.]
+ [4. 0. 3. 4. 5.]
+ [3. 3. 0. 1. 2.]
+ [4. 4. 1. 0. 2.]
+ [5. 5. 2. 2. 0.]]
+
+ Structure of the tree
+          /-S3
+         |
+         |          /-S2
+         |---------|
+---------|         |          /-S1
+         |          \--------|
+         |                    \-S0
+         |
+          \-S4
+
+ Newick notation of the tree
+(S3:0.500000, (S2:0.000000, (S1:2.000000, S0:2.000000):1.000000):0.500000, S4:1.500000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ ll                         13:18:23
+total 144K
+-rw-r--r-- 1 mausoto mausoto   57 Nov  9 14:38  example13.csv
+-rw-r--r-- 1 mausoto mausoto   82 Nov  9 14:36  example14.csv
+-rw-r--r-- 1 mausoto mausoto 4.6K Oct 23 12:55 '#line_metric2.py#'
+-rw-r--r-- 1 mausoto mausoto 4.6K Oct 23 11:33  line_metric2.py
+-rw-r--r-- 1 mausoto mausoto 5.0K Oct 23 10:33  line_metric2.py~
+-rw-r--r-- 1 mausoto mausoto 5.0K Oct 21 17:25  line_metric.py
+-rw-r--r-- 1 mausoto mausoto 5.0K Oct 21 13:48  line_metric.py~
+-rw-r--r-- 1 mausoto mausoto   84 Oct 20 14:23  README.md
+-rw-r--r-- 1 mausoto mausoto  44K Oct 25 22:59  robinson.csv
+-rw-r--r-- 1 mausoto mausoto 5.7K Oct 23 16:33  tree_metric2.py
+-rw-r--r-- 1 mausoto mausoto 5.6K Oct 24 12:32  tree_metric3.py
+-rw-r--r-- 1 mausoto mausoto 5.7K Oct 24 12:26  tree_metric3.py~
+-rw-r--r-- 1 mausoto mausoto 8.7K Nov 17 13:18  tree_metric.lp
+-rw-r--r-- 1 mausoto mausoto  185 Nov 17 13:18  tree_metric_out.txt
+-rw-r--r-- 1 mausoto mausoto 5.2K Nov 17 13:18  tree_metric.py
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ less robinson.csv          13:18:34
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ ll                         13:18:45
+total 144K
+-rw-r--r-- 1 mausoto mausoto   57 Nov  9 14:38  example13.csv
+-rw-r--r-- 1 mausoto mausoto   82 Nov  9 14:36  example14.csv
+-rw-r--r-- 1 mausoto mausoto 4.6K Oct 23 12:55 '#line_metric2.py#'
+-rw-r--r-- 1 mausoto mausoto 4.6K Oct 23 11:33  line_metric2.py
+-rw-r--r-- 1 mausoto mausoto 5.0K Oct 23 10:33  line_metric2.py~
+-rw-r--r-- 1 mausoto mausoto 5.0K Oct 21 17:25  line_metric.py
+-rw-r--r-- 1 mausoto mausoto 5.0K Oct 21 13:48  line_metric.py~
+-rw-r--r-- 1 mausoto mausoto   84 Oct 20 14:23  README.md
+-rw-r--r-- 1 mausoto mausoto  44K Oct 25 22:59  robinson.csv
+-rw-r--r-- 1 mausoto mausoto 5.7K Oct 23 16:33  tree_metric2.py
+-rw-r--r-- 1 mausoto mausoto 5.6K Oct 24 12:32  tree_metric3.py
+-rw-r--r-- 1 mausoto mausoto 5.7K Oct 24 12:26  tree_metric3.py~
+-rw-r--r-- 1 mausoto mausoto 8.7K Nov 17 13:18  tree_metric.lp
+-rw-r--r-- 1 mausoto mausoto  185 Nov 17 13:18  tree_metric_out.txt
+-rw-r--r-- 1 mausoto mausoto 5.2K Nov 17 13:18  tree_metric.py
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ less example13.csv         13:18:47
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ nano example13.csv         13:19:25
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ nano example_distance      13:21:41
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ nano example_distance      13:21:52
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ less example13.csv         13:22:16
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ nano example_distance      13:22:38
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ rm example_distance        13:23:26
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py -np -f exampl
+e13.csv                                                                           
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[10.  4.  3.  2.  2.]
+ [ 4. 10.  6.  4.  2.]
+ [ 3.  6. 10.  8.  2.]
+ [ 2.  4.  8. 10. 10.]
+ [ 2.  2.  2. 10. 10.]]
+
+ Input distance matrix 
+[[0. 6. 7. 8. 8.]
+ [6. 0. 4. 6. 8.]
+ [7. 4. 0. 2. 8.]
+ [8. 6. 2. 0. 0.]
+ [8. 8. 8. 0. 0.]]
+
+ Output distance matrix 
+[[ 0.  7.  8.  9. 13.]
+ [ 7.  0.  6.  7. 11.]
+ [ 8.  6.  0.  5.  9.]
+ [ 9.  7.  5.  0.  4.]
+ [13. 11.  9.  4.  0.]]
+
+ Structure of the tree
+          /-S0
+         |
+         |          /-S2
+         |---------|
+---------|         |          /-S4
+         |          \--------|
+         |                    \-S3
+         |
+          \-S1
+
+ Newick notation of the tree
+(S0:4.500000, (S2:2.000000, (S4:4.000000, S3:0.000000):3.000000):1.500000, S1:2.500000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ nano example13.csv         13:23:53
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ nano example13_distance.csv13:24:10
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ ll                         13:26:14
+total 272K
+-rw-r--r-- 1 mausoto mausoto   57 Nov  9 14:38  example13.csv
+-rw-r--r-- 1 mausoto mausoto   50 Nov 17 13:26  example13_distance.csv
+-rw-r--r-- 1 mausoto mausoto 123K Nov 17 13:26  example13_distance.csv~
+-rw-r--r-- 1 mausoto mausoto   82 Nov  9 14:36  example14.csv
+-rw-r--r-- 1 mausoto mausoto 4.6K Oct 23 12:55 '#line_metric2.py#'
+-rw-r--r-- 1 mausoto mausoto 4.6K Oct 23 11:33  line_metric2.py
+-rw-r--r-- 1 mausoto mausoto 5.0K Oct 23 10:33  line_metric2.py~
+-rw-r--r-- 1 mausoto mausoto 5.0K Oct 21 17:25  line_metric.py
+-rw-r--r-- 1 mausoto mausoto 5.0K Oct 21 13:48  line_metric.py~
+-rw-r--r-- 1 mausoto mausoto   84 Oct 20 14:23  README.md
+-rw-r--r-- 1 mausoto mausoto  44K Oct 25 22:59  robinson.csv
+-rw-r--r-- 1 mausoto mausoto 5.7K Oct 23 16:33  tree_metric2.py
+-rw-r--r-- 1 mausoto mausoto 5.6K Oct 24 12:32  tree_metric3.py
+-rw-r--r-- 1 mausoto mausoto 5.7K Oct 24 12:26  tree_metric3.py~
+-rw-r--r-- 1 mausoto mausoto 8.6K Nov 17 13:23  tree_metric.lp
+-rw-r--r-- 1 mausoto mausoto  261 Nov 17 13:23  tree_metric_out.txt
+-rw-r--r-- 1 mausoto mausoto 5.2K Nov 17 13:18  tree_metric.py
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py -np -f exampl
+e13.csv -dm
+Status: Optimal
+Correct solution: False
+
+ Input similarity matrix 
+[[10.  4.  3.  2.  2.]
+ [ 4. 10.  6.  4.  2.]
+ [ 3.  6. 10.  8.  2.]
+ [ 2.  4.  8. 10. 10.]
+ [ 2.  2.  2. 10. 10.]]
+
+ Input distance matrix 
+[[0. 6. 7. 8. 8.]
+ [6. 0. 4. 6. 8.]
+ [7. 4. 0. 2. 8.]
+ [8. 6. 2. 0. 0.]
+ [8. 8. 8. 0. 0.]]
+
+ Output distance matrix 
+[[14. 13. 12. 11.  7.]
+ [13. 15. 14. 13.  9.]
+ [12. 14. 16. 15. 11.]
+ [11. 13. 15. 16. 18.]
+ [ 7.  9. 11. 18. 12.]]
+Traceback (most recent call last):
+  File "/media/data/mausoto/Documents/Papers/202309_T_robinsionian/T_robinson_valid_draw
+ing/tree_metric.py", line 181, in <module>
+    dm = DistanceMatrix(outmatrix, nodelabel)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-pac
+kages/skbio/stats/distance/_base.py", line 155, in __init__
+    self._validate(data, ids)
+  File "/home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-pac
+kages/skbio/stats/distance/_base.py", line 1174, in _validate
+    raise DistanceMatrixError("Data must be hollow (i.e., the diagonal"
+skbio.stats.distance._base.DistanceMatrixError: Data must be hollow (i.e., the diagonal 
+can only contain zeros).
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py -np -f exampl
+e13_distance.csv  -dm
+Status: Optimal
+Correct solution: False
+
+ Input similarity matrix 
+[[0. 6. 7. 8. 8.]
+ [6. 0. 4. 6. 8.]
+ [7. 4. 0. 2. 8.]
+ [8. 6. 2. 0. 0.]
+ [8. 8. 8. 0. 0.]]
+
+ Input distance matrix 
+[[8. 2. 1. 0. 0.]
+ [2. 8. 4. 2. 0.]
+ [1. 4. 8. 6. 0.]
+ [0. 2. 6. 8. 8.]
+ [0. 0. 0. 8. 8.]]
+
+ Output distance matrix 
+[[ 0.  7.  8.  9. 13.]
+ [ 7.  0.  6.  7. 11.]
+ [ 8.  6.  0.  5.  9.]
+ [ 9.  7.  5.  0.  4.]
+ [13. 11.  9.  4.  0.]]
+
+ Structure of the tree
+          /-S0
+         |
+         |          /-S2
+         |---------|
+---------|         |          /-S4
+         |          \--------|
+         |                    \-S3
+         |
+          \-S1
+
+ Newick notation of the tree
+(S0:4.500000, (S2:2.000000, (S4:4.000000, S3:0.000000):3.000000):1.500000, S1:2.500000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py -np -f exampl
+e13_distance.csv  -dm                                                             
+Status: Optimal
+Correct solution: False
+
+ Input similarity matrix 
+[[0. 6. 7. 8. 8.]
+ [6. 0. 4. 6. 8.]
+ [7. 4. 0. 2. 8.]
+ [8. 6. 2. 0. 0.]
+ [8. 8. 8. 0. 0.]]
+
+ Output distance matrix 
+[[ 0.  7.  8.  9. 13.]
+ [ 7.  0.  6.  7. 11.]
+ [ 8.  6.  0.  5.  9.]
+ [ 9.  7.  5.  0.  4.]
+ [13. 11.  9.  4.  0.]]
+
+ Structure of the tree
+          /-S0
+         |
+         |          /-S2
+         |---------|
+---------|         |          /-S4
+         |          \--------|
+         |                    \-S3
+         |
+          \-S1
+
+ Newick notation of the tree
+(S0:4.500000, (S2:2.000000, (S4:4.000000, S3:0.000000):3.000000):1.500000, S1:2.500000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py -np -f exampl
+e13_distance.csv  -dm                                                             
+Status: Optimal
+Correct solution: False
+
+ Input similarity matrix 
+[[0. 6. 7. 8. 8.]
+ [6. 0. 4. 6. 8.]
+ [7. 4. 0. 2. 8.]
+ [8. 6. 2. 0. 0.]
+ [8. 8. 8. 0. 0.]]
+
+ Input distance matrix 
+[[8. 2. 1. 0. 0.]
+ [2. 8. 4. 2. 0.]
+ [1. 4. 8. 6. 0.]
+ [0. 2. 6. 8. 8.]
+ [0. 0. 0. 8. 8.]]
+
+ Output distance matrix 
+[[ 0.  7.  8.  9. 13.]
+ [ 7.  0.  6.  7. 11.]
+ [ 8.  6.  0.  5.  9.]
+ [ 9.  7.  5.  0.  4.]
+ [13. 11.  9.  4.  0.]]
+
+ Structure of the tree
+          /-S0
+         |
+         |          /-S2
+         |---------|
+---------|         |          /-S4
+         |          \--------|
+         |                    \-S3
+         |
+          \-S1
+
+ Newick notation of the tree
+(S0:4.500000, (S2:2.000000, (S4:4.000000, S3:0.000000):3.000000):1.500000, S1:2.500000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py -np -f exampl
+e13_distance.csv  -dm                                                             
+Status: Optimal
+Correct solution: False
+
+ Input similarity matrix 
+[[0. 6. 7. 8. 8.]
+ [6. 0. 4. 6. 8.]
+ [7. 4. 0. 2. 8.]
+ [8. 6. 2. 0. 0.]
+ [8. 8. 8. 0. 0.]]
+
+ Input distance matrix 
+[[8. 2. 1. 0. 0.]
+ [2. 8. 4. 2. 0.]
+ [1. 4. 8. 6. 0.]
+ [0. 2. 6. 8. 8.]
+ [0. 0. 0. 8. 8.]]
+
+ Output distance matrix 
+[[ 0.  7.  8.  9. 13.]
+ [ 7.  0.  6.  7. 11.]
+ [ 8.  6.  0.  5.  9.]
+ [ 9.  7.  5.  0.  4.]
+ [13. 11.  9.  4.  0.]]
+
+ Structure of the tree
+          /-S0
+         |
+         |          /-S2
+         |---------|
+---------|         |          /-S4
+         |          \--------|
+         |                    \-S3
+         |
+          \-S1
+
+ Newick notation of the tree
+(S0:4.500000, (S2:2.000000, (S4:4.000000, S3:0.000000):3.000000):1.500000, S1:2.500000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py -np -f exampl
+e13_distance.csv  -dm                                                             
+Status: Optimal
+Correct solution: False
+
+ Input similarity matrix 
+[[0. 6. 7. 8. 8.]
+ [6. 0. 4. 6. 8.]
+ [7. 4. 0. 2. 8.]
+ [8. 6. 2. 0. 0.]
+ [8. 8. 8. 0. 0.]]
+
+ Output distance matrix 
+[[ 0.  7.  8.  9. 13.]
+ [ 7.  0.  6.  7. 11.]
+ [ 8.  6.  0.  5.  9.]
+ [ 9.  7.  5.  0.  4.]
+ [13. 11.  9.  4.  0.]]
+
+ Structure of the tree
+          /-S0
+         |
+         |          /-S2
+         |---------|
+---------|         |          /-S4
+         |          \--------|
+         |                    \-S3
+         |
+          \-S1
+
+ Newick notation of the tree
+(S0:4.500000, (S2:2.000000, (S4:4.000000, S3:0.000000):3.000000):1.500000, S1:2.500000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py -np -f exampl
+e13_distance.csv  -dm                                                             
+Status: Optimal
+Correct solution: False
+
+ Input similarity matrix 
+[[0. 6. 7. 8. 8.]
+ [6. 0. 4. 6. 8.]
+ [7. 4. 0. 2. 8.]
+ [8. 6. 2. 0. 0.]
+ [8. 8. 8. 0. 0.]]
+
+ Output distance matrix 
+[[ 0.  7.  8.  9. 13.]
+ [ 7.  0.  6.  7. 11.]
+ [ 8.  6.  0.  5.  9.]
+ [ 9.  7.  5.  0.  4.]
+ [13. 11.  9.  4.  0.]]
+
+ Structure of the tree
+          /-S0
+         |
+         |          /-S2
+         |---------|
+---------|         |          /-S4
+         |          \--------|
+         |                    \-S3
+         |
+          \-S1
+
+ Newick notation of the tree
+(S0:4.500000, (S2:2.000000, (S4:4.000000, S3:0.000000):3.000000):1.500000, S1:2.500000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py -np -f exampl
+e13_distance.csv  
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[0. 6. 7. 8. 8.]
+ [6. 0. 4. 6. 8.]
+ [7. 4. 0. 2. 8.]
+ [8. 6. 2. 0. 0.]
+ [8. 8. 8. 0. 0.]]
+
+ Input distance matrix 
+[[8. 2. 1. 0. 0.]
+ [2. 8. 4. 2. 0.]
+ [1. 4. 8. 6. 0.]
+ [0. 2. 6. 8. 8.]
+ [0. 0. 0. 8. 8.]]
+
+ Output distance matrix 
+[[14. 13. 12. 11.  7.]
+ [13. 15. 14. 13.  9.]
+ [12. 14. 16. 15. 11.]
+ [11. 13. 15. 16. 16.]
+ [ 7.  9. 11. 16. 12.]]
+Traceback (most recent call last):
+  File "/media/data/mausoto/Documents/Papers/202309_T_robinsionian/T_robinson_valid_draw
+ing/tree_metric.py", line 183, in <module>
+    dm = DistanceMatrix(outmatrix, nodelabel)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-pac
+kages/skbio/stats/distance/_base.py", line 155, in __init__
+    self._validate(data, ids)
+  File "/home/mausoto/Documents/Papers/202309_T_robinsionian/env/lib/python3.11/site-pac
+kages/skbio/stats/distance/_base.py", line 1174, in _validate
+    raise DistanceMatrixError("Data must be hollow (i.e., the diagonal"
+skbio.stats.distance._base.DistanceMatrixError: Data must be hollow (i.e., the diagonal 
+can only contain zeros).
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py -np -f exampl
+e13.csv                                                                           
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[10.  4.  3.  2.  2.]
+ [ 4. 10.  6.  4.  2.]
+ [ 3.  6. 10.  8.  2.]
+ [ 2.  4.  8. 10. 10.]
+ [ 2.  2.  2. 10. 10.]]
+
+ Input distance matrix 
+[[0. 6. 7. 8. 8.]
+ [6. 0. 4. 6. 8.]
+ [7. 4. 0. 2. 8.]
+ [8. 6. 2. 0. 0.]
+ [8. 8. 8. 0. 0.]]
+
+ Output distance matrix 
+[[ 0.  7.  8.  9. 13.]
+ [ 7.  0.  6.  7. 11.]
+ [ 8.  6.  0.  5.  9.]
+ [ 9.  7.  5.  0.  4.]
+ [13. 11.  9.  4.  0.]]
+
+ Structure of the tree
+          /-S0
+         |
+         |          /-S2
+         |---------|
+---------|         |          /-S4
+         |          \--------|
+         |                    \-S3
+         |
+          \-S1
+
+ Newick notation of the tree
+(S0:4.500000, (S2:2.000000, (S4:4.000000, S3:0.000000):3.000000):1.500000, S1:2.500000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py -np -f exampl
+e13_distance.csv  -dm                                                             
+Status: Optimal
+Correct solution: False
+
+ Input similarity matrix 
+[[0. 6. 7. 8. 8.]
+ [6. 0. 4. 6. 8.]
+ [7. 4. 0. 2. 8.]
+ [8. 6. 2. 0. 0.]
+ [8. 8. 8. 0. 0.]]
+
+ Output distance matrix 
+[[ 0.  7.  8.  9. 13.]
+ [ 7.  0.  6.  7. 11.]
+ [ 8.  6.  0.  5.  9.]
+ [ 9.  7.  5.  0.  4.]
+ [13. 11.  9.  4.  0.]]
+
+ Structure of the tree
+          /-S0
+         |
+         |          /-S2
+         |---------|
+---------|         |          /-S4
+         |          \--------|
+         |                    \-S3
+         |
+          \-S1
+
+ Newick notation of the tree
+(S0:4.500000, (S2:2.000000, (S4:4.000000, S3:0.000000):3.000000):1.500000, S1:2.500000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py -np -f exampl
+e13_distance.csv  -dm                                                             
+Status: Optimal
+Correct solution: False
+
+ Input  matrix 
+[[0. 6. 7. 8. 8.]
+ [6. 0. 4. 6. 8.]
+ [7. 4. 0. 2. 8.]
+ [8. 6. 2. 0. 0.]
+ [8. 8. 8. 0. 0.]]
+
+ Output distance matrix 
+[[ 0.  7.  8.  9. 13.]
+ [ 7.  0.  6.  7. 11.]
+ [ 8.  6.  0.  5.  9.]
+ [ 9.  7.  5.  0.  4.]
+ [13. 11.  9.  4.  0.]]
+
+ Structure of the tree
+          /-S0
+         |
+         |          /-S2
+         |---------|
+---------|         |          /-S4
+         |          \--------|
+         |                    \-S3
+         |
+          \-S1
+
+ Newick notation of the tree
+(S0:4.500000, (S2:2.000000, (S4:4.000000, S3:0.000000):3.000000):1.500000, S1:2.500000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py -np -f exampl
+e13_distance.csv  -dm                                                             
+Status: Optimal
+Correct solution: False
+
+ Input <function <lambda> at 0x7f401fa02340> matrix 
+[[0. 6. 7. 8. 8.]
+ [6. 0. 4. 6. 8.]
+ [7. 4. 0. 2. 8.]
+ [8. 6. 2. 0. 0.]
+ [8. 8. 8. 0. 0.]]
+
+ Output distance matrix 
+[[ 0.  7.  8.  9. 13.]
+ [ 7.  0.  6.  7. 11.]
+ [ 8.  6.  0.  5.  9.]
+ [ 9.  7.  5.  0.  4.]
+ [13. 11.  9.  4.  0.]]
+
+ Structure of the tree
+          /-S0
+         |
+         |          /-S2
+         |---------|
+---------|         |          /-S4
+         |          \--------|
+         |                    \-S3
+         |
+          \-S1
+
+ Newick notation of the tree
+(S0:4.500000, (S2:2.000000, (S4:4.000000, S3:0.000000):3.000000):1.500000, S1:2.500000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py -np -f exampl
+e13_distance.csv  -dm                                                             
+Status: Optimal
+Correct solution: False
+
+ Input <function <lambda> at 0x7ff9ef6c2340> matrix 
+[[0. 6. 7. 8. 8.]
+ [6. 0. 4. 6. 8.]
+ [7. 4. 0. 2. 8.]
+ [8. 6. 2. 0. 0.]
+ [8. 8. 8. 0. 0.]]
+
+ Output distance matrix 
+[[ 0.  7.  8.  9. 13.]
+ [ 7.  0.  6.  7. 11.]
+ [ 8.  6.  0.  5.  9.]
+ [ 9.  7.  5.  0.  4.]
+ [13. 11.  9.  4.  0.]]
+
+ Structure of the tree
+          /-S0
+         |
+         |          /-S2
+         |---------|
+---------|         |          /-S4
+         |          \--------|
+         |                    \-S3
+         |
+          \-S1
+
+ Newick notation of the tree
+(S0:4.500000, (S2:2.000000, (S4:4.000000, S3:0.000000):3.000000):1.500000, S1:2.500000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py -np -f exampl
+e13.csv                                                                           
+Status: Optimal
+Correct solution: True
+
+ Input <function <lambda> at 0x7f20528a6340> matrix 
+[[10.  4.  3.  2.  2.]
+ [ 4. 10.  6.  4.  2.]
+ [ 3.  6. 10.  8.  2.]
+ [ 2.  4.  8. 10. 10.]
+ [ 2.  2.  2. 10. 10.]]
+
+ Input distance matrix 
+[[0. 6. 7. 8. 8.]
+ [6. 0. 4. 6. 8.]
+ [7. 4. 0. 2. 8.]
+ [8. 6. 2. 0. 0.]
+ [8. 8. 8. 0. 0.]]
+
+ Output distance matrix 
+[[ 0.  7.  8.  9. 13.]
+ [ 7.  0.  6.  7. 11.]
+ [ 8.  6.  0.  5.  9.]
+ [ 9.  7.  5.  0.  4.]
+ [13. 11.  9.  4.  0.]]
+
+ Structure of the tree
+          /-S0
+         |
+         |          /-S2
+         |---------|
+---------|         |          /-S4
+         |          \--------|
+         |                    \-S3
+         |
+          \-S1
+
+ Newick notation of the tree
+(S0:4.500000, (S2:2.000000, (S4:4.000000, S3:0.000000):3.000000):1.500000, S1:2.500000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py -np -f exampl
+e13.csv                                                                           
+  File "/media/data/mausoto/Documents/Papers/202309_T_robinsionian/T_robinson_valid_draw
+ing/tree_metric.py", line 160
+    (lambda x)
+             ^
+SyntaxError: f-string: invalid syntax
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py -np -f exampl
+e13.csv                                                                           
+Status: Optimal
+Correct solution: True
+
+ Input distamce matrix 
+[[10.  4.  3.  2.  2.]
+ [ 4. 10.  6.  4.  2.]
+ [ 3.  6. 10.  8.  2.]
+ [ 2.  4.  8. 10. 10.]
+ [ 2.  2.  2. 10. 10.]]
+
+ Input distance matrix 
+[[0. 6. 7. 8. 8.]
+ [6. 0. 4. 6. 8.]
+ [7. 4. 0. 2. 8.]
+ [8. 6. 2. 0. 0.]
+ [8. 8. 8. 0. 0.]]
+
+ Output distance matrix 
+[[ 0.  7.  8.  9. 13.]
+ [ 7.  0.  6.  7. 11.]
+ [ 8.  6.  0.  5.  9.]
+ [ 9.  7.  5.  0.  4.]
+ [13. 11.  9.  4.  0.]]
+
+ Structure of the tree
+          /-S0
+         |
+         |          /-S2
+         |---------|
+---------|         |          /-S4
+         |          \--------|
+         |                    \-S3
+         |
+          \-S1
+
+ Newick notation of the tree
+(S0:4.500000, (S2:2.000000, (S4:4.000000, S3:0.000000):3.000000):1.500000, S1:2.500000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py -np -f exampl
+e13.csv                                                                           
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[10.  4.  3.  2.  2.]
+ [ 4. 10.  6.  4.  2.]
+ [ 3.  6. 10.  8.  2.]
+ [ 2.  4.  8. 10. 10.]
+ [ 2.  2.  2. 10. 10.]]
+
+ Input distance matrix 
+[[0. 6. 7. 8. 8.]
+ [6. 0. 4. 6. 8.]
+ [7. 4. 0. 2. 8.]
+ [8. 6. 2. 0. 0.]
+ [8. 8. 8. 0. 0.]]
+
+ Output distance matrix 
+[[ 0.  7.  8.  9. 13.]
+ [ 7.  0.  6.  7. 11.]
+ [ 8.  6.  0.  5.  9.]
+ [ 9.  7.  5.  0.  4.]
+ [13. 11.  9.  4.  0.]]
+
+ Structure of the tree
+          /-S0
+         |
+         |          /-S2
+         |---------|
+---------|         |          /-S4
+         |          \--------|
+         |                    \-S3
+         |
+          \-S1
+
+ Newick notation of the tree
+(S0:4.500000, (S2:2.000000, (S4:4.000000, S3:0.000000):3.000000):1.500000, S1:2.500000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py -np -f exampl
+e13_distance.csv  -dm                                                             
+Status: Optimal
+Correct solution: False
+
+ Input distance matrix 
+[[0. 6. 7. 8. 8.]
+ [6. 0. 4. 6. 8.]
+ [7. 4. 0. 2. 8.]
+ [8. 6. 2. 0. 0.]
+ [8. 8. 8. 0. 0.]]
+
+ Output distance matrix 
+[[ 0.  7.  8.  9. 13.]
+ [ 7.  0.  6.  7. 11.]
+ [ 8.  6.  0.  5.  9.]
+ [ 9.  7.  5.  0.  4.]
+ [13. 11.  9.  4.  0.]]
+
+ Structure of the tree
+          /-S0
+         |
+         |          /-S2
+         |---------|
+---------|         |          /-S4
+         |          \--------|
+         |                    \-S3
+         |
+          \-S1
+
+ Newick notation of the tree
+(S0:4.500000, (S2:2.000000, (S4:4.000000, S3:0.000000):3.000000):1.500000, S1:2.500000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py -np -f exampl
+e13_distance.csv  -dm                                                             
+Status: Optimal
+Correct solution: False
+
+ Input distance matrix 
+[[0. 6. 7. 8. 8.]
+ [6. 0. 4. 6. 8.]
+ [7. 4. 0. 2. 8.]
+ [8. 6. 2. 0. 0.]
+ [8. 8. 8. 0. 0.]]
+
+ Output distance matrix 
+[[ 0.  7.  8.  9. 13.]
+ [ 7.  0.  6.  7. 11.]
+ [ 8.  6.  0.  5.  9.]
+ [ 9.  7.  5.  0.  4.]
+ [13. 11.  9.  4.  0.]]
+
+ Structure of the tree
+          /-S0
+         |
+         |          /-S2
+         |---------|
+---------|         |          /-S4
+         |          \--------|
+         |                    \-S3
+         |
+          \-S1
+
+ Newick notation of the tree
+(S0:4.500000, (S2:2.000000, (S4:4.000000, S3:0.000000):3.000000):1.500000, S1:2.500000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 3 -np
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[10  7  6  0  0  0  0]
+ [ 7 10  7  3  2  1  1]
+ [ 6  7 10  7  2  2  1]
+ [ 0  3  7 10  3  3  3]
+ [ 0  2  2  3 10  7  5]
+ [ 0  1  2  3  7 10  6]
+ [ 0  1  1  3  5  6 10]]
+
+ Input distance matrix 
+[[ 0  3  4 10 10 10 10]
+ [ 3  0  3  7  8  9  9]
+ [ 4  3  0  3  8  8  9]
+ [10  7  3  0  7  7  7]
+ [10  8  8  7  0  3  5]
+ [10  9  8  7  3  0  4]
+ [10  9  9  7  5  4  0]]
+
+ Output distance matrix 
+[[ 0.   3.5  5.   8.  11.  12.  14. ]
+ [ 3.5  0.   1.5  4.5  7.5  8.5 10.5]
+ [ 5.   1.5  0.   3.   6.   7.   9. ]
+ [ 8.   4.5  3.   0.   4.   5.   7. ]
+ [11.   7.5  6.   4.   0.   1.   3. ]
+ [12.   8.5  7.   5.   1.   0.   2. ]
+ [14.  10.5  9.   7.   3.   2.   0. ]]
+
+ Structure of the tree
+                    /-S3
+          /--------|
+         |         |          /-S2
+         |          \--------|
+         |                   |          /-S1
+         |                    \--------|
+---------|                              \-S0
+         |
+         |          /-S6
+         |---------|
+         |          \-S5
+         |
+          \-S4
+
+ Newick notation of the tree
+((S3:0.500000, (S2:0.000000, (S1:0.000000, S0:3.500000):1.500000):2.500000):3.500000, (S
+6:2.000000, S5:0.000000):1.000000, S4:0.000000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $ python tree_metric.py  -e 3 
+Status: Optimal
+Correct solution: True
+
+ Input similarity matrix 
+[[10  7  6  0  0  0  0]
+ [ 7 10  7  3  2  1  1]
+ [ 6  7 10  7  2  2  1]
+ [ 0  3  7 10  3  3  3]
+ [ 0  2  2  3 10  7  5]
+ [ 0  1  2  3  7 10  6]
+ [ 0  1  1  3  5  6 10]]
+
+ Input distance matrix 
+[[ 0  3  4 10 10 10 10]
+ [ 3  0  3  7  8  9  9]
+ [ 4  3  0  3  8  8  9]
+ [10  7  3  0  7  7  7]
+ [10  8  8  7  0  3  5]
+ [10  9  8  7  3  0  4]
+ [10  9  9  7  5  4  0]]
+
+ Output distance matrix 
+[[ 0.   3.5  5.   8.  11.  12.  14. ]
+ [ 3.5  0.   1.5  4.5  7.5  8.5 10.5]
+ [ 5.   1.5  0.   3.   6.   7.   9. ]
+ [ 8.   4.5  3.   0.   4.   5.   7. ]
+ [11.   7.5  6.   4.   0.   1.   3. ]
+ [12.   8.5  7.   5.   1.   0.   2. ]
+ [14.  10.5  9.   7.   3.   2.   0. ]]
+
+ Structure of the tree
+                    /-S3
+          /--------|
+         |         |          /-S2
+         |          \--------|
+         |                   |          /-S1
+         |                    \--------|
+---------|                              \-S0
+         |
+         |          /-S6
+         |---------|
+         |          \-S5
+         |
+          \-S4
+
+ Newick notation of the tree
+((S3:0.500000, (S2:0.000000, (S1:0.000000, S0:3.500000):1.500000):2.500000):3.500000, (S
+6:2.000000, S5:0.000000):1.000000, S4:0.000000);
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $                            14:17:51
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $                            14:19:12
+(env) mausoto@x1c7~/D/P/2/T_robinson_valid_drawing $                            14:25:32
