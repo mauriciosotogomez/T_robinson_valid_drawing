@@ -2,6 +2,7 @@
 import utils
 import numpy as np
 import time
+import pandas as pd
 
 # Arguments
 from argparse import ArgumentParser
@@ -103,47 +104,125 @@ two_points = [
     for i in range(n)
 ]
 
+
+#### AUX PROBLEM #################################################################################################################################################################################
+# Time aux
+tic_aux = time()
+#Aux problem                                                                                                                                                                                   #
+aux_problem = LpProblem("A_has_a_positive_linear_combination", LpMinimize)                                                                                                                     #
+aux_distance = LpVariable.dicts("aux_distance", ROWS, cat='Continuous')                                                                                                                        #
+aux_leg      = LpVariable.dicts("aux_leg", ROWS, cat='Continuous')                                                                                                                             #
+aux_problem += 0 # feasibility                                                                                                                                                                 #
+# Constraints for each pair                                                                                                                                                                    #
+for (i,j) in two_points:                                                                                                                                                                       #
+    if (i<j-1) :                                                                                                                                                                               #
+        aux_problem += LpConstraint( aux_distance[i] + aux_distance[j] - 2*aux_distance[max_closer[i,j]] - aux_leg[i] + aux_leg[j], sense=LpConstraintGE, rhs=1 , name='A'+str(i)+'_'+str(j))  #
+    elif (i>j+1) :                                                                                                                                                                             #
+        aux_problem += LpConstraint( -aux_distance[i] - aux_distance[j] + 2*aux_distance[max_closer[i,j]] - aux_leg[i] + aux_leg[j], sense=LpConstraintGE, rhs=1 , name='A'+str(i)+'_'+str(j)) #
+    elif (i==j-1) :                                                                                                                                                                            #
+        aux_problem += LpConstraint( aux_distance[i] + aux_distance[j] - 2*aux_distance[max_closer[i,j]] - aux_leg[i] + aux_leg[j], sense=LpConstraintGE, rhs=1 , name='A'+str(i)+'_'+str(j))  #
+    elif (i==j+1) :                                                                                                                                                                            #
+        aux_problem += LpConstraint( -aux_distance[i] - aux_distance[j] + 2*aux_distance[max_closer[i,j]] - aux_leg[i] + aux_leg[j], sense=LpConstraintGE, rhs=1 , name='A'+str(i)+'_'+str(j)) #
+# Force to be in a path        
+if args.p:
+    for i in ROWS:
+        aux_problem += LpConstraint(aux_leg[i], sense=LpConstraintEQ, rhs=0 , name='AL'+str(i))
+        # Solve the aux_problem                                                                                                                                                                  #
+aux_problem.solve(PULP_CBC_CMD(msg=0))
+toc_aux = time()
+# The status of the solution is printed to the screen                                                                                                                                          #
+print("AUX Status:", LpStatus[aux_problem.status])#
+# Print time
+print(f'Time AUX: {toc_aux - tic_aux} seconds')
+# Plot Primal/Dual Solution                                                                                                                                                                    #
+print("\nAUX Primal Variables")                                                                                                                                                                #
+for v in aux_problem.variables():                                                                                                                                                              #
+    print(v.name, ":" "\t", v.varValue)                                                                                                                                                        #
+
+# Create Matrix A
+# create DataFrame
+list_constraints =  list(aux_problem.constraints)
+list_variables = list()
+for var in aux_problem.variables():
+    list_variables.append(var.name)
+list_variables=list_variables[1:]
+
+# create empty matrix
+A = pd.DataFrame(np.zeros(shape=(len(list_constraints),len(list_variables))), columns=list_variables, index=list_constraints)
+# fill matrix
+dict = aux_problem.to_dict()
+
+for constraint in dict['constraints']:
+    for coefficient in constraint['coefficients']:
+        A.loc[constraint['name'], coefficient['name']]=coefficient['value']
+A.to_csv('A.csv')
+
+# Create matrix B
+l2 = int(len(list_variables)/2)
+columns_B = ['d+l_'+str(i) for i in range(l2)]+['d-l_'+str(i) for i in range(l2)]
+B = pd.DataFrame(np.zeros(shape=(len(list_constraints),len(list_variables))), columns=columns_B, index=list_constraints)
+
+for i in range(l2):
+    B.iloc[:,i]=A.iloc[:,i]+A.iloc[:,i+l2]
+    B.iloc[:,i+l2]=A.iloc[:,i]-A.iloc[:,i+l2]
+B.to_csv('B.csv')
+
+#np.savetxt("A.csv", A, delimiter=",",header="Id,Values")
+
+# Compute the SVD of the matrix
+U, sigma, VT = np.linalg.svd(B)
+
+np.savetxt("U.csv", U, delimiter=",")
+np.savetxt("Sigma.csv", sigma, delimiter=",")
+np.savetxt("VT.csv", VT, delimiter=",")
+
+ ##################################################################################################################################################################################################
+
 ###########################
 # Create and solve the LP #
 ###########################
 tic = time()
+
 problem = LpProblem("Has_a_caterpillar_diagram_Problem", LpMinimize)
+#problem = LpProblem("Has_a_caterpillar_diagram_Problem", LpMaximize)
 
 # Define decision variablesdistance 
 distance = LpVariable.dicts("distance", ROWS, cat='Continuous', lowBound=0)
 leg      = LpVariable.dicts("leg", ROWS, cat='Continuous', lowBound=0)
 
 # We do not define an objective function since none is needed
-problem += lpSum([leg[i] for i in range(n)])
+problem += lpSum([0*leg[i] for i in range(n)])
 #problem += distance[n-1]
 
 # Constraints for each pair
 for (i,j) in two_points:
     if (i<j-1) :
-        problem += LpConstraint( distance[i] + distance[j] - 2*distance[max_closer[i,j]] - leg[i] + leg[j], sense=LpConstraintGE, rhs=1 , name='C'+str(i)+str(j))
+        problem += LpConstraint( distance[i] + distance[j] - 2*distance[max_closer[i,j]] - leg[i] + leg[j], sense=LpConstraintGE, rhs=1 , name='C'+str(i)+'.'+str(j))
         #problem += distance[i] + distance[j] - 2*distance[max_closer[i,j]] - leg[i] + leg[j] >= 1
     elif (i>j+1) :
-        problem += LpConstraint( -distance[i] - distance[j] + 2*distance[max_closer[i,j]] - leg[i] + leg[j], sense=LpConstraintGE, rhs=1 , name='C'+str(i)+str(j))
+        problem += LpConstraint( -distance[i] - distance[j] + 2*distance[max_closer[i,j]] - leg[i] + leg[j], sense=LpConstraintGE, rhs=1 , name='C'+str(i)+'.'+str(j))
         #problem += - distance[i] - distance[j] + 2*distance[max_closer[i,j]] - leg[i] + leg[j] >= 1
     elif (i==j-1) :
-        problem += LpConstraint( distance[i] + distance[j] - 2*distance[max_closer[i,j]] - leg[i] + leg[j], sense=LpConstraintGE, rhs=0 , name='C'+str(i)+str(j))
+        problem += LpConstraint( distance[i] + distance[j] - 2*distance[max_closer[i,j]] - leg[i] + leg[j], sense=LpConstraintGE, rhs=1 , name='C'+str(i)+'.'+str(j))
         #problem += distance[i] + distance[j] - 2*distance[max_closer[i,j]] - leg[i] + leg[j] >= 0
         #problem += -distance[i] + distance[j] - leg[i] + leg[j] >= 0
     elif (i==j+1) :
-        problem += LpConstraint( -distance[i] - distance[j] + 2*distance[max_closer[i,j]] - leg[i] + leg[j], sense=LpConstraintGE, rhs=0 , name='C'+str(i)+str(j))
+        problem += LpConstraint( -distance[i] - distance[j] + 2*distance[max_closer[i,j]] - leg[i] + leg[j], sense=LpConstraintGE, rhs=1 , name='C'+str(i)+'.'+str(j))
         #problem += - distance[i] - distance[j] + 2*distance[max_closer[i,j]] - leg[i] + leg[j] >= 0
         #problem += distance[i] - distance[j] - leg[i] + leg[j] >= 0
 
-# Forse to be in a path        
+# Force to be in a path        
 if args.p:
     for i in ROWS:
         problem += LpConstraint(leg[i], sense=LpConstraintEQ, rhs=0 , name='L'+str(i))
-# The problem data is written to an .lp file
+
+        # The problem data is written to an .lp file
 problem.writeLP("caterpillar_metric.lp")
 
-# Solve the problemvalue(
+# Solve the LP
 problem.solve(PULP_CBC_CMD(msg=0))
 
+# Stop clock
 toc = time()
 
 # Compute output matrix
@@ -167,39 +246,28 @@ for r in ROWS:
         matrixout.write("\n")
 matrixout.close()
 
+# Check solution
+is_correct=utils.check_solution(distance_matrix,outmatrix)
+
+############################
+# PRINT REPORT INFO  #
+############################
+
 # The status of the solution is printed to the screen
 print("Status:", LpStatus[problem.status])
 
 # Check the solution
 print("Correct solution:",end="")
-is_correct=utils.check_solution(distance_matrix,outmatrix)
 if is_correct :
     print("\033[1m\033[92m {}\033[00m" .format(is_correct)) # Green
 else :
     print("\033[91m {}\033[00m" .format(is_correct)) # Red
 
- ############################
-# PRINT INPUT/OUTPUT INFO  #
-############################
+# Print time
 print(f'Time: {toc - tic} seconds')
 
+# Print info (if -v/verbose )
 if args.v :     
-    # # Print the violations of triangular inequality
-    # print(f"\n Violations of triangular inequality - input distance matrix")
-    # for (i,j,k) in three_points:
-    #     # Triangular inequality
-    #     delta  =distance_matrix[i][j] + distance_matrix[j][k] - distance_matrix[i][k] 
-    #     if delta<0 :
-    #         print(f"nodes: {(i,j,k)} delta: {delta}")
-            
-    # # Print the violations of 4-point condition
-    # print(f"\n Violations of  4-point condition - input distance matrix")
-    # for (i,j,k,l) in four_points:
-    #     d1 = distance_matrix[i][l] + distance_matrix[j][k]
-    #     d2 = distance_matrix[i][k] + distance_matrix[j][l]
-    #     if (d1 - d2) > tol :
-    #         print(f"nodes: {(i,j,k,l)} d1={d1} d2={d2}")
-
     if (not args.d) : # input similarity matrix
         print(f"\n Input matrix ({input_type}) \n{input_matrix}")
 
@@ -215,17 +283,6 @@ if args.v :
     # Print the difference between input and output
     print(f"\n Output difference matrix \n{outmatrix-distance_matrix}")
 
-    ## # Print the tree text mode
-    ## dm = DistanceMatrix(outmatrix, nodelabel)
-    ## tree = nj(dm)
-    ## newick_str = nj(dm, result_constructor=str)
-
-    ## print("\n Newick notation of the tree")
-    ## print(newick_str)
-
-    ## print("\n Structure of the tree")
-    ## print(tree.ascii_art())
-
     # Plot Primal/Dual Solution
     print("\nPrimal Variables")
     for v in problem.variables():
@@ -240,7 +297,7 @@ if args.v :
      
     # Plot the tree
     utils.plot_text_caterpillar(outmatrix, nodelabel)
-    utils.plot_caterpillar(outmatrix,nodelabel)
+    # utils.plot_caterpillar(outmatrix,nodelabel,is_correct)
    
     ## handle = io.StringIO(newick_str)
     ## tree = Phylo.read(handle, "newick")
@@ -248,4 +305,21 @@ if args.v :
     ## Phylo.draw(tree,branch_labels=lambda c: c.branch_length)
 
     
+
+############################
+# PRINT REPORT INFO  #
+############################
+
+# The status of the solution is printed to the screen
+print("Status:", LpStatus[problem.status])
+
+# Check the solution
+print("Correct solution:",end="")
+if is_correct :
+    print("\033[1m\033[92m {}\033[00m" .format(is_correct)) # Green
+else :
+    print("\033[91m {}\033[00m" .format(is_correct)) # Red
+
+# Print time
+print(f'Time: {toc - tic} seconds')
     
