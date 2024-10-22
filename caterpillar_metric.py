@@ -3,6 +3,7 @@ import utils
 import numpy as np
 import time
 import pandas as pd
+import re
 
 # Arguments
 from argparse import ArgumentParser
@@ -104,7 +105,6 @@ two_points = [
     for i in range(n)
 ]
 
-
 #### AUX PROBLEM #################################################################################################################################################################################
 # Time aux
 tic_aux = time()
@@ -127,8 +127,10 @@ for (i,j) in two_points:                                                        
 if args.p:
     for i in ROWS:
         aux_problem += LpConstraint(aux_leg[i], sense=LpConstraintEQ, rhs=0 , name='AL'+str(i))
-        # Solve the aux_problem                                                                                                                                                                  #
+
+# Solve the aux_problem                                                                                                                                                                  #
 aux_problem.solve(PULP_CBC_CMD(msg=0))
+# time it
 toc_aux = time()
 # The status of the solution is printed to the screen                                                                                                                                          #
 print("AUX Status:", LpStatus[aux_problem.status])#
@@ -145,36 +147,115 @@ list_constraints =  list(aux_problem.constraints)
 list_variables = list()
 for var in aux_problem.variables():
     list_variables.append(var.name)
+# remove dummy variable
 list_variables=list_variables[1:]
 
-# create empty matrix
+# create empty matrix A
 A = pd.DataFrame(np.zeros(shape=(len(list_constraints),len(list_variables))), columns=list_variables, index=list_constraints)
-# fill matrix
+# problem dictionary
 dict = aux_problem.to_dict()
-
+# fill matrix A
 for constraint in dict['constraints']:
     for coefficient in constraint['coefficients']:
         A.loc[constraint['name'], coefficient['name']]=coefficient['value']
 A.to_csv('A.csv')
 
 # Create matrix B
-l2 = int(len(list_variables)/2)
+l2 = int(len(list_variables)/2) # two parts
 columns_B = ['d+l_'+str(i) for i in range(l2)]+['d-l_'+str(i) for i in range(l2)]
 B = pd.DataFrame(np.zeros(shape=(len(list_constraints),len(list_variables))), columns=columns_B, index=list_constraints)
 
 for i in range(l2):
-    B.iloc[:,i]=A.iloc[:,i]+A.iloc[:,i+l2]
-    B.iloc[:,i+l2]=A.iloc[:,i]-A.iloc[:,i+l2]
-B.to_csv('B.csv')
+    B.iloc[:,i] = (A.iloc[:,i]+A.iloc[:,i+l2])/2
+    B.iloc[:,i+l2] = (A.iloc[:,i]-A.iloc[:,i+l2])/2
+B.astype(int).to_csv('B.csv')
 
-#np.savetxt("A.csv", A, delimiter=",",header="Id,Values")
+# Order rows of B 
+# add type constraint
 
-# Compute the SVD of the matrix
-U, sigma, VT = np.linalg.svd(B)
+type_constraint = []
+type_constraint_order = []
+groups_size =[0,0,0]
 
-np.savetxt("U.csv", U, delimiter=",")
-np.savetxt("Sigma.csv", sigma, delimiter=",")
-np.savetxt("VT.csv", VT, delimiter=",")
+for (i,j) in two_points:
+    if i != j :
+        type = 0
+        order = i
+        if (i<j) :                                                                                                                                                                               #
+            if max_closer[i,j] == i:
+                type = 0
+                order = i
+            else :
+                type = 1
+                order = j
+        elif (i>j) :                                                                                                                                                                         
+            if max_closer[i,j] == i:
+                type = 0
+                order = i
+            else :
+                type = 2
+                order = max_closer[i,j]
+        type_constraint.append(int(type))
+        type_constraint_order.append(int(order))
+        groups_size[type] = groups_size[type]+1
+
+# Add type and order to sort the rows
+B['type_constraint']=type_constraint
+B['type_constraint_order']=type_constraint_order
+B.sort_values(by=['type_constraint', 'type_constraint_order'], ascending=[True, True], inplace=True)
+print(B)
+
+# Pop the new order rows
+type_constraint=[int(x) for x in list(B['type_constraint'])]
+type_constraint_order=[int(x) for x in list(B['type_constraint_order'])]
+B.drop(columns=['type_constraint', 'type_constraint_order'],inplace=True)
+
+# REPAIR COEFFICIENTS
+coeff = np.array([i for i in range(l2)]+[i for i in range(l2)])
+B.to_numpy()
+result = np.dot(B,coeff)
+
+print("================"+" 0 "+"=====================")
+print(coeff)
+print(list(map(int,result)))
+#print(type_constraint)
+print()
+
+for i in range(len(result)) :
+     if result[i] <= 0 :
+        if type_constraint[i] == 1 :
+            k = type_constraint_order[i]
+            while k < l2 :
+                coeff[k] = coeff[k]+groups_size[2]-result[i]+1
+                k=k+1
+        if type_constraint[i] == 2 :
+            k = l2+type_constraint_order[i]
+            while k < len(coeff) :
+                coeff[k] = coeff[k]-result[i]+1
+                k=k+1
+        result = np.dot(B,coeff)
+
+        print("================ "+"row "+list_constraints[i]+" type "+str(type_constraint[i])+" =====================")
+        print(coeff)
+        print(list(map(int,result)))
+        print()
+
+# Print solution from Aux
+legs = (coeff[:l2]-coeff[l2:])/2
+distance2 = (coeff[:l2]+coeff[l2:])/2  
+distance = coeff[:l2]-legs  
+print(f'distances : {distance}')
+#print(f'distances2: {distance2}')
+print(f'legs      : {legs}')
+print()
+
+
+# # Compute the SVD of the matrix
+# U, sigma, VT = np.linalg.svd(B)
+
+# np.savetxt("U.csv", U, delimiter=",")
+# np.savetxt("Sigma.csv", sigma, delimiter=",")
+# np.savetxt("VT.csv", VT, delimiter=",")
 
  ##################################################################################################################################################################################################
 
@@ -281,7 +362,7 @@ if args.v :
     print(f"\n Output distance matrix \n{outmatrix}")
 
     # Print the difference between input and output
-    print(f"\n Output difference matrix \n{outmatrix-distance_matrix}")
+    #print(f"\n Output difference matrix \n{outmatrix-distance_matrix}")
 
     # Plot Primal/Dual Solution
     print("\nPrimal Variables")
@@ -306,20 +387,20 @@ if args.v :
 
     
 
-############################
-# PRINT REPORT INFO  #
-############################
+    ############################
+    # PRINT REPORT INFO  #
+    ############################
 
-# The status of the solution is printed to the screen
-print("Status:", LpStatus[problem.status])
+    # The status of the solution is printed to the screen
+    print("Status:", LpStatus[problem.status])
 
-# Check the solution
-print("Correct solution:",end="")
-if is_correct :
-    print("\033[1m\033[92m {}\033[00m" .format(is_correct)) # Green
-else :
-    print("\033[91m {}\033[00m" .format(is_correct)) # Red
+    # Check the solution
+    print("Correct solution:",end="")
+    if is_correct :
+        print("\033[1m\033[92m {}\033[00m" .format(is_correct)) # Green
+    else :
+        print("\033[91m {}\033[00m" .format(is_correct)) # Red
 
-# Print time
-print(f'Time: {toc - tic} seconds')
-    
+        # Print time
+        print(f'Time: {toc - tic} seconds')
+
