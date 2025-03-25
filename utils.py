@@ -1,6 +1,11 @@
 import matplotlib.pyplot as plt
 import networkx as nx
-    
+import numpy as np
+from itertools import combinations
+import io
+import csv
+
+
 def get_example(k) :
     examples = [
         [[5, 2, 2, 1, 1],
@@ -42,6 +47,23 @@ def get_example(k) :
         ]
     return(examples[k])
 
+def compute_max_closer(distance_matrix) :
+    n= len(distance_matrix)
+    max_closer=np.zeros((n,n))
+    # Compute hanging node distances
+    hang_distance = [0]*n
+    for i in range(n):
+        for j in range(n):
+            max_closer[i][j]=i
+            increment=1 # left -> right
+            if (i>j) :
+                increment=-1 # right -> left
+            for k in range(i,j,increment):
+                if distance_matrix[i][k] < distance_matrix[k][j]:
+                    max_closer[i][j] = k
+                
+    return max_closer
+
 def compute_hang_inter_distance(distance_matrix) :
     n= len(distance_matrix)
     # Compute hanging node distances
@@ -54,7 +76,7 @@ def compute_hang_inter_distance(distance_matrix) :
         inter_distance[i]= distance_matrix[i][i-1]-hang_distance[i]-hang_distance[i-1]    
     return(hang_distance,inter_distance)
     
-def plot_caterpillar(distance_matrix, nodelabel) :
+def plot_caterpillar(distance_matrix, nodelabel, is_correct) :
     n= len(distance_matrix)
     tol=0.000001
     xhop = 2
@@ -63,6 +85,9 @@ def plot_caterpillar(distance_matrix, nodelabel) :
     edge_labels={}
     edges= []
     hang_distance,inter_distance=compute_hang_inter_distance(distance_matrix)
+    edge_color='red'
+    if is_correct:
+        edge_color='black'
     
     # Create edges
     prev_auxnode=nodelabel[0] # previous node in the backbone    
@@ -96,7 +121,7 @@ def plot_caterpillar(distance_matrix, nodelabel) :
         G,
         pos,
         nodelist=nodelabel,
-        edgecolors='black',
+        edgecolors=edge_color,
         node_size=700,
         node_color='gainsboro',
         alpha=1.0,
@@ -106,6 +131,7 @@ def plot_caterpillar(distance_matrix, nodelabel) :
     nx.draw_networkx_edge_labels(
         G, pos,
         edge_labels=edge_labels,
+        font_color=edge_color,
         rotate=False,
         font_size=14
     )
@@ -138,26 +164,60 @@ def plot_text_caterpillar(distance_matrix, nodelabel) :
     n= len(distance_matrix)
     tol=0.000001
     hang_distance,inter_distance=compute_hang_inter_distance(distance_matrix)
-    # Create edges
-    prev_auxnode=nodelabel[0] # previous node in the backbone
-    print("("+str(nodelabel[0])+")")
+    f = io.StringIO()
+
+    print("("+str(nodelabel[0])+")", file=f)
     for i in range(1,n) :
-        print(" |")
-        print(str(round(inter_distance[i],2)))
+        print(" |", file=f)
+        print(str(round(inter_distance[i],2)), file=f)
         # put the node in the backbone
-        print(" |")
+        print(" |", file=f)
         # if hang is positive create the auxnode an the hang edge
         if hang_distance[i]>tol :
-            print(" |- "+str(round(hang_distance[i],2))+" - ("+str(nodelabel[i])+")")
-        else :
-            print("("+str(nodelabel[i])+")")
-    print("")
+            print(" |- "+str(round(hang_distance[i],2))+" - ("+str(nodelabel[i])+")", file=f)
+        else : 
+            print("("+str(nodelabel[i])+")", file=f)
+    # Print in stand.out
+    out = f.getvalue()
+    print(out)
+    f.close()
+    
+
 def check_solution (distance_matrix, outmatrix):
     is_correct=True
     n=len(distance_matrix)
     for j in range(n):
-        for i in range(n):
+        for i in range(n): # center
             for k in range(n):
                 if (distance_matrix[i][j] > distance_matrix[i][k]) and  (outmatrix[i][j] < outmatrix[i][k]):  
-                    is_correct=False 
+                    is_correct=False
+                    print(f'delta_sim:{distance_matrix[i][j]} - {distance_matrix[i][k]}, delta_dist:{outmatrix[i][j]} - {outmatrix[i][k]}')
     return(is_correct)
+
+
+def all_kernel_bases(matrix, output_file):
+    rows, cols = matrix.shape
+    
+    # Get all combinations of column indices with cardinality equal to the number of rows
+    column_combinations = combinations(range(cols), rows)
+
+    with open(output_file, 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        for column_indices in column_combinations:
+            subset_cols = matrix[:, column_indices]
+            remaining_cols = np.delete(matrix, column_indices, axis=1)
+        
+            # Check if the submatrix is invertible
+            if np.linalg.det(subset_cols) != 0:        
+                # Compute the inverse of the submatrix
+                subset_cols_inv = np.linalg.inv(subset_cols)
+        
+                # Compute the multiplication of the inverse with the remaining columns
+                result = -np.dot(subset_cols_inv, remaining_cols)
+                
+                # Save the result to the CSV file
+                column_indices_str = ','.join(map(str, column_indices))
+                for row in result:
+                    writer.writerow([column_indices_str] + row.tolist())
+                print(column_indices_str)
+                writer.writerow("")

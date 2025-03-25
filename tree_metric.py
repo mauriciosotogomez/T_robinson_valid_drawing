@@ -1,22 +1,26 @@
 # import utils functions
 import utils
+import numpy as np
+import time
 
 # Arguments
 from argparse import ArgumentParser
 
-import numpy as np # represent
 #Solve LP
 from pulp import * # solve LP
 
 # Construct the tree (install scikit-bio)
-from skbio import DistanceMatrix 
-from skbio.tree import nj
+## from skbio import DistanceMatrix 
+## from skbio.tree import nj
 
 # Plot the tree
 ## from Bio import Phylo
 ## from io import StringIO
 
-#subprocess.call ("/pathto/MyrScript.r")
+
+#######################
+# Read Input  #
+#######################
 
 parser = ArgumentParser()
 parser.add_argument("-e", "--example_number",
@@ -38,6 +42,7 @@ parser.add_argument("-v",
 parser.add_argument("-d",
                     action="store_true",
                     help="use distance matrix")
+
 args = parser.parse_args()
 
 # Get problem input matrix
@@ -62,7 +67,9 @@ ROWS = COLS = range(n)
 nodelabel = ["S"+str(i) for i in range(n)]
 #all_labels=["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
 #nodelabel = all_labels[:n]
+tol=0.11
 
+# Compute distance matrix, if necessary
 input_type="distance"
 distance_matrix=input_matrix 
 if (not args.d) : # input similarity matrix
@@ -94,13 +101,15 @@ two_points = [ # i<j
 ###########################
 # Create and solve the LP #
 ###########################
-problem = LpProblem("Has_a_tree_diagram_Problem")
+
+tic=time()
+problem = LpProblem("Has_a_tree_diagram_Problem", LpMinimize)
 
 # Define decision variables
 distance = LpVariable.dicts("distance", (ROWS, COLS), cat='Continuous', lowBound=0)
 
 # We do not define an objective function since none is needed
-#problem += lpSum([distance[i][j] for (i,j) in two_points])
+problem += lpSum([distance[0][i]+distance[i][n-1]-distance[0][n-1] for i in range(1,n)])
 
 # Constraints ensuring the 4-point condition
 # WE ASSUME distance[i][l] + distance[j][k] >= distance[i][j] + distance[k][l] 
@@ -127,6 +136,7 @@ problem.writeLP("tree_metric.lp")
 
 # Solve the problem
 problem.solve(PULP_CBC_CMD(msg=0))
+toc=time()
 
 # Compute output matrix
 outmatrix=np.zeros((n,n))
@@ -157,24 +167,34 @@ if is_correct :
 else :
     print("\033[91m {}\033[00m" .format(is_correct)) # Red
 
-############################
+ ############################
 # PRINT INPUT/OUTPUT INFO  #
 ############################
+print(f'Time: {toc - tic} seconds')
+ 
 
-if args.v :
-    if (not args.d) : # input similarity matrix
-        print(f"\n Input matrix ({input_type}) \n{input_matrix}")
-
-    print(f"\n Input distance matrix \n{distance_matrix}")
-     
-    ## # Print the violations of triangular inequality
-    print(f"\n Violations of triangular inequality")
+if args.v :     
+    # Print the violations of triangular inequality
+    print(f"\n Violations of triangular inequality - input distance matrix")
     for (i,j,k) in three_points:
         # Triangular inequality
         delta  =distance_matrix[i][j] + distance_matrix[j][k] - distance_matrix[i][k] 
         if delta<0 :
             print(f"nodes: {(i,j,k)} delta: {delta}")
+            
+    # Print the violations of 4-point condition
+    print(f"\n Violations of  4-point condition - input distance matrix")
+    for (i,j,k,l) in four_points:
+        d1 = distance_matrix[i][l] + distance_matrix[j][k]
+        d2 = distance_matrix[i][k] + distance_matrix[j][l]
+        if (d1 - d2) > tol :
+            print(f"nodes: {(i,j,k,l)} d1={d1} d2={d2}")
 
+    if (not args.d) : # input similarity matrix
+        print(f"\n Input matrix ({input_type}) \n{input_matrix}")
+
+    print(f"\n Input distance matrix \n{distance_matrix}")
+            
     # Print the output matrix
     np.set_printoptions(precision=1,floatmode='fixed', suppress=True)
     print(f"\n Output distance matrix \n{outmatrix}")
