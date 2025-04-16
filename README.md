@@ -20,26 +20,20 @@ script to compute a valid drawing for a Robinson matrix
     **python caterpillar_metric.py -f file.csv -v**
 
 ### Parameters 
--e, --example_number=INT
-
+-e, --example_number=INT\
                    use the predefined example INT
 
--f, --input_file=FILE
-
+-f, --input_file=FILE\
                    use the dissimilarity matrix in FILE (.csv) as input
 
--g, --generate_random=INT
-
+-g, --generate_random=INT\
                    generate a random matrix with size INT
 
--v
-
+-v\
                    verbose: print informationn and plots
 
--d
-
+-d\
                    use a distance matrix instead of a dissimilarity
 
--p
-
+-p\
                    forse solution to be a path instead of centipede
