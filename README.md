@@ -12,9 +12,11 @@ script to compute a valid drawing for a Robinson matrix
 **python caterpillar_metric.py  [OPTIONS] [FILE]**
 
 ### Example
-  - Use the third predefined example and plot it 
+  - Use the third predefined example and plot it
+    
     **python caterpillar_metric.py -e 3 -v**
   - Use the file **file.csv** and plot it
+    
     **python caterpillar_metric.py -f file.csv -v**
 
 ### Parameters 
