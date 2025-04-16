@@ -9,19 +9,20 @@ script to compute a valid drawing for a Robinson matrix
 
 ## Usage
 
-<code>python caterpillar_metric.py  [OPTIONS] [FILE]<\code>
+**python caterpillar_metric.py  [OPTIONS] [FILE]**
 
 ### Example
-  - Use the third predefined exmaple and plot it 
-    python caterpillar_metric.py -e 3 -v
-  - 
+  - Use the third predefined example and plot it 
+    **python caterpillar_metric.py -e 3 -v**
+  - Use the file **file.csv** and plot it
+    **python caterpillar_metric.py -f file.csv -v**
 
 ### Parameters 
 -e, --example_number=INT
                    use the predefined example INT
 
 -f, --input_file=FILE
-                   use the FILE (.csv) as input
+                   use the dissimilarity matrix in FILE (.csv) as input
 
 -g, --generate_random=INT
                    generate a random matrix with size INT
