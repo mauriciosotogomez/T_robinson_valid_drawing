@@ -28,6 +28,10 @@ parser.add_argument("-g", "--generate_random",
                     dest="generate_random_size", default=None,
                     help="generate a random matrix with this size")
 
+parser.add_argument("-m", "--generate_center_matrix",
+                    dest="generate_random_center", default=None,
+                    help="generate a random center matrix with this size")
+
 parser.add_argument("-v",
                     action="store_true",
                     help="verbose")
@@ -35,6 +39,10 @@ parser.add_argument("-v",
 parser.add_argument("-d",
                     action="store_true",
                     help="use distance matrix")
+
+parser.add_argument("-c",
+                    action="store_true",
+                    help="use center matrix")
 
 parser.add_argument("-p",
                     action="store_true",
@@ -45,15 +53,22 @@ args = parser.parse_args()
 # Get problem input matrix
 # from the predefined list
 input_matrix = np.array(utils.get_example(int(args.n_example)))
+
 # from a file
 if args.input_file is not None:
     input_matrix = np.genfromtxt(args.input_file, delimiter=',')
-# random generated
+
+# random generated distance 
 if args.generate_random_size is not None:
     subprocess.call(["/usr/bin/Rscript", "create_Robinson.r",args.generate_random_size])
     input_matrix = np.genfromtxt("random_robinson_matrix.csv", delimiter=',')
     # it is a distance matrix
-
+    
+# random generated center 
+if args.generate_random_center is not None:
+    input_center = utils.generate_center_matrix(int(args.generate_random_center))
+    #input_center = utils.generate_simple_matrix(int(args.generate_random_center))
+    
 # Compute distance matrix, if necessary
 input_type="distance"
 distance_matrix=input_matrix 
@@ -62,13 +77,21 @@ if (not args.d) : # input similarity matrix
     distance_matrix = input_matrix.max()-input_matrix
 
 # Compute left/right centers    
-max_closer=utils.compute_max_closer(distance_matrix)
-pd.DataFrame(data=max_closer).astype(int).to_csv('max_closer.csv')
+if (args.c) : # input center matrix
+    max_closer = input_matrix.astype('int32')
+elif (args.generate_random_center is not None):
+    max_closer = input_center
+else :
+    max_closer = utils.compute_max_closer(distance_matrix)
+    pd.DataFrame(data=max_closer).astype(int).to_csv('max_closer.csv',index=False,header=False)
+
+
+print(max_closer)
     
 #######################
 # Problem description #
 #######################
-n = len(input_matrix)
+n = len(max_closer)
 ROWS = COLS = range(n)
 tol=0.11
 
@@ -102,7 +125,9 @@ two_points = [
     for j in range(i)
 ] 
 
-#### AUX PROBLEM  NO POSITIVE VARIABLE CONSTRAINTS ###############################
+###############################
+#### AUX PROBLEM  NO POSITIVE VARIABLE CONSTRAINTS
+###############################
 # Time aux
 tic_aux = time()
 #Aux problem
@@ -110,18 +135,31 @@ aux_problem = LpProblem("A_has_a_positive_linear_combination", LpMinimize)
 aux_distance = LpVariable.dicts("aux_distance", ROWS, cat='Continuous')
 aux_leg      = LpVariable.dicts("aux_leg", ROWS, cat='Continuous')
 aux_problem += 0 # feasibility
+
 # Constraints for each pair
 for (i,j) in two_points:
-    if (i<j) :          
-        aux_problem += aux_distance[i] + aux_distance[j] - 2*aux_distance[max_closer[i,j]] - aux_leg[i] + aux_leg[j] >= 1, 'A'+str(i)+'_'+str(j)
-    elif (i>j) :  
-        aux_problem += -aux_distance[i] - aux_distance[j] + 2*aux_distance[max_closer[i,j]] - aux_leg[i] + aux_leg[j] >= 1, 'A'+str(i)+'_'+str(j)
+    minimal = False
+    if (i<j) :
+        if (i == j-1) or ( (max_closer[i,j-1] != max_closer[i,j]) and ( (i==0) or (max_closer[i-1,j] != max_closer[i,j]) ) ) :
+            minimal = True
+        if minimal :
+            aux_problem += aux_distance[i] + aux_distance[j] - 2*aux_distance[max_closer[i,j]] - aux_leg[i] + aux_leg[j] >= 1, 'A'+str(i)+'_'+str(j)
+    elif (i>j) :
+        if (i == j+1) or ( (max_closer[i,j+1] != max_closer[i,j]) and ( (i==(n-1)) or (max_closer[i+1,j] != max_closer[i,j]) ) ):
+            minimal = True
+        if minimal :
+            aux_problem += -aux_distance[i] - aux_distance[j] + 2*aux_distance[max_closer[i,j]] - aux_leg[i] + aux_leg[j] >= 1, 'A'+str(i)+'_'+str(j)
 
 # Force to be in a path (LEGS=0)
 if args.p:
     for i in ROWS:
         aux_problem += LpConstraint(aux_leg[i], sense=LpConstraintEQ, rhs=0 , name='AL'+str(i))
 
+# The problem data is written to an .lp file
+aux_problem.writeLP("aux_caterpillar_metric.lp")
+aux_problem.writeMPS("aux_caterpillar_metric.mps")
+
+        
 # Solve the aux_problem
 aux_problem.solve(PULP_CBC_CMD(msg=0))
 # time it
@@ -148,20 +186,27 @@ for r in ROWS:
             aux_outmatrix[r][c] = aux_distance[r].varValue - aux_distance[c].varValue + aux_leg[c].varValue + aux_leg[r].varValue - 2*min_leg
 
 # Check solution
-is_correct=utils.check_solution(distance_matrix,aux_outmatrix)
+is_correct  = "NO"
+
+if (not args.c and not args.generate_random_center) : # Distance of similarity
+    is_correct=utils.check_solution(distance_matrix,aux_outmatrix)
+else: # Centers provided
+    is_correct = (utils.compute_max_closer(aux_outmatrix).astype(int)== max_closer).all()
+    print(utils.compute_max_closer(aux_outmatrix).astype(int))
+
 print("Correct solution:",end="")
 if is_correct :
     print("\033[1m\033[92m {}\033[00m" .format(is_correct)) # Green
 else :
     print("\033[91m {}\033[00m" .format(is_correct)) # Red
 
-
+        
 if args.v :     
-    # Print Primal/Dual Solution                                                                                                                                                                    #
-    print("\nAUX Primal Variables")                                                                                                                                                                #
-    for v in aux_problem.variables():                                                                                                                                                              #
-        print(v.name, ":" "\t", v.varValue)                                                                                                                                                        #
-
+    # Print Primal/Dual Solution 
+    print("\nAUX Primal Variables") 
+    for v in aux_problem.variables(): 
+        print(v.name, ":" "\t", v.varValue)
+        
 # Get all variables and constraints
 variables = list(aux_problem.variables())
 constraints = [aux_problem.constraints[name] for name in aux_problem.constraints]
@@ -196,12 +241,63 @@ B = pd.DataFrame(np.zeros(shape=(len(constraint_names),len(var_names))), columns
 for i in range(l2):
     # Convert to explicit float64 numpy arrays before assignment
     B.iloc[:,i] = np.array((A.iloc[:,i].values+A.iloc[:,i+l2].values)/2, dtype=np.float64)
-    B.iloc[:,i+l2] = np.array((A.iloc[:,i].values-A.iloc[:,i+l2].values)/2, dtype=np.float64)
-    
+    B.iloc[:,i+l2] = np.array((A.iloc[:,i].values-A.iloc[:,i+l2].values)/2, dtype=np.float64)   
 
-B.astype(int).to_csv('B.csv')
+B.astype(int).to_csv('B.csv')    
 B.T.astype(int).to_csv('Bt.csv')
-#print(B)
+
+# Reorder the columns of B and get B.T
+for i in range(n-1,0,-1): 
+    index_to_move = 'A'+str(i)+'_'+str(i-1)
+    row_to_move = B.loc[index_to_move]  # Select the row to move
+    B = pd.concat([row_to_move.to_frame().T, B.loc[~B.index.isin([index_to_move])]])
+for i in range(n-2,-1,-1):
+    index_to_move = 'A'+str(i)+'_'+str(i+1)
+    row_to_move = B.loc[index_to_move]  # Select the row to move
+    B = pd.concat([row_to_move.to_frame().T, B.loc[~B.index.isin([index_to_move])]])
+
+ # Compute the base for the KERNEL   
+Bt=B.transpose()
+Bt.astype(int).to_csv('Bt_ordered.csv')
+# remove variable distance_0 and leg_0
+Bt.drop(Bt.index[[0, n]],inplace=True) 
+Bt_rows,Bt_columns = Bt.shape
+
+base_inverse = np.linalg.inv(Bt.iloc[:,:Bt_rows])
+kernel_base = -np.matmul(base_inverse,Bt.iloc[:,Bt_rows:])
+kernel_base.index = Bt.index
+kernel_base.astype(int).to_csv('K.csv')
+
+#### DEFINE ALTERNATIVE PROBLEM ####
+
+alt_problem = LpProblem("Alternative_problem_has_solution", LpMaximize)
+# Define decision variables distance 
+Y = LpVariable.dicts("Y", kernel_base.columns, cat='Continuous', lowBound=0, upBound=10)
+# Define objective function
+alt_problem+= lpSum([Y[i] for i in kernel_base.columns])
+#alt_problem += 0 # feasibility
+
+k=0
+for r in kernel_base.index:
+    # print([(int(kernel_base.loc[r][c]),r,c)
+    #     for c in kernel_base.columns])
+    alt_problem += pulp.lpSum([
+        int(kernel_base.loc[r][c]) * Y[c]
+        for c in kernel_base.columns]) >= 0 , str(r)+str(k)
+    k=k+1
+
+#Save alt problem    
+alt_problem.writeLP("alt_caterpillar_metric.lp")
+
+# Solve the alt_problem
+alt_problem.solve(PULP_CBC_CMD(msg=0))
+
+# The status of the solution is printed to the screen
+print("---")#
+print("ALT Status:", LpStatus[alt_problem.status])#
+
+for v in alt_problem.variables(): 
+        print(v.name, ":" "\t", v.varValue)
 
 # # Reorder the columns of A
 # for i in range(n-1,0,-1): 
@@ -319,9 +415,8 @@ B.T.astype(int).to_csv('Bt.csv')
 tic = time()
 
 problem = LpProblem("Has_a_caterpillar_diagram_Problem", LpMinimize)
-#problem = LpProblem("Has_a_caterpillar_diagram_Problem", LpMaximize)
 
-# Define decision variablesdistance 
+# Define decision variables distance 
 distance = LpVariable.dicts("distance", ROWS, cat='Continuous', lowBound=0)
 leg      = LpVariable.dicts("leg", ROWS, cat='Continuous', lowBound=0)
 
@@ -382,9 +477,6 @@ for r in ROWS:
     matrixout.write("\n")
 matrixout.close()
 
-# Check solution
-is_correct=utils.check_solution(distance_matrix,outmatrix)
-
 ############################
 # PRINT REPORT INFO  #
 ############################
@@ -393,15 +485,18 @@ print("---")#
 # The status of the solution is printed to the screen
 print("Status:", LpStatus[problem.status])
 
-# Check the solution
-print("Correct solution:",end="")
-if is_correct :
-    print("\033[1m\033[92m {}\033[00m" .format(is_correct)) # Green
-else :
-    print("\033[91m {}\033[00m" .format(is_correct)) # Red
-
 # Print time
 print(f'Time: {toc - tic} seconds')
+
+# Check the solution
+# Check solution
+if (not args.c and not args.generate_random_center) : # Distance of similarity
+    is_correct=utils.check_solution(distance_matrix,outmatrix)
+    print("Correct solution:",end="")
+    if is_correct :
+        print("\033[1m\033[92m {}\033[00m" .format(is_correct)) # Green
+    else :
+        print("\033[91m {}\033[00m" .format(is_correct)) # Red
 
 # Print info (if -v/verbose )
 if args.v :     
@@ -423,7 +518,7 @@ if args.v :
     # Plot Primal/Dual Solution
     print("\nPrimal Variables")
     for v in problem.variables():
-         print(v.name, ":" "\t", v.varValue)
+        print(v.name, ":" "\t", v.varValue)
         #varsdict[v.name] = v.varValue
     #print(varsdict)
        
@@ -434,7 +529,7 @@ if args.v :
      
     # Plot the tree
     utils.plot_text_caterpillar(outmatrix, nodelabel)
-    utils.plot_caterpillar(outmatrix,nodelabel,is_correct)
+    #utils.plot_caterpillar(outmatrix,nodelabel,is_correct)
    
     ############################
     # PRINT REPORT INFO  #

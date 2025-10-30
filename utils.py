@@ -4,7 +4,10 @@ import numpy as np
 from itertools import combinations
 import io
 import csv
+import math
 
+import random
+from typing import List, Tuple, Dict, Optional
 
 def get_example(k) :
     examples = [
@@ -76,7 +79,7 @@ def compute_hang_inter_distance(distance_matrix) :
         inter_distance[i]= distance_matrix[i][i-1]-hang_distance[i]-hang_distance[i-1]    
     return(hang_distance,inter_distance)
     
-def plot_caterpillar(distance_matrix, nodelabel, is_correct) :
+def plot_caterpillar(distance_matrix, nodelabel, is_correct=True) :
     n= len(distance_matrix)
     tol=0.000001
     xhop = 2
@@ -221,3 +224,202 @@ def all_kernel_bases(matrix, output_file):
                     writer.writerow([column_indices_str] + row.tolist())
                 print(column_indices_str)
                 writer.writerow("")
+
+
+def generate_center_matrix(n, seed=None):
+    if seed is not None:
+        np.random.seed(seed)
+
+    M = np.zeros((n, n), dtype=int)
+
+    # Diagonal principal
+    for i in range(n):
+        M[i, i] = i
+
+    # Diagonal justo encima de la principal
+    for i in range(n - 1):
+        M[i, i + 1] = i
+
+    # Parte superior derecha (más allá de la diagonal justo encima)
+    for d in range(2, n):  # distancia desde la diagonal principal
+        for i in range(n - d):
+            j = i + d
+            a = M[i, j - 1]
+            b = M[i + 1, j]
+            low = min(a, b)
+            high = max(a, b)
+            M[i, j] = np.random.randint(low, high + 1)
+
+    # Parte inferior izquierda (simétrica + 1)
+    for i in range(n):
+        for j in range(i):
+            M[i, j] = M[j, i] + 1
+
+    # Lower Secondary diagonal 
+    for i in range(1,n):
+        M[i, i-1] = i
+
+    # # Lower part (other than the secondary diagonal)
+    # for d in range(2, n):  # distance from the diagonal
+    #     for i in range(n - d):
+    #         j = i + d
+    #         a = M[j - 1, i]
+    #         b = M[j, i + 1]
+    #         low = max(a, M[i,j]+1)
+    #         high = b
+    #         M[j, i] = np.random.randint(low, high + 1)
+            
+    return M
+                
+
+
+def generate_simple_matrix(n, seed=None):
+    if seed is not None:
+        np.random.seed(seed)
+
+    M = np.zeros((n, n), dtype=int)
+
+    # Diagonal principal
+    for i in range(n):
+        M[i, i] = i
+
+    # Diagonal justo encima de la principal
+    for i in range(n - 1):
+        M[i, i + 1] = i
+
+    # Parte superior derecha (más allá de la diagonal justo encima)
+    for d in range(2, n):  # distancia desde la diagonal principal
+        for i in range(n - d):
+            j = i + d
+            M[i, j] = math.floor((j+i)/2)
+
+    # Parte inferior izquierda (simétrica + 1)
+    for i in range(n):
+        for j in range(i):
+            M[i, j] = M[j, i] + 1
+
+    return M
+
+
+# ------------------------------------------------------------
+# 1) Generaci'f3n de matriz M
+# ------------------------------------------------------------
+def generar_matriz(n: int, seed: Optional[int] = None) -> List[List[int]]:
+    """
+    Genera una matriz M de tama'f1o n'd7n cumpliendo:
+      1) M(i,i) = i
+      2) M(i,i+1) = i
+      3) Para j - i >= 2: M(i,j) es entero aleatorio en [ M(i,j-1), M(i+1,j) ]
+      4) Para i > j: M(j,i) = M(i,j) + 1
+
+    Notaci'f3n matem'e1tica 1-indexada en esta especificaci'f3n; implementaci'f3n 0-indexada.
+    """
+    if n <= 0:
+        raise ValueError("n debe ser un entero positivo")
+
+    if seed is not None:
+        random.seed(seed)
+
+    M: List[List[Optional[int]]] = [[None for _ in range(n)] for _ in range(n)]
+
+    # Diagonal principal: M(i,i) = i
+    for i in range(n):
+        M[i][i] = i + 1
+
+    # Segunda diagonal: M(i,i+1) = i
+    for i in range(n - 1):
+        M[i][i + 1] = i + 1
+
+    # Diagonales superiores restantes (j - i >= 2)
+    for d in range(2, n):  # d = j - i
+        for i in range(0, n - d):
+            j = i + d
+            low = M[i][j - 1]
+            up  = M[i + 1][j]
+            if low is None or up is None:
+                raise RuntimeError("L'edmites no definidos al construir M.")
+            if low > up:
+                raise ValueError(f"Intervalo vac'edo al fijar M({i+1},{j+1}): [{low}, {up}]")
+            M[i][j] = random.randint(low, up)
+
+    # Tri'e1ngulo inferior: M(j,i) = M(i,j) + 1 para i < j
+    for i in range(n):
+        for j in range(i + 1, n):
+            M[j][i] = M[i][j] + 1
+
+    # type: ignore (ya no hay None)
+    return [list(map(int, fila)) for fila in M]  # convertir a int por seguridad
+
+
+# ------------------------------------------------------------
+# 2) Construcci'f3n del grafo y verificaci'f3n DAG
+# ------------------------------------------------------------
+def construir_grafo(M: List[List[int]]) -> Dict[Tuple[int, int], List[Tuple[int, int]]]:
+    """
+    Construye el grafo dirigido a partir de M seg'fan:
+      - V = {(i,j) : 1 <= i <= j <= n}
+      - Regla 1: (i,j) -> (i,j+1)           para 1 <= i <= j < n
+      - Regla 2: (i,j) -> (i-1,j)           para 1 <  i <= j <= n
+      - Regla 3: (i, M(i,j)) -> (M(i,j), j) para 1 <= i <  j <= n   [corregida: solo i<j]
+      - Regla 4: (M(i,j)+1, j) -> (i, M(i,j)+1) para 1 <= i < j <= n [corregida: solo i<j]
+
+    Usa 1-indexado en los nombres de v'e9rtices.
+    """
+    n = len(M)
+    V = {(i, j) for i in range(1, n + 1) for j in range(i, n + 1)}
+    adj: Dict[Tuple[int, int], List[Tuple[int, int]]] = {v: [] for v in V}
+
+    def add_edge(u: Tuple[int, int], v: Tuple[int, int]) -> None:
+        if u in V and v in V:
+            adj[u].append(v)
+
+    # Regla 1
+    for i in range(1, n + 1):
+        for j in range(i, n):
+            add_edge((i, j), (i, j + 1))
+
+    # Regla 2
+    for i in range(2, n + 1):
+        for j in range(i, n + 1):
+            add_edge((i, j), (i - 1, j))
+
+    # Reglas 3 y 4 (solo si i < j)
+    for i in range(1, n + 1):
+        for j in range(i, n + 1):
+            if i < j:
+                mij = M[i-1][j-1]
+                # Regla 3
+                add_edge((i, mij), (mij, j))
+                # Regla 4
+                add_edge((mij + 1, j), (i, mij + 1))
+
+    return adj
+
+
+def es_DAG(M: List[List[int]]) -> str:
+    """
+    Devuelve "YES" si el grafo dirigido inducido por M es ac'edclico (DAG),
+    y "NO" en caso contrario.
+    """
+    n = len(M)
+    V = {(i, j) for i in range(1, n + 1) for j in range(i, n + 1)}
+    adj = construir_grafo(M)
+
+    WHITE, GRAY, BLACK = 0, 1, 2
+    color: Dict[Tuple[int, int], int] = {v: WHITE for v in V}
+
+    def dfs(v: Tuple[int, int]) -> bool:
+        color[v] = GRAY
+        for u in adj[v]:
+            if color[u] == GRAY:
+                return False  # ciclo
+            if color[u] == WHITE and not dfs(u):
+                return False
+        color[v] = BLACK
+        return True
+
+    for v in V:
+        if color[v] == WHITE:
+            if not dfs(v):
+                return "NO"
+    return "YES"
