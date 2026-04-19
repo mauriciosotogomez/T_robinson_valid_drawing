@@ -1,10 +1,7 @@
 # Caterpillar Metric
 
-Tools to determine whether a given similarity/distance matrix admits a **caterpillar tree metric** (a.k.a. T-Robinsonian structure), and to compute the closest such metric via Linear Programming.
+Tools to determine whether a given Robinsonian similarity/distance matrix admits a **caterpillar tree metric**, and to compute the closest such metric via Linear Programming.
 
-## Background
-
-A symmetric matrix is *T-Robinsonian* if its entries are consistent with distances on a weighted caterpillar tree. This code formulates the problem as an LP (using [PuLP](https://coin-or.github.io/pulp/)) and finds either a valid embedding or certifies infeasibility.
 
 ## Files
 
