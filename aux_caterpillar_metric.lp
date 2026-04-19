@@ -1,0 +1,31 @@
+\* A_has_a_positive_linear_combination *\
+Minimize
+OBJ: __dummy
+Subject To
+A0_1: - aux_distance_0 + aux_distance_1 - aux_leg_0 + aux_leg_1 >= 1
+A0_2: aux_distance_0 - 2 aux_distance_1 + aux_distance_2 - aux_leg_0
+ + aux_leg_2 >= 1
+A1_0: - aux_distance_0 + aux_distance_1 + aux_leg_0 - aux_leg_1 >= 1
+A1_2: - aux_distance_1 + aux_distance_2 - aux_leg_1 + aux_leg_2 >= 1
+A2_1: - aux_distance_1 + aux_distance_2 + aux_leg_1 - aux_leg_2 >= 1
+A2_3: - aux_distance_2 + aux_distance_3 - aux_leg_2 + aux_leg_3 >= 1
+A3_2: - aux_distance_2 + aux_distance_3 + aux_leg_2 - aux_leg_3 >= 1
+A3_4: - aux_distance_3 + aux_distance_4 - aux_leg_3 + aux_leg_4 >= 1
+A4_1: - aux_distance_1 + 2 aux_distance_2 - aux_distance_4 + aux_leg_1
+ - aux_leg_4 >= 1
+A4_2: - aux_distance_2 + 2 aux_distance_3 - aux_distance_4 + aux_leg_2
+ - aux_leg_4 >= 1
+A4_3: - aux_distance_3 + aux_distance_4 + aux_leg_3 - aux_leg_4 >= 1
+Bounds
+ __dummy = 0
+ aux_distance_0 free
+ aux_distance_1 free
+ aux_distance_2 free
+ aux_distance_3 free
+ aux_distance_4 free
+ aux_leg_0 free
+ aux_leg_1 free
+ aux_leg_2 free
+ aux_leg_3 free
+ aux_leg_4 free
+End

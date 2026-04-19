@@ -1,0 +1,12 @@
+import utils
+
+n_dag=0
+
+for i in range (100):
+    M = utils.generate_center_matrix(15)
+    output=utils.es_DAG(utils.construir_grafo(M))
+    print(output)
+    if (output=="YES"):
+        n_dag+=1
+
+print(n_dag)

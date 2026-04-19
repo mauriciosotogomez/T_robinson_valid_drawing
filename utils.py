@@ -6,6 +6,9 @@ import io
 import csv
 import math
 
+#Solve LP
+from pulp import * # solve LP
+
 import random
 from typing import List, Tuple, Dict, Optional
 
@@ -225,23 +228,22 @@ def all_kernel_bases(matrix, output_file):
                 print(column_indices_str)
                 writer.writerow("")
 
-
-def generate_center_matrix(n, seed=None):
+def generate_strict_center_matrix(n, seed=None):
     if seed is not None:
         np.random.seed(seed)
 
     M = np.zeros((n, n), dtype=int)
 
-    # Diagonal principal
+    # Main diagonal
     for i in range(n):
         M[i, i] = i
 
-    # Diagonal justo encima de la principal
+    # Secondary upper diagonal
     for i in range(n - 1):
         M[i, i + 1] = i
 
-    # Parte superior derecha (más allá de la diagonal justo encima)
-    for d in range(2, n):  # distancia desde la diagonal principal
+    # Upper half
+    for d in range(2, n):  # Range using the distance from the main diagonal
         for i in range(n - d):
             j = i + d
             a = M[i, j - 1]
@@ -272,6 +274,46 @@ def generate_center_matrix(n, seed=None):
     return M
                 
 
+def generate_center_matrix(n, seed=None):
+    if seed is not None:
+        np.random.seed(seed)
+
+    M = np.zeros((n, n), dtype=int)
+
+    # Main diagonal
+    for i in range(n):
+        M[i, i] = i
+
+    # Secondary upper diagonal
+    for i in range(n - 1):
+        M[i, i + 1] = i
+
+    # Upper half
+    for d in range(2, n):  # Range using the distance from the main diagonal
+        for i in range(n - d):
+            j = i + d
+            a = M[i, j - 1]
+            b = M[i + 1, j]
+            low = min(a, b)
+            high = max(a, b)
+            M[i, j] = np.random.randint(low, high + 1)
+
+    # Lower Secondary diagonal 
+    for i in range(1,n):
+        M[i, i-1] = i
+
+    # Lower part (other than the secondary diagonal)
+    for d in range(2, n):  # distance from the diagonal
+        for i in range(n - d):
+             j = i + d
+             a = M[j - 1, i]
+             b = M[j, i + 1]
+             low = max(a, M[i,j]+1)
+             high = b
+             M[j, i] = np.random.randint(low, high + 1)
+
+    #print(M)        
+    return M
 
 def generate_simple_matrix(n, seed=None):
     if seed is not None:
@@ -350,6 +392,71 @@ def generar_matriz(n: int, seed: Optional[int] = None) -> List[List[int]]:
     # type: ignore (ya no hay None)
     return [list(map(int, fila)) for fila in M]  # convertir a int por seguridad
 
+
+def generate_robinson_from_center_matrix(M) :
+    
+    #######################
+    # Problem description #
+    #######################
+    n = M.shape[1]
+    ROWS = COLS = range(n)
+
+    ###############################
+    #### PROBLEM FOR MATRIX ENTRIES ###
+    ###############################
+    problem = LpProblem("Robinson_from_Center_Matrix", LpMinimize)
+    # Define decision variables
+    distance = LpVariable.dicts("distance", (ROWS, COLS), cat='Continuous', lowBound=0)
+    # We do not define an objective function since none is needed
+
+    #problem += distance[0][n-1] == 100
+    
+    for i in ROWS :
+        problem += distance[i][i] == 0
+        for j in range(i) :
+            problem += distance[i][j] - distance[j][i] == 0  
+        
+    # UPPER HALF i<j
+    for j in range(1,n):
+        for i in range(j):
+            # Robinson condition
+            problem += distance[i][j-1] - distance[i][j] <= 0
+            problem += distance[i+1][j] - distance[i][j] <= 0
+            #Left Center 
+            left_center= M[i][j]
+            problem += distance[i][left_center] - distance[left_center][j] <= -1            
+            problem += distance[left_center+1][j] - distance[i][left_center+1] <= 0
+
+
+    # LOWER HALF i>j
+    for i in range(1,n):
+        for j in range(i):
+            # Robinson condition
+            problem += distance[i][j+1] - distance[i][j] <= 0
+            problem += distance[i-1][j] - distance[i][j] <= 0
+            #Right Center 
+            right_center= M[i][j]
+            problem += distance[right_center][i] - distance[j][right_center] <= -1            
+            problem += distance[j][right_center-1] - distance[right_center-1][i] <= 0
+
+    # The problem data is written to an .lp file
+    problem.writeLP("robinson_from_center.lp")
+    # Solve the aux_problem
+    problem.solve(PULP_CBC_CMD(msg=0))
+
+    has_solution = (LpStatus[problem.status]=="Optimal")
+    # print(f"Has solution {has_solution}")
+
+    # Compute output matrix
+    outmatrix=np.zeros((n,n))
+    
+    for r in ROWS:
+        for c in COLS:
+            outmatrix[r][c] = distance[r][c].varValue
+   
+    if has_solution :
+        return outmatrix
+    return False
 
 # ------------------------------------------------------------
 # 2) Construcci'f3n del grafo y verificaci'f3n DAG

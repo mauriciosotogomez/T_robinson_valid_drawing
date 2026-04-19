@@ -1,0 +1,37 @@
+(undo-tree-save-format-version . 1)
+"a985551f606699cd7efaa2f6aa5e0b89d3889d11"
+[nil nil nil nil (26791 15831 404587 303000) 0 nil]
+([nil nil ((" " . -214) (undo-tree-id21 . -1) (undo-tree-id22 . -1) (t 26791 12257 315148 578000)) nil (26791 15831 404585 883000) 0 nil])
+([nil nil (("
+" . -213) (undo-tree-id19 . -1) (undo-tree-id20 . -1) 214) nil (26791 15831 404583 365000) 0 nil])
+([nil nil ((213 . 214)) nil (26791 15831 404581 231000) 0 nil])
+([nil nil (("
+" . -575) (undo-tree-id17 . -1) (" " . -576) (undo-tree-id18 . -1) 577) nil (26791 15831 404580 390000) 0 nil])
+([nil nil ((575 . 576)) nil (26791 15831 404578 459000) 0 nil])
+([nil nil (("
+" . -661) (undo-tree-id15 . -1) (" " . -662) (undo-tree-id16 . -1) 663) nil (26791 15831 404577 553000) 0 nil])
+([nil nil ((661 . 662)) nil (26791 15831 404575 583000) 0 nil])
+([nil nil (("
+" . -887) (undo-tree-id13 . -1) (" " . -888) (undo-tree-id14 . -1) 889) nil (26791 15831 404574 512000) 0 nil])
+([nil nil ((887 . 888)) nil (26791 15831 404572 606000) 0 nil])
+([nil nil (("
+" . -975) (undo-tree-id11 . -1) (" " . -976) (undo-tree-id12 . -1) 977) nil (26791 15831 404571 687000) 0 nil])
+([nil nil ((975 . 976)) nil (26791 15831 404569 663000) 0 nil])
+([nil nil (("
+" . -1201) (undo-tree-id9 . -1) (" " . -1202) (undo-tree-id10 . -1) 1203) nil (26791 15831 404568 725000) 0 nil])
+([nil nil ((1201 . 1202)) nil (26791 15831 404566 331000) 0 nil])
+([nil current ((213 . 1207) (" + aux_leg_5 >= 1
+A1_0: - aux_distance_0 + aux_distance_1 + aux_leg_0 - aux_leg_1 >= 1
+A1_2: - aux_distance_1 + aux_distance_2 - aux_leg_1 + aux_leg_2 >= 1
+A2_1: - aux_distance_1 + aux_distance_2 + aux_leg_1 - aux_leg_2 >= 1
+A2_3: - aux_distance_2 + aux_distance_3 - aux_leg_2 + aux_leg_3 >= 1
+A2_4: aux_distance_2 - 2 aux_distance_3 + aux_distance_4 - aux_leg_2 + aux_leg_4 >= 1
+A2_5: aux_distance_2 - 2 aux_distance_4 + aux_distance_5 - aux_leg_2 + aux_leg_5 >= 1
+A3_2: - aux_distance_2 + aux_distance_3 + aux_leg_2 - aux_leg_3 >= 1
+A3_4: - aux_distance_3 + aux_distance_4 - aux_leg_3 + aux_leg_4 >= 1
+A4_0: - aux_distance_0 + 2 aux_distance_1 - aux_distance_4 + aux_leg_0 - aux_leg_4 >= 1
+A4_1: - aux_distance_1 + 2 aux_distance_2 - aux_distance_4 + aux_leg_1 - aux_leg_4 >= 1
+A4_3: - aux_distance_3 + aux_distance_4 + aux_leg_3 - aux_leg_4 >= 1
+A4_5: - aux_distance_4 + aux_distance_5 - aux_leg_4 + aux_leg_5 >= 1
+A5_1: - aux_distance_1 + 2 aux_distance_3 - aux_distance_5 + aux_leg_1" . 213) (undo-tree-id0 . -604) (undo-tree-id1 . -779) (undo-tree-id2 . -544) (undo-tree-id3 . -603) (undo-tree-id4 . -490) (undo-tree-id5 . -293) (undo-tree-id6 . -466) (undo-tree-id7 . -604) (undo-tree-id8 . -691)) nil (26791 15831 404561 393000) 0 nil])
+nil

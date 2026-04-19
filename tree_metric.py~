@@ -1,0 +1,270 @@
+import numpy as np # represent
+#Solve LP
+from pulp import * # solve LP
+
+# Construct the tree 
+from skbio import DistanceMatrix 
+from skbio.tree import nj
+
+# Plot the tree
+from Bio import Phylo
+from io import StringIO
+import matplotlib.pyplot as plt
+import networkx as nx
+
+# Arguments
+from argparse import ArgumentParser
+
+all_input_matrix = [
+    [[5, 2, 2, 1, 1],
+     [2, 5, 3, 2, 1],
+     [2, 3, 5, 4, 1],
+     [1, 2, 4, 5, 5],
+     [1, 1, 1, 5, 5]],
+
+    [[10, 4, 3, 2, 2],
+     [4, 10, 6, 4, 2],
+     [3, 6, 10, 8, 2],
+     [2, 4, 8, 10, 10],
+     [2, 2, 2, 10, 10]],
+
+ [[2, 2, 1, 0, 0],
+  [2, 2, 2, 1, 1],
+  [1, 2, 2, 2, 1],
+  [0, 1, 2, 2, 2],
+  [0, 1, 1, 2, 2]],
+
+[[10,7, 6, 0, 0, 0, 0],
+ [7,10, 7, 3, 2, 1, 1],
+ [6, 7,10, 7, 2, 2, 1],
+ [0, 3, 7, 10,3, 3, 3],
+ [0, 2, 2, 3, 10,7, 5],
+ [0, 1, 2, 3, 7, 10,6],
+ [0, 1, 1, 3, 5, 6,10]],
+    
+[[9,4,5,4,1], 
+ [4,9,5,4,1], 
+ [5,5,9,8,7], 
+ [4,4,8,9,7],
+ [1,1,7,7,9]]
+]
+
+parser = ArgumentParser()
+parser.add_argument("-e", "--example number",
+                   dest="n_example", default=0,
+                   help="use this example from the list ")
+
+parser.add_argument("-f", "--input file",
+                   dest="input_file", default=None,
+                   help="use this .csv file as input")
+
+parser.add_argument("-np",
+                    action="store_true",
+                    help="skip tree plotting")
+
+parser.add_argument("-dm",
+                    action="store_true",
+                    help="use distance matrix")
+args = parser.parse_args()
+
+tol=0.000001
+n_example = 0
+n_example = int(args.n_example)
+input_matrix = np.array(all_input_matrix[n_example])
+
+if args.input_file is not None:
+    input_matrix = np.genfromtxt(args.input_file, delimiter=',')
+    
+n = len(input_matrix)
+ROWS = COLS = range(n)
+nodelabel = ["S"+str(i) for i in range(n)]
+#all_labels=["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+#nodelabel = all_labels[:n]
+
+# Create the n-tuples  created, with the row and column index
+four_points = [ # order i<j<k<l 
+    (i,j,k,l) 
+    for l in range(3,n)
+    for k in range(2,l)
+    for j in range(1,k)
+    for i in range(j)
+]
+
+three_points = [
+    (i,j,k) 
+    for k in range(n)
+    for j in range(n)
+    for i in range(n)
+]
+
+two_points = [ # i<j
+    (i,j) 
+    for j in range(1,n)
+    for i in range(j)
+]
+
+# Create the problem
+problem = LpProblem("Has_a_tree_diagram_Problem")
+
+# Define decision variables
+distance = LpVariable.dicts("distance", (ROWS, COLS), cat='Continuous', lowBound=0)
+
+# We do not define an objective function since none is needed
+#problem += lpSum([distance[i][j] for (i,j) in two_points])
+
+# Constraints ensuring the 4-point condition
+# WE ASSUME distance[i][l] + distance[j][k] >= distance[i][j] + distance[k][l] 
+for (i,j,k,l) in four_points:
+    problem += distance[i][k] + distance[j][l] - distance[i][l] - distance[j][k] == 0
+
+# Constraints ensuring the 3-point condition
+for (i,j,k) in three_points:
+    # Triangular inequality
+    problem += distance[i][j] + distance[j][k] - distance[i][k] >= 0
+    #  Consistent with the input matrix
+    if input_matrix[i][j] > input_matrix[i][k] :
+        if (not args.dm) :  # we are using a similarity matrix
+            problem += distance[i][j] - distance[i][k] <= -1
+        else : # we are usong a distance matrix
+            problem += distance[i][j] - distance[i][k] >= 1
+        
+# Symmetry 2-points condition
+for (i,j) in two_points:
+    problem += distance[i][j] - distance[j][i] == 0
+
+# The problem data is written to an .lp file
+problem.writeLP("tree_metric.lp")
+
+# Solve the problem
+problem.solve(PULP_CBC_CMD(msg=0))
+
+######## PRINT INPUT/OUTPUT INFO ##############
+
+# The status of the solution is printed to the screen
+print("Status:", LpStatus[problem.status])
+
+# Check the solution
+is_correct=True
+for (i,j,k) in three_points:
+    #  Consistent with the input matrix
+    if (input_matrix[i][j] > input_matrix[i][k]) and (value(distance[i][j]) > value(distance[i][k])):
+        is_correct=False
+        
+print("Correct solution:",is_correct)
+
+
+# Compute output matrix
+outmatrix=np.zeros((n,n))
+for r in ROWS:
+    for c in COLS:
+       outmatrix[r][c] = value(distance[r][c])
+
+# Print input matrix (and distance)
+input_type ="similarity"
+distance_matrix = input_matrix.max()-input_matrix
+if  args.dm : # input distance matrix
+    input_type="distance"
+    distance_matrix=input_matrix
+print(f'\n Input {input_type} matrix \n{input_matrix}')
+# if a similarity matrix print also the distance matrix
+if (not args.dm)  : # input similarity matrix
+    print(f"\n Input distance matrix \n{distance_matrix}")
+    
+# Print the output  the matrix
+np.set_printoptions(precision=1,floatmode='fixed')
+print(f"\n Output distance matrix \n{outmatrix}")
+
+# Print the difference between input and output
+np.set_printoptions(precision=1,floatmode='fixed', suppress=True)
+print(f"\n Output difference matrix \n{outmatrix-distance_matrix}")
+
+
+# Save the matricx into  matrixout.txt is created/overwritten for writing to
+matrixout = open("tree_metric_out.txt", "w")
+
+# The solution is written to the outmatrix file
+for c in COLS:
+    matrixout.write(f"{nodelabel[c]}, " )
+matrixout.write("\n")
+for r in ROWS:
+    matrixout.write(f"{nodelabel[r]}")
+    for c in COLS:
+        matrixout.write(f", {value(distance[r][c])}")
+    matrixout.write("\n")
+matrixout.close()
+
+# Print the tree text mode
+dm = DistanceMatrix(outmatrix, nodelabel)
+tree = nj(dm)
+newick_str = nj(dm, result_constructor=str)
+
+print("\n Structure of the tree")
+print(tree.ascii_art())
+
+print("\n Newick notation of the tree")
+print(newick_str)
+
+# Plot the tree 
+if not args.np:
+    handle = io.StringIO(newick_str)
+    tree = Phylo.read(handle, "newick")
+    tree.ladderize()  # Flip branches so deeper clades are displayed at top
+    Phylo.draw(tree,branch_labels=lambda c: c.branch_length)
+
+    
+def plot_caterpillar():
+    xhop = 2
+    yhop = -3
+    pos = {}
+    edge_labels={}
+    edges= []
+
+    # Compute hanging node distances
+    hang_distance = [0]*n
+    for i in range(0,n-1):
+        hang_distance[i]= outmatrix[0][i]+outmatrix[i][n-1]-outmatrix[0][n-1]    
+    # Compute inter distances
+        inter_distance = [0]*(n-1)
+    for i in range(0,n-1):
+        inter_distance[i]= outmatrix[i][i+1]-hang_distance[i]-hang_distance[i+1]    
+    
+    # Create edges
+    for i in range(0,n) :
+        # aux node
+        auxnode="aux"+str(i)
+        pos[auxnode]=(i*xhop,0)
+        pos[nodelabel[i]]=(i*xhop,yhop)
+        # create hang edge
+        edge=[auxnode, nodelabel[i]]
+        edges.append(edge)
+        edge_labels[tuple(edge)]=str(round(hang_distance[i],2))
+        # Correct position/labels
+        if (hang_distance[i] < tol):
+            pos[nodelabel[i]]=(i*xhop,0)
+            edge_labels[tuple(edge)]=""
+        #create inter edge
+        if i<(n-1) :
+            edge=[auxnode, "aux"+str(i+1)]
+            edges.append(edge)
+            edge_labels[tuple(edge)]=str(round(inter_distance[i],2))
+
+    # Create graph
+    G = nx.Graph()
+    G.add_edges_from(edges)
+    plt.figure()
+    # Plot nodes
+    nx.draw(
+        G, pos, nodelist=nodelabel, edge_color='black', width=1, linewidths=1,
+        node_size=500, node_color='blue', alpha=0.3,
+        labels={node: node for node in nodelabel}
+        )
+    # Plot edges
+    nx.draw_networkx_edge_labels(
+        G, pos,
+        edge_labels=edge_labels,
+    )
+    plt.axis('off')
+    plt.axis('equal')
+    plt.show()
+
+plot_caterpillar()

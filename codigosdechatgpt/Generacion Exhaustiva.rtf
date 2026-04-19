@@ -1,0 +1,167 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2709
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 from typing import List, Generator, Optional, Tuple, Dict\
+\
+# ------------------------------------------------------------\
+# 1) Generaci\'f3n EXHAUSTIVA de matrices M (sin aleatoriedad)\
+# ------------------------------------------------------------\
+def generar_todas_M(n: int) -> Generator[List[List[int]], None, None]:\
+    """\
+    Genera exhaustivamente todas las matrices M de tama\'f1o n\'d7n que cumplen:\
+      - (1-index) M(i,i) = i\
+      - (1-index) M(i,i+1) = i\
+      - Para j - i >= 2: M(i,j) en [ M(i,j-1), M(i+1,j) ]\
+      - Luego se fija M(j,i) = M(i,j) + 1 para i < j\
+\
+    Devuelve matrices completas (n\'d7n) como listas de listas (0-indexadas internamente),\
+    pero con los valores seg\'fan la notaci\'f3n 1-index (i.e., la diagonal es 1,2,...,n).\
+    """\
+    if n <= 0:\
+        return\
+    # Construimos solo el tri\'e1ngulo superior (i<=j). El inferior se completa al final.\
+    M = [[None for _ in range(n)] for _ in range(n)]\
+\
+    # Diagonal principal: M(i,i) = i (1-index) -> M[i][i] = i+1 (0-index)\
+    for i in range(n):\
+        M[i][i] = i + 1\
+\
+    # Segunda diagonal: M(i,i+1) = i (1-index) -> M[i][i+1] = i+1 (0-index)\
+    for i in range(n - 1):\
+        M[i][i + 1] = i + 1\
+\
+    # Backtracking por diagonales superiores de offset d = 2..n-1\
+    def backtrack(d: int, i_start: int = 0):\
+        # Si completamos todas las diagonales superiores, rendereamos matriz completa\
+        if d == n:\
+            # Completar tri\'e1ngulo inferior: M(j,i) = M(i,j) + 1\
+            full = [row[:] for row in M]\
+            for i in range(n):\
+                for j in range(i + 1, n):\
+                    full[j][i] = full[i][j] + 1\
+            yield full\
+            return\
+\
+        # Para esta diagonal (offset d), iteramos i=0..n-d-1, j=i+d\
+        def recurse_on_row(i: int):\
+            if i >= n - d:\
+                # Pasamos a la siguiente diagonal\
+                yield from backtrack(d + 1, 0)\
+                return\
+            j = i + d\
+            low = M[i][j - 1]      # ya asignado (misma fila, columna anterior)\
+            up  = M[i + 1][j]      # ya asignado (fila de abajo, misma columna)\
+            # low y up est\'e1n definidos por construcci\'f3n (vamos de d peque\'f1o a grande)\
+            for val in range(low, up + 1):\
+                M[i][j] = val\
+                # continuar en esta misma diagonal con el siguiente i\
+                yield from recurse_on_row(i + 1)\
+            # limpiar (opcional)\
+            M[i][j] = None\
+\
+        # Si la diagonal es d=2..n-1, procesamos todas las posiciones (i, i+d)\
+        yield from recurse_on_row(0)\
+\
+    # Lanzar backtracking desde d=2\
+    yield from backtrack(2)\
+\
+\
+# ------------------------------------------------------------\
+# 2) Construcci\'f3n del grafo y verificaci\'f3n DAG (opcional)\
+#    Reglas 3 y 4 aplican SOLO si i < j (correcci\'f3n acordada)\
+# ------------------------------------------------------------\
+def construir_grafo(M: List[List[int]]) -> Dict[Tuple[int, int], List[Tuple[int, int]]]:\
+    n = len(M)\
+    V = \{(i, j) for i in range(1, n + 1) for j in range(i, n + 1)\}\
+    adj: Dict[Tuple[int, int], List[Tuple[int, int]]] = \{v: [] for v in V\}\
+\
+    def add(u: Tuple[int, int], v: Tuple[int, int]):\
+        if u in V and v in V:\
+            adj[u].append(v)\
+\
+    # Regla 1: (i,j)->(i,j+1) para 1 <= i <= j < n\
+    for i in range(1, n + 1):\
+        for j in range(i, n):\
+            add((i, j), (i, j + 1))\
+\
+    # Regla 2: (i,j)->(i-1,j) para 1 < i <= j <= n\
+    for i in range(2, n + 1):\
+        for j in range(i, n + 1):\
+            add((i, j), (i - 1, j))\
+\
+    # Reglas 3 y 4 SOLO si i < j\
+    for i in range(1, n + 1):\
+        for j in range(i, n + 1):\
+            if i < j:\
+                mij = M[i - 1][j - 1]\
+                # Regla 3: (i, M(i,j)) -> (M(i,j), j)\
+                add((i, mij), (mij, j))\
+                # Regla 4: (M(i,j)+1, j) -> (i, M(i,j)+1)\
+                add((mij + 1, j), (i, mij + 1))\
+\
+    return adj\
+\
+def es_DAG(M: List[List[int]]) -> bool:\
+    n = len(M)\
+    V = \{(i, j) for i in range(1, n + 1) for j in range(i, n + 1)\}\
+    adj = construir_grafo(M)\
+\
+    WHITE, GRAY, BLACK = 0, 1, 2\
+    color: Dict[Tuple[int, int], int] = \{v: WHITE for v in V\}\
+\
+    def dfs(v: Tuple[int, int]) -> bool:\
+        color[v] = GRAY\
+        for u in adj[v]:\
+            if color[u] == GRAY:\
+                return False  # ciclo\
+            if color[u] == WHITE and not dfs(u):\
+                return False\
+        color[v] = BLACK\
+        return True\
+\
+    for v in V:\
+        if color[v] == WHITE:\
+            if not dfs(v):\
+                return False\
+    return True\
+\
+\
+# ------------------------------------------------------------\
+# 3) Utilidades: enumeraci\'f3n y conteo de DAGs\
+# ------------------------------------------------------------\
+def contar_y_listar(n: int, max_listar: int = 5) -> Tuple[int, int, List[List[List[int]]]]:\
+    """\
+    Recorre TODAS las matrices para tama\'f1o n.\
+    Devuelve:\
+      - total (todas las matrices)\
+      - dag (cu\'e1ntas inducen un DAG)\
+      - ejemplos_dag (hasta max_listar matrices DAG)\
+    """\
+    total = 0\
+    dag = 0\
+    ejemplos: List[List[List[int]]] = []\
+    for M in generar_todas_M(n):\
+        total += 1\
+        if es_DAG(M):\
+            dag += 1\
+            if len(ejemplos) < max_listar:\
+                ejemplos.append(M)\
+    return total, dag, ejemplos\
+\
+\
+# ------------------------------------------------------------\
+# 4) Ejemplo de uso (descomenta para probar localmente)\
+# ------------------------------------------------------------\
+if __name__ == "__main__":\
+    n = 4\
+    total, dag, ejemplos = contar_y_listar(n, max_listar=3)\
+    print(f"n=\{n\} -> total matrices = \{total\}, DAGs = \{dag\}")\
+    for k, M in enumerate(ejemplos, 1):\
+        print(f"\\nEjemplo DAG \{k\}:")\
+        for fila in M:\
+            print(fila)\
+}

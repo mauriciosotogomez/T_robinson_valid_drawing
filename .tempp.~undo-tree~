@@ -1,0 +1,86 @@
+(undo-tree-save-format-version . 1)
+"087fc763d74ccce3c9c2bad5d26fe5001e56d288"
+[nil nil nil nil (26800 11092 555959 520000) 0 nil]
+([nil current ((148 . 1181) ("3: aux_distance_0 - 2 aux_distance_1 + aux_distance_3 - aux_leg_0
+ + aux_leg_3 >= 1
+A0_4: aux_distance_0 - 2 aux_distance_2 + aux_distance_4 - aux_leg_0
+ + aux_leg_4 >= 1
+A0_7: aux_distance_0 - 2 aux_distance_3 + aux_distance_7 - aux_leg_0
+ + aux_leg_7 >= 1
+A1_0: - aux_distance_0 + aux_distance_1 + aux_leg_0 - aux_leg_1 >= 1
+A1_2: - aux_distance_1 + aux_distance_2 - aux_leg_1 + aux_leg_2 >= 1
+A1_3: aux_distance_1 - 2 aux_distance_2 + aux_distance_3 - aux_leg_1
+ + aux_leg_3 >= 1
+A1_5: aux_distance_1 - 2 aux_distance_3 + aux_distance_5 - aux_leg_1
+ + aux_leg_5 >= 1
+A2_0: - aux_distance_0 + 2 aux_distance_1 - aux_distance_2 + aux_leg_0
+ - aux_leg_2 >= 1
+A2_1: - aux_distance_1 + aux_distance_2 + aux_leg_1 - aux_leg_2 >= 1
+A2_3: - aux_distance_2 + aux_distance_3 - aux_leg_2 + aux_leg_3 >= 1
+A2_4: aux_distance_2 - 2 aux_distance_3 + aux_distance_4 - aux_leg_2
+ + aux_leg_4 >= 1
+A3_0: - aux_distance_0 + 2 aux_distance_2 - aux_distance_3 + aux_leg_0
+ - aux_leg_3 >= 1
+A3_2: - aux_distance_2 + aux_distance_3 + aux_leg_2 - aux_leg_3 >= 1
+A3_4: - aux_distance_3 + aux_distance_4 - aux_leg_3 + aux_leg_4 >= 1
+A3_7: aux_distance_3 - 2 aux_distance_4 + aux_distance_7 - aux_leg_3
+ + aux_leg_7 >= 1
+A4_1: - aux_distance_1 + 2 aux_distance_3 - aux_distance_4 + aux_leg_1
+ - aux_leg_4 >= 1
+A4_3: - aux_distance_3 + aux_distance_4 + aux_leg_3 - aux_leg_4 >= 1
+A4_5: - aux_distance_4 + aux_distance_5 - aux_leg_4 + aux_leg_5 >= 1
+A4_7: aux_distance_4 - 2 aux_distance_5 + aux_distance_7 - aux_leg_4
+ + aux_leg_7 >= 1
+A4_9: aux_distance_4 - 2 aux_distance_6 + aux_distance_9 - aux_leg_4
+ + aux_leg_9 >= 1
+A5_4: - aux_distance_4 + aux_distance_5 + aux_leg_4 - aux_leg_5 >= 1
+A5_6: - aux_distance_5 + aux_distance_6 - aux_leg_5 + aux_leg_6 >= 1
+A5_7: aux_distance_5 - 2 aux_distance_6 + aux_distance_7 - aux_leg_5
+ + aux_leg_7 >= 1
+A6_0: - aux_distance_0 + 2 aux_distance_3 - aux_distance_6 + aux_leg_0
+ - aux_leg_6 >= 1
+A6_3: - aux_distance_3 + 2 aux_distance_4 - aux_distance_6 + aux_leg_3
+ - aux_leg_6 >= 1
+A6_4: - aux_distance_4 + 2 aux_distance_5 - aux_distance_6 + aux_leg_4
+ - aux_leg_6 >= 1
+A6_5: - aux_distance_5 + aux_distance_6 + aux_leg_5 - aux_leg_6 >= 1
+A6_7: - aux_distance_6 + aux_distance_7 - aux_leg_6 + aux_leg_7 >= 1
+A7_6: - aux_distance_6 + aux_distance_7 + aux_leg_6 - aux_leg_7 >= 1
+A7_8: - aux_distance_7 + aux_distance_8 - aux_leg_7 + aux_leg_8 >= 1
+A8_4: - aux_distance_4 + 2 aux_distance_6 - aux_distance_8 + aux_leg_4
+ - aux_leg_8 >= 1
+A8_7: - aux_distance_7 + aux_distance_8 + aux_leg_7 - aux_leg_8 >= 1
+A8_9: - aux_distance_8 + aux_distance_9 - aux_leg_8 + aux_leg_9 >= 1
+A9_2: - aux_distance_2 + 2 aux_distance_4 - aux_distance_9 + aux_leg_2
+ - aux_leg_9 >= 1
+A9_3: - aux_distance_3 + 2 aux_distance_5 - aux_distance_9 + aux_leg_3
+ - aux_leg_9 >= 1
+A9_6: - aux_distance_6 + 2 aux_distance_7 - aux_distance_9 + aux_leg_6
+ - aux_leg_9 >= 1
+A9_7: - aux_distance_7 + 2 aux_distance_8 - aux_distance_9 + aux_leg_7
+ - aux_leg_9 >= 1
+A9_8: - aux_distance_8 + aux_distance_9 + aux_leg_8 - aux_leg_9 >= 1
+Bounds
+ __dummy = 0
+ aux_distance_0 free
+ aux_distance_1 free
+ aux_distance_2 free
+ aux_distance_3 free
+ aux_distance_4 free
+ aux_distance_5 free
+ aux_distance_6 free
+ aux_distance_7 free
+ aux_distance_8 free
+ aux_distance_9 free
+ aux_leg_0 free
+ aux_leg_1 free
+ aux_leg_2 free
+ aux_leg_3 free
+ aux_leg_4 free
+ aux_leg_5 free
+ aux_leg_6 free
+ aux_leg_7 free
+ aux_leg_8 free
+ aux_leg_9" . 148) (undo-tree-id0 . -797) (undo-tree-id1 . -658) (undo-tree-id2 . -658) (undo-tree-id3 . -658) (undo-tree-id4 . -658) (t 26800 10560 730946 760000)) nil (26800 11092 556111 799000) 0 nil])
+([nil nil ((988 . 989) (t 26800 11069 78210 813000)) (("y" . 988) (undo-tree-id5 . -1)) (26800 11092 555940 508000) 0 nil])
+nil
